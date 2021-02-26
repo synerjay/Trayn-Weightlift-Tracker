@@ -6,6 +6,12 @@ const app = express();
 // Connect Database
 connectDB();
 
+// Initialize Middleware - You don't need to do bodyParser middlewre anymore.
+//You can use a method within express to do parse a request body
+//For example:
+
+app.use(express.json({ extended: false }));
+
 app.get('/', (req, res) => res.send('API Running now bitch!!'));
 
 //Define Routes
