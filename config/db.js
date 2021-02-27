@@ -6,7 +6,8 @@ const connectDB = async () => {
   try {
     await mongoose.connect(db, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
+      useCreateIndex: true
     });
     // Await sync are always used with try catch curly braces
     console.log('MongoDB Connected...');
