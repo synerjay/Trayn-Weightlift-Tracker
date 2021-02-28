@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
+// this middleware verifies the JWT token received and restricts access to requests that doesnt have the said token
+
 module.exports = function(req, res, next) {
   // Get token from header of the request
   const token = req.header('x-auth-token');
