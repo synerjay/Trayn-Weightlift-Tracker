@@ -366,6 +366,8 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
 // @desc     Get user repos from Github
 // @access   Public
 
+// Use axios instead of request to access github
+
 router.get('/github/:username', async (req, res) => {
   try {
     const uri = encodeURI(
