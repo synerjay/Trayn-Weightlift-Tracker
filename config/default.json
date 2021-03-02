@@ -1,4 +1,0 @@
-{
-  "mongoURI": "mongodb+srv://synerjay:Machida2017@socialnetwork.kdprc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-  "jwtSecret": "secrettokenbiatchez"
-}
