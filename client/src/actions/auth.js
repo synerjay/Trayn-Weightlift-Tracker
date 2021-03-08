@@ -12,7 +12,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
   };
 
   const body = JSON.stringify({ name, email, password });
-
+  //We use axios to send a post request to /api/users to register
   try {
     const res = await axios.post('/api/users', body, config);
 

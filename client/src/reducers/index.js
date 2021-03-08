@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 import alert from './alert';
-
+import auth from './auth';
 
 export default combineReducers({
-  alert
+  alert,
+  auth,
 });
 
 //This is the root reducer. and this reducer combines all separate reducers into one
