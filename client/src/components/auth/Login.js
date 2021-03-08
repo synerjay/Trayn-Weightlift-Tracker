@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-export const Login = () => {
+const Login = () => {
   // Component State Hook
   const [formData, setFormData] = useState({
     email: '',
@@ -21,7 +21,7 @@ export const Login = () => {
       console.log('SUCCESS')
   
   }
-  
+
   return (
     <Fragment>
      {/*<div className="alert alert-danger">
@@ -57,3 +57,5 @@ export const Login = () => {
     </Fragment>
   )
 }
+
+export default Login
