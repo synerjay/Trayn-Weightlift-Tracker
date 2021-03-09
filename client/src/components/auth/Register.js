@@ -22,7 +22,7 @@ const Register = ({ setAlert, register }) => {
   // [e.target.name] corresponding to "name" attribute (not the value) of each HTML tags
   // e.target.value -- is the change in value in the fields
 
-  //Subit function form
+  //Subit function form - we use the "register" action here that will send to the reducer
   const onSubmit = (e) => {
     e.preventDefault();
     if (password !== password2) {
