@@ -68,6 +68,7 @@ const Login = ({ login, isAuthenticated }) => {
   );
 };
 
+// Proptypes are there to tell other developers what kind of props are used in this component
 Login.propTypes = {
   login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
