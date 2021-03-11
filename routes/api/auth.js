@@ -15,6 +15,7 @@ const User = require('../../models/User');
 // @access  Public
 router.get('/', auth, async (req, res) => {
   try {
+    // the req.user.id below is acquired from the JSON Web Token when it exists. Guest would NOT get a token
     const user = await User.findById(req.user.id).select('-password'); // -password means that the password from user info isnt being returned
     res.json(user);
   } catch (err) {
