@@ -25,6 +25,8 @@ PrivateRoute.propTypes = {
   auth: PropTypes.object.isRequired,
 };
 
+// this PrivateRoute component only subscribes to the state (hence, only mapStateToProps in connect function)
+// no actions are being made to Redux (hence, no mapStateToDispatch in connect function)
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
