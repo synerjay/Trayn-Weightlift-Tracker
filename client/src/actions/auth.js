@@ -20,7 +20,7 @@ export const loadUser = () => async (dispatch) => {
 
   try {
     const res = await axios.get('/api/auth');
-
+    // authenticate users in the backend. If there is a token available, the backend sends user infor as a response
     dispatch({
       type: USER_LOADED,
       payload: res.data,

@@ -26,6 +26,7 @@ const App = () => {
     store.dispatch(loadUser());
   }, []); // <-- empty array, this useEffect hook will only fire once
   // this will fire the loadUser function which loads the JSONwebtoken in the REDUX store
+  // Since JSON WebToken is a stateless token the App component must mount the loadUser action ONCE so that if there is a token, it is stored in the x-auth-token in client
 
   return (
     <Provider store={store}>
