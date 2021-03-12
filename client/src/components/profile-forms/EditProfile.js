@@ -1,13 +1,18 @@
 // Since CreateProfile component is very similar, just copy from CreateProfile component code to EditProfile
 // the difference is that we add getCurrentProfile into the actions props
-
-import React, { Fragment, useState } from 'react';
+// another difference is that we use the useEffect hook to bring in the stored profile info for the users
+import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
 
-const CreateProfile = ({ createProfile, history }) => {
+const EditProfile = ({
+  profile: { profile, loading },
+  createProfile,
+  getCurrentProfile,
+  history,
+}) => {
   const [formData, setFormData] = useState({
     company: '',
     website: '',
@@ -24,6 +29,26 @@ const CreateProfile = ({ createProfile, history }) => {
   });
 
   const [displaySocialInputs, toggleSocialInput] = useState(false);
+
+  useEffect(() => {
+    getCurrentProfile();
+
+    setFormData({
+      company: loading || !profile.company ? '' : profile.company,
+      website: loading || !profile.website ? '' : profile.website,
+      location: loading || !profile.location ? '' : profile.location,
+      status: loading || !profile.status ? '' : profile.status,
+      skills: loading || !profile.skills ? '' : profile.skills,
+      githubusername:
+        loading || !profile.githubusername ? '' : profile.githubusername,
+      bio: loading || !profile.bio ? '' : profile.bio,
+      twitter: loading || !profile.twitter ? '' : profile.website,
+      facebook: loading || !profile.facebook ? '' : profile.facebook,
+      linkedin: loading || !profile.linkedin ? '' : profile.linkedin,
+      youtube: loading || !profile.youtube ? '' : profile.youtube,
+      instagram: loading || !profile.instagram ? '' : profile.instagram,
+    });
+  }, [loading]); // <-- dependency array. When it's loading, useEffect needs to run the code inside
 
   const {
     company,
@@ -45,7 +70,7 @@ const CreateProfile = ({ createProfile, history }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    createProfile(formData, history);
+    createProfile(formData, history, true); //createProfile action needs to set to TRUE because this is an EDIT profile action
   };
 
   return (
@@ -223,13 +248,13 @@ const CreateProfile = ({ createProfile, history }) => {
   );
 };
 
-CreateProfile.propTypes = {
+EditProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state = {
+const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 

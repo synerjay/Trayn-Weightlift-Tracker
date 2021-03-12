@@ -49,6 +49,7 @@ export const createProfile = (formData, history, edit = false) => async (
 
     dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success'));
 
+    // if its not an edit (aka first time created) go back to dashboard
     if (!edit) {
       history.push('/dashboard');
     }
