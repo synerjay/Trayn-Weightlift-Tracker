@@ -72,13 +72,13 @@ export const createProfile = (formData, history, edit = false) => async (
 // It needs formData and history because it needs to go back to the Dashboard afterwards
 
 export const addExperience = (formData, history) => async (dispatch) => {
-  try {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
 
+  try {
     // make a PUT request instead of request because in the backend, we made experience node a PUT request
     const res = await axios.put('/api/profile/experience', formData, config);
 
@@ -95,6 +95,7 @@ export const addExperience = (formData, history) => async (dispatch) => {
     history.push('/dashboard');
   } catch (err) {
     const errors = err.response.data.errors;
+    console.log(err.response);
 
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));

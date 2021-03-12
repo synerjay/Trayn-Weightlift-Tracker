@@ -13,9 +13,8 @@ import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
-import CreateProfile from './components/profile-forms/CreateProfile';
-import EditProfile from './components/profile-forms/EditProfile';
 import AddExperience from './components/profile-forms/AddExperience';
+import ProfileForm from './components/profile-forms/ProfileForm';
 
 //Provider tag provides the components with the props that will be the redux states
 //This connects React and Redux together
@@ -50,12 +49,12 @@ const App = () => {
               <PrivateRoute
                 exact
                 path='/create-profile'
-                component={CreateProfile}
+                component={ProfileForm}
               />
               <PrivateRoute
                 exact
                 path='/edit-profile'
-                component={EditProfile}
+                component={ProfileForm}
               />
               <PrivateRoute
                 exact
