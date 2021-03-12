@@ -1,4 +1,9 @@
-import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE } from '../actions/types';
+import {
+  GET_PROFILE,
+  PROFILE_ERROR,
+  CLEAR_PROFILE,
+  UPDATE_PROFILE,
+} from '../actions/types';
 
 const initialState = {
   profile: null,
@@ -13,6 +18,7 @@ export default function foo(state = initialState, action) {
 
   switch (type) {
     case GET_PROFILE:
+    case UPDATE_PROFILE: // UPDATE_PROFILE has the same action has GET_PROFILE type because we just need to send the payload to the state
       return {
         ...state,
         profile: payload,
