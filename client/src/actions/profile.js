@@ -36,7 +36,7 @@ export const getCurrentProfile = () => async (dispatch) => {
 // Get all profiles
 
 export const getProfiles = () => async (dispatch) => {
-  dispatch({ type: CLEAR_PROFILE });
+  dispatch({ type: CLEAR_PROFILE }); // we need clear profile here so that the previous user's profile doesnt get remained in the browser
 
   try {
     const res = await axios.get('/api/profile');
