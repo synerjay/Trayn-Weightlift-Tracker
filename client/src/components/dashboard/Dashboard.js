@@ -19,7 +19,7 @@ const Dashboard = ({
 }) => {
   useEffect(() => {
     getCurrentProfile();
-  }, []); // <--- getCurrentProfil function is going to fire once
+  }, [getCurrentProfile]); // <--- getCurrentProfil function is going to fire once
 
   return loading && profile === null ? (
     <Spinner />
