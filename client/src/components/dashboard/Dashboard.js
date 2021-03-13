@@ -6,6 +6,7 @@ import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
 import DashboardActions from './DashboardActions';
 import Experience from './Experience';
+import Education from './Education';
 
 // We are going to use the getCurrentProfile action to redux as soon as the component loads
 // So we are going to use useEffect hooks to fire getCurrentProfile in the initial load
@@ -31,6 +32,7 @@ const Dashboard = ({
         <Fragment>
           <DashboardActions />
           <Experience experience={profile.experience} />
+          <Education education={profile.education} />
         </Fragment>
       ) : (
         <Fragment>
