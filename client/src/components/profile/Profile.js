@@ -5,6 +5,7 @@ import Spinner from '../layout/Spinner';
 import { getProfileById } from '../../actions/profile';
 import { Link } from 'react-router-dom';
 import ProfileTop from './ProfileTop';
+import ProfileAbout from './ProfileAbout';
 
 // In this Profile component, to get the profile id, we need to get it from the params of the URL
 // In REACT, we can get the params of the component by accessing the 'match' object available from the component props
@@ -41,6 +42,7 @@ const Profile = ({
             {' '}
             {/* This div grid is needed to organize the profile components into a grid*/}
             <ProfileTop profile={profile} />
+            <ProfileAbout profile={profile} />
           </div>
         </Fragment>
       )}
