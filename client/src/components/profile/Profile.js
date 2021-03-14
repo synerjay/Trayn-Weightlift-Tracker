@@ -8,6 +8,7 @@ import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
+import ProfileGithub from './ProfileGithub';
 
 // In this Profile component, to get the profile id, we need to get it from the params of the URL
 // In REACT, we can get the params of the component by accessing the 'match' object available from the component props
@@ -75,6 +76,9 @@ const Profile = ({
                 <h4> No education credentials</h4>
               )}
             </div>
+            {profile.githubusername && (
+              <ProfileGithub username={profile.githubusername} />
+            )}
           </div>
         </Fragment>
       )}
