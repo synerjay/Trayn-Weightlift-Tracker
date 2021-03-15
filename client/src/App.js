@@ -18,6 +18,7 @@ import ProfileForm from './components/profile-forms/ProfileForm';
 import AddEducation from './components/profile-forms/AddEducation';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
+import Posts from './components/posts/Posts';
 
 //Provider tag provides the components with the props that will be the redux states
 //This connects React and Redux together
@@ -71,6 +72,7 @@ const App = () => {
                 path='/add-education'
                 component={AddEducation}
               />
+              <PrivateRoute exact path='/posts' component={Posts} />
             </Switch>
           </section>
         </Fragment>
