@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { setAlert } from './alert';
 import { DELETE_POSTS, GET_POSTS, POST_ERROR, UPDATE_LIKES } from './types';
 
 // Get Posts method
@@ -66,6 +67,8 @@ export const deletePost = (id) => async (dispatch) => {
       type: DELETE_POSTS,
       payload: id,
     });
+
+    dispatch(setAlert('Post Successfully Removed', 'success'));
   } catch (err) {
     dispatch({
       type: POST_ERROR,
