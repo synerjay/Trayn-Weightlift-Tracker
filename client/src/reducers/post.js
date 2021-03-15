@@ -1,7 +1,12 @@
 // Work flow:
 // If you want to add something to your app that requires state changes, you 1. create a new reducer, 2. a new action file, 3. new component
 
-import { GET_POSTS, POST_ERROR, UPDATE_LIKES } from '../actions/types';
+import {
+  DELETE_POSTS,
+  GET_POSTS,
+  POST_ERROR,
+  UPDATE_LIKES,
+} from '../actions/types';
 
 const initialState = {
   posts: [],
@@ -18,6 +23,12 @@ export default function foo(state = initialState, action) {
       return {
         ...state,
         posts: payload,
+        loading: false,
+      };
+    case DELETE_POSTS:
+      return {
+        ...state,
+        posts: state.posts.filter((post) => post._id !== payload), // FILTER method: returns ALL posts that have ID that are NOT equal to payload ID
         loading: false,
       };
     case POST_ERROR:
