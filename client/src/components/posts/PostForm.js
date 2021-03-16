@@ -5,16 +5,16 @@ import { addPost } from '../../actions/post';
 
 const PostForm = ({ addPost }) => {
   // 1. Make a component state,
-  const [formData, setFormData] = useState(initialState);
+  const [text, setText] = useState('');
 
   //2. Make input field response to state change - HTML tags need to be changed with value={NameOfField} and onChange={onChange}
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  //const onChange = (e) => setText({ ...text, [e.target.name]: e.target.value });
 
   // 3. make data passed to the reduce
   const onSubmit = (e) => {
     e.preventDefault(); //prevents refresh of the page once submitted
-    addPost(formData); // action to the reducer
+    addPost({ text }); // action to the reducer with text data deconstructed
+    setText(''); // <-- set the text state back to initial state once submitted for the next text input
   };
 
   return (
@@ -27,13 +27,17 @@ const PostForm = ({ addPost }) => {
           <textarea
             name='text'
             value={text}
-            onChange={onChange}
+            onChange={(e) => setText(e.target.value)}
             cols='30'
             rows='5'
             placeholder='Create a post'
             required
           ></textarea>
-          <input type='submit' className='btn btn-dark my-1' value='Submit' />
+          <input
+            type='submit'
+            className='btn btn-dark my-1'
+            value='Post Status'
+          />
         </form>
       </div>
     </Fragment>
