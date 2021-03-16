@@ -9,6 +9,7 @@ import {
   GET_POST,
   GET_POSTS,
   POST_ERROR,
+  REMOVE_COMMENT,
   UPDATE_LIKES,
 } from '../actions/types';
 
@@ -72,6 +73,16 @@ export default function foo(state = initialState, action) {
         ...state,
         post: { ...state.post, comments: payload },
         loading: false,
+      };
+    case REMOVE_COMMENT:
+      return {
+        ...state,
+        post: {
+          ...state.post,
+          comments: state.post.comments.filter(
+            (comment) => comment._id !== payload
+          ),
+        },
       };
     default:
       return state;

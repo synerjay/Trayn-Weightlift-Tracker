@@ -8,6 +8,7 @@ import {
   GET_POST,
   GET_POSTS,
   POST_ERROR,
+  REMOVE_COMMENT,
   UPDATE_LIKES,
 } from './types';
 
@@ -139,6 +140,26 @@ export const addComment = (postId, formData) => async (dispatch) => {
     });
 
     dispatch(setAlert('Comment Successfully Added', 'success'));
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+//Deleting a Comment
+
+export const deleteComment = (postId, id) => async (dispatch) => {
+  try {
+    await axios.delete(`/api/posts/comment/${postId}/${id}`);
+
+    dispatch({
+      type: REMOVE_COMMENT,
+      payload: id,
+    });
+
+    dispatch(setAlert('Comment Successfully Removed', 'success'));
   } catch (err) {
     dispatch({
       type: POST_ERROR,
