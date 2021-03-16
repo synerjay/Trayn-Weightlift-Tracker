@@ -16,7 +16,7 @@ const PostItem = ({
     <div className='post bg-white p-1 my-1'>
       <div>
         <a href='profile.html'>
-          <img className='round-img' src={avatar} alt='' />
+          <img className='round-img' src={avatar} alt='User avatar' />
           <h4>{name}</h4>
         </a>
       </div>
