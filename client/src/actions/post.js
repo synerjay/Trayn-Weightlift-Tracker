@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { DELETE_POSTS, GET_POSTS, POST_ERROR, UPDATE_LIKES } from './types';
+import {
+  ADD_POST,
+  DELETE_POSTS,
+  GET_POSTS,
+  POST_ERROR,
+  UPDATE_LIKES,
+} from './types';
 
 // Get Posts method
 
@@ -69,6 +75,27 @@ export const deletePost = (id) => async (dispatch) => {
     });
 
     dispatch(setAlert('Post Successfully Removed', 'success'));
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Add Post - whenever there is an action that needs to put in the payload, data should be passed in the func argument
+
+export const addPost = (formData) => async (dispatch) => {
+  try {
+    const res = await axios.post('/api/posts', formData);
+    // in a post request to the backend, the data is inputed in the second argument of the axios.post method
+
+    dispatch({
+      type: ADD_POST,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('Post Created', 'success'));
   } catch (err) {
     dispatch({
       type: POST_ERROR,
