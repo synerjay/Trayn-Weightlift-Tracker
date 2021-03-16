@@ -8,7 +8,7 @@ import {
   UPDATE_LIKES,
 } from './types';
 
-// Get Posts method
+// Get Many Posts method
 
 export const getPosts = () => async (dispatch) => {
   try {
@@ -99,6 +99,24 @@ export const addPost = (formData) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Get Individual Post by Id (Discussion link in the PostItem component)
+
+export const getPost = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/posts/${id}`);
+
+    dispatch({
+      type: GET_POST,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }

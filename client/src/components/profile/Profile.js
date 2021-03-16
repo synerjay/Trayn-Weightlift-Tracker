@@ -21,7 +21,7 @@ const Profile = ({
 }) => {
   // useEffect Hook to fire the getProfileById action to the redux and get the profile by params
   useEffect(() => {
-    getProfileById(match.params.id); // in react, we get the params by accessing the match fobject from the props
+    getProfileById(match.params.id); // in react, we get the params by accessing the match object from the props
   }, [getProfileById, match.params.id]); // <-- depedency arrays have the Action and the match.params
 
   return (
