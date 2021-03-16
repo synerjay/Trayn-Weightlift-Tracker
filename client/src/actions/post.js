@@ -1,8 +1,11 @@
 import axios from 'axios';
 import { setAlert } from './alert';
 import {
+  ADD_COMMENT,
   ADD_POST,
+  CLEAR_POST,
   DELETE_POSTS,
+  GET_POST,
   GET_POSTS,
   POST_ERROR,
   UPDATE_LIKES,
@@ -11,6 +14,8 @@ import {
 // Get Many Posts method
 
 export const getPosts = () => async (dispatch) => {
+  dispatch({ type: CLEAR_POST });
+
   try {
     const res = await axios.get('/api/posts');
 
@@ -67,7 +72,7 @@ export const removeLike = (id) => async (dispatch) => {
 // Delete Post
 export const deletePost = (id) => async (dispatch) => {
   try {
-    const res = await axios.delete(`/api/posts/${id}`);
+    await axios.delete(`/api/posts/${id}`);
 
     dispatch({
       type: DELETE_POSTS,
@@ -116,7 +121,27 @@ export const getPost = (id) => async (dispatch) => {
     });
   } catch (err) {
     dispatch({
-      type: PROFILE_ERROR,
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Add Comment to a Post
+
+export const addComment = (postId, formData) => async (dispatch) => {
+  try {
+    const res = await axios.post(`/api/posts/comment/${postId}`, formData);
+
+    dispatch({
+      type: ADD_COMMENT,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('Comment Successfully Added', 'success'));
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
