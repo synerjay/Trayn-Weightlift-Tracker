@@ -2,6 +2,7 @@
 // If you want to add something to your app that requires state changes, you 1. create a new reducer, 2. a new action file, 3. new component
 
 import {
+  ADD_POST,
   DELETE_POSTS,
   GET_POSTS,
   POST_ERROR,
@@ -23,6 +24,12 @@ export default function foo(state = initialState, action) {
       return {
         ...state,
         posts: payload,
+        loading: false,
+      };
+    case ADD_POST:
+      return {
+        ...state,
+        posts: [payload, ...state.posts],
         loading: false,
       };
     case DELETE_POSTS:
