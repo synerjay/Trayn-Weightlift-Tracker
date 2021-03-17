@@ -2,17 +2,19 @@ import { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 
+//Components
 import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
-// put routes component here:
+import Routes from './components/routing/Routes';
 
-//Redux Stuff
+//Redux
 import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
+
+//Security Token and Actions
 import setAuthToken from './utils/setAuthToken';
 import { LOGOUT } from './actions/types';
-import Routes from './components/routing/Routes';
 
 //Provider tag provides the components with the props that will be the redux states
 //This connects React and Redux together
