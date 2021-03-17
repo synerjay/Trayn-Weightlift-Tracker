@@ -25,13 +25,14 @@ import Post from './components/post/Post';
 //This connects React and Redux together
 // Pass the "store" props in the Provider tags
 
-if (localStorage.token) {
-  setAuthToken(localStorage.token);
-} // if there is a token in the local storage then set it setAuthToken function to set in every request
-
 const App = () => {
   //Use effect hook is like componentDidMount in class React
   useEffect(() => {
+    // if there is a token in the local storage then set it setAuthToken function to set in every request
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+
     store.dispatch(loadUser());
   }, []); // <-- empty array, this useEffect hook will only fire once
   // this will fire the loadUser function which loads the JSONwebtoken in the REDUX store
