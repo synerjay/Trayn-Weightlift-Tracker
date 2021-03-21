@@ -49,11 +49,12 @@ const CommentForm = ({ postId, addComment }) => {
         />
         <Button
           type='submit'
+          color='secondary'
           // className='btn btn-dark my-1'
-          value='Add Comment'
+          variant='outlined'
           endIcon={<KeyboardArrowRightOutlinedIcon />}
         >
-          Post Comment
+          Add Comment
         </Button>
       </form>
     </div>

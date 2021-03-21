@@ -2,8 +2,21 @@ import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/post';
+import Button from '@material-ui/core/Button';
+import { makeStyles, TextField } from '@material-ui/core';
+import KeyboardArrowRightOutlinedIcon from '@material-ui/icons/KeyboardArrowRightOutlined';
+
+const useStyles = makeStyles({
+  field: {
+    marginTop: 20,
+    marginBottom: 20,
+    display: 'block',
+  },
+});
 
 const PostForm = ({ addPost }) => {
+  const classes = useStyles();
+
   // 1. Make a component state,
   const [text, setText] = useState('');
 
@@ -23,21 +36,33 @@ const PostForm = ({ addPost }) => {
         <div className='bg-primary p'>
           <h3>Say Something...</h3>
         </div>
-        <form className='form my-1' onClick={onSubmit}>
-          <textarea
+        <form
+          // className='form my-1'
+          onClick={onSubmit}
+        >
+          <TextField
             name='text'
+            className={classes.field}
+            label='Create a Status Update'
             value={text}
+            variant='outlined'
+            color='primary'
             onChange={(e) => setText(e.target.value)}
-            cols='30'
-            rows='5'
-            placeholder='Create a post'
+            fullWidth
+            multiline
+            rows={5}
+            placeholder='Create a Status Update'
             required
-          ></textarea>
-          <input
-            type='submit'
-            className='btn btn-dark my-1'
-            value='Post Status'
           />
+          <Button
+            type='submit'
+            color='primary'
+            // className='btn btn-dark my-1'
+            variant='contained'
+            endIcon={<KeyboardArrowRightOutlinedIcon />}
+          >
+            Post Status
+          </Button>
         </form>
       </div>
     </Fragment>
