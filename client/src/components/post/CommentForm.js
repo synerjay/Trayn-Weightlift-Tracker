@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addComment } from '../../actions/post';
+import Button from '@material-ui/core/Button';
+import { TextField } from '@material-ui/core';
+import KeyboardArrowRightOutlinedIcon from '@material-ui/icons/KeyboardArrowRightOutlined';
 
 const CommentForm = ({ postId, addComment }) => {
   const [text, setText] = useState('');
@@ -18,20 +21,25 @@ const CommentForm = ({ postId, addComment }) => {
         <h3>Leave A Comment</h3>
       </div>
       <form className='form my-1' onSubmit={onSubmit}>
-        <textarea
+        <TextField
           name='text'
           value={text}
+          variant='outlined'
           onChange={(e) => setText(e.target.value)}
-          cols='30'
+          fullWidth
+          multiline
           rows='5'
           placeholder='Comment on this post'
           required
-        ></textarea>
-        <input
-          type='submit'
-          className='btn btn-dark my-1'
-          value='Add Comment'
         />
+        <Button
+          type='submit'
+          // className='btn btn-dark my-1'
+          value='Add Comment'
+          endIcon={<KeyboardArrowRightOutlinedIcon />}
+        >
+          Post Comment
+        </Button>
       </form>
     </div>
   );
@@ -42,3 +50,15 @@ CommentForm.propTypes = {
 };
 
 export default connect(null, { addComment })(CommentForm);
+
+{
+  /* <textarea
+          name='text'
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          cols='30'
+          rows='5'
+          placeholder='Comment on this post'
+          required
+        ></textarea> */
+}
