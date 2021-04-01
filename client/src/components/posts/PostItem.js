@@ -2,7 +2,8 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import formatDate from '../../utils/formatDate';
+// import formatDate from '../../utils/formatDate';
+import { format } from 'date-fns';
 import { addLike, removeLike, deletePost } from '../../actions/post';
 
 const PostItem = ({
@@ -23,7 +24,9 @@ const PostItem = ({
       </div>
       <div>
         <p className='my-1'>{text}</p>
-        <p className='post-date'>Posted on {formatDate(date)}</p>
+        <p className='post-date'>
+          Posted on {format(new Date(date), 'MMMM do Y')}
+        </p>
 
         {showActions && (
           <Fragment>
