@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import formatDate from '../../utils/formatDate';
 import { deleteEducation } from '../../actions/profile';
+import { format } from 'date-fns';
 
 const Education = ({ education, deleteEducation }) => {
   // experience is going to be an array
@@ -11,7 +11,8 @@ const Education = ({ education, deleteEducation }) => {
       <td>{edu.school}</td>
       <td className='hide-sm'>{edu.degree}</td>
       <td>
-        {formatDate(edu.from)} - {edu.to ? formatDate(edu.to) : 'Current'}
+        {format(new Date(edu.from), 'yyyy/MM/dd')}-
+        {edu.to ? format(new Date(edu.to), 'yyyy/MM/dd') : 'Current'}
       </td>
       <td>
         <button
