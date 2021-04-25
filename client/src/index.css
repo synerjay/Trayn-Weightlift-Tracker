@@ -180,8 +180,8 @@ img {
 .bg-dark,
 .badge-dark,
 .alert-dark {
-  background: var(--dark-color);
-  color: #fff;
+  background: #fff;
+  color: #000;
 }
 
 .btn-danger,
@@ -230,7 +230,7 @@ img {
 
 /* Overlay */
 .dark-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
+  /* background-color: rgba(0, 0, 0, 0.7); */
   position: absolute;
   top: 0;
   left: 0;
@@ -321,7 +321,7 @@ button {
 }
 
 .navbar a {
-  color: #fff;
+  color: #000;
   padding: 0.45rem;
   margin: 0 0.25rem;
 }
@@ -337,12 +337,12 @@ button {
 /* Landing Page */
 .landing {
   position: relative;
-  background: url('./img/showcase.jpg') no-repeat center center/cover;
+  background: #fff;
   height: 100vh;
 }
 
 .landing-inner {
-  color: #fff;
+  color: #000;
   height: 100%;
   width: 80%;
   margin: auto;
