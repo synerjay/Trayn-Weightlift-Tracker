@@ -25,7 +25,7 @@ const Dashboard = ({
     <Spinner />
   ) : (
     <Fragment>
-      <h1 className='text-red-500'> Dashboard</h1>
+      <h1 className='text-red-500 text-2xl'> Dashboard</h1>
       <p className='lead'>
         <i className='fas fa-user'></i> Welcome {user && user.name}
       </p>
