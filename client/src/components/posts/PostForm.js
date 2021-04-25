@@ -15,8 +15,6 @@ const useStyles = makeStyles({
 });
 
 const PostForm = ({ addPost }) => {
-  const classes = useStyles();
-
   // 1. Make a component state,
   const [text, setText] = useState('');
 
@@ -37,32 +35,23 @@ const PostForm = ({ addPost }) => {
           <h3>Say Something...</h3>
         </div>
         <form
-          // className='form my-1'
-          onClick={onSubmit}
+          className='form my-1'
+          onSubmit={(e) => {
+            e.preventDefault();
+            addPost({ text });
+            setText('');
+          }}
         >
-          <TextField
+          <textarea
             name='text'
-            className={classes.field}
-            label='Create a Status Update'
+            cols='30'
+            rows='5'
+            placeholder='Create a post'
             value={text}
-            variant='outlined'
-            color='primary'
             onChange={(e) => setText(e.target.value)}
-            fullWidth
-            multiline
-            rows={5}
-            placeholder='Create a Status Update'
             required
           />
-          <Button
-            type='submit'
-            color='primary'
-            // className='btn btn-dark my-1'
-            variant='contained'
-            endIcon={<KeyboardArrowRightOutlinedIcon />}
-          >
-            Post Status
-          </Button>
+          <input type='submit' className='btn btn-dark my-1' value='Submit' />
         </form>
       </div>
     </Fragment>

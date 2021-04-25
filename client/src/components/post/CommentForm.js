@@ -2,21 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addComment } from '../../actions/post';
-import Button from '@material-ui/core/Button';
-import { makeStyles, TextField } from '@material-ui/core';
-import KeyboardArrowRightOutlinedIcon from '@material-ui/icons/KeyboardArrowRightOutlined';
-
-const useStyles = makeStyles({
-  field: {
-    marginTop: 20,
-    marginBottom: 20,
-    display: 'block',
-  },
-});
 
 const CommentForm = ({ postId, addComment }) => {
-  const classes = useStyles();
-
   const [text, setText] = useState('');
 
   const onSubmit = (e) => {
@@ -28,34 +15,26 @@ const CommentForm = ({ postId, addComment }) => {
   return (
     <div className='post-form'>
       <div className='bg-primary p'>
-        <h3>Leave A Comment</h3>
+        <h3>Leave a Comment</h3>
       </div>
       <form
-        // className='form my-1'
-        onSubmit={onSubmit}
+        className='form my-1'
+        onSubmit={(e) => {
+          e.preventDefault();
+          addComment(postId, { text });
+          setText('');
+        }}
       >
-        <TextField
-          className={classes.field}
+        <textarea
           name='text'
-          label='Comment'
-          value={text}
-          variant='outlined'
-          onChange={(e) => setText(e.target.value)}
-          fullWidth
-          multiline
+          cols='30'
           rows='5'
-          placeholder='Comment on this post'
+          placeholder='Comment the post'
+          value={text}
+          onChange={(e) => setText(e.target.value)}
           required
         />
-        <Button
-          type='submit'
-          color='secondary'
-          // className='btn btn-dark my-1'
-          variant='outlined'
-          endIcon={<KeyboardArrowRightOutlinedIcon />}
-        >
-          Add Comment
-        </Button>
+        <input type='submit' className='btn btn-dark my-1' value='Submit' />
       </form>
     </div>
   );
