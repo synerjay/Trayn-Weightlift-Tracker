@@ -2,17 +2,6 @@ import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/post';
-import Button from '@material-ui/core/Button';
-import { makeStyles, TextField } from '@material-ui/core';
-import KeyboardArrowRightOutlinedIcon from '@material-ui/icons/KeyboardArrowRightOutlined';
-
-const useStyles = makeStyles({
-  field: {
-    marginTop: 20,
-    marginBottom: 20,
-    display: 'block',
-  },
-});
 
 const PostForm = ({ addPost }) => {
   // 1. Make a component state,
