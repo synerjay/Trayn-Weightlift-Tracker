@@ -13,7 +13,9 @@ const Landing = ({ isAuthenticated }) => {
     <section className='landing'>
       <div className='dark-overlay'>
         <div className='landing-inner'>
-          <h1 className='x-large'>Developer Social Circle</h1>
+          <h1 className='mb-6 text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-purple-800 to-blue-400'>
+            Developer Social Circle
+          </h1>
           <p className='lead'>
             Create a developer profile/portfolio, share posts and get help from
             other developers
