@@ -29,7 +29,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   );
 
   const guestLinks = (
-    <ul>
+    <ul className='font-bold'>
       <li>
         <Link to='/profiles'>Developers</Link>
       </li>
@@ -44,7 +44,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
   return (
     <nav className='navbar bg-dark'>
-      <h1>
+      <h1 className='text-xl font-bold'>
         <Link to='/'>
           <i className='fas fa-code'></i> DevCircle
         </Link>
