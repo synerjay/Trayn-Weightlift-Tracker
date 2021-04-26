@@ -470,10 +470,10 @@ button {
 }
 
 .landing-inner {
-  margin-top: 80px;
+  margin-top: 150px;
   color: #000;
   height: 100vh;
-  width: 80%;
+  width: 100%;
   /* margin: auto; */
   display: flex;
   flex-direction: column;
