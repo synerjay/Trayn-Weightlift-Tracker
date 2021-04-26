@@ -12,8 +12,8 @@ const Landing = ({ isAuthenticated }) => {
   return (
     <section className='landing'>
       <div className='dark-overlay'>
-        <div className='landing-inner'>
-          <h1 className='mb-6 text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-purple-800 to-pink-500'>
+        <div className='landing-inner mx-40'>
+          <h1 className='mb-6 text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-green-500'>
             Developer Social Circle
           </h1>
           <p className='lead my-5'>
@@ -28,6 +28,7 @@ const Landing = ({ isAuthenticated }) => {
               Login
             </Link>
           </div>
+          <div className='iphone bg-gray-500 w-1/2 rounded-3xl border-gray-900 border-4'></div>
         </div>
       </div>
     </section>
