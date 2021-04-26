@@ -68,7 +68,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
   return (
     <Fragment>
-      <div className='flex justify-between w-auto border-gray-900 border-4'>
+      <div className='container-form flex justify-between w-auto border-gray-900 border-4 mx-0'>
         <div className='bg-gray-500 w-1/2 rounded-3xl border-gray-900 border-4'></div>
         <div className='shadow p-10 w-3/6'>
           <h1 className='large text-primary'>Sign Up</h1>
