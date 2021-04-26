@@ -12,7 +12,7 @@ const Landing = ({ isAuthenticated }) => {
   return (
     <section className='landing'>
       <div className='landing-inner mx-40'>
-        <h1 className='mb-1 text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-green-500'>
+        <h1 className='mb-1 text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-black to-blue-500'>
           The Meeting Place for Developers
         </h1>
         <p className='lead my-1'>
@@ -21,10 +21,7 @@ const Landing = ({ isAuthenticated }) => {
         </p>
         <div className='buttons my-1'>
           <Link to='/register' className='btn btn-primary'>
-            Sign Up
-          </Link>
-          <Link to='/login' className='btn btn-light'>
-            Login
+            Let's Get Started
           </Link>
         </div>
         <div className='iphone bg-gray-500 w-1/2 rounded-3xl border-gray-900 border-4'></div>
