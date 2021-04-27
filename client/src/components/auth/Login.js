@@ -33,7 +33,7 @@ const Login = ({ login, isAuthenticated }) => {
   return (
     <Fragment>
       <div className='flex justify-center items-center'>
-        <div className='shadow-md w-5/12 p-3 flex flex-col'>
+        <div className='shadow-md mt-5 w-5/12 p-3 flex flex-col'>
           <h1 className='large text-primary'>Sign In</h1>
           <p className='lead'>
             <i className='fas fa-user'></i> Sign into Your Account
@@ -41,6 +41,7 @@ const Login = ({ login, isAuthenticated }) => {
           <form className='form' onSubmit={(e) => onSubmit(e)}>
             <div className='form-group'>
               <input
+                className='max-w-7xl'
                 type='email'
                 placeholder='Email Address'
                 name='email'
