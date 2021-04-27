@@ -262,6 +262,7 @@ img {
   margin-right: 0.5rem;
   transition: opacity 0.2s ease-in;
   outline: none;
+  border-radius: 0.375rem;
 }
 
 .badge {
@@ -377,6 +378,7 @@ img {
 .form select,
 .form textarea {
   display: block;
+  border-radius: 0.375rem;
   width: 100%;
   padding: 0.4rem;
   font-size: 1.2rem;

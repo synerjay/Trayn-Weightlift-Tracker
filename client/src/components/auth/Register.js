@@ -73,7 +73,15 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
         <div className='p-10 w-3/6'>
           <h1 className='large text-primary'>Sign Up</h1>
           <p className='lead'>
-            <i className='fas fa-user'></i> Create Your Account
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              className='w-9 inline-block mr-1'
+              viewBox='0 0 20 20'
+              fill='currentColor'
+            >
+              <path d='M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z' />
+            </svg>{' '}
+            Create Your Account
           </p>
           <form className='form' onSubmit={(e) => onSubmit(e)}>
             <div className='form-group'>
