@@ -4,6 +4,8 @@ import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
 
+// inspiration: https://aspire.app/
+
 const Login = ({ login, isAuthenticated }) => {
   // Component State Hook
   const [formData, setFormData] = useState({
