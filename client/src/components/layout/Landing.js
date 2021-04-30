@@ -20,7 +20,10 @@ const Landing = ({ isAuthenticated }) => {
           software companies now
         </p>
         <div className='buttons my-1'>
-          <Link to='/register' className='btn btn-primary'>
+          <Link
+            to='/register'
+            className='btn btn-primary hover:bg-green-300 hover:-translate-y-0.5 focus:outline-none focus:ring transform transition'
+          >
             Let's Get Started
           </Link>
         </div>
