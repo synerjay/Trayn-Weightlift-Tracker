@@ -9,10 +9,6 @@ const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const Post = require('../../models/Post');
 
-//is this changed?
-
-// is it changed???
-
 // @router  GET api/profile/me
 // @desc    Get current users profile
 // @access  Private access with tokens
@@ -198,15 +194,8 @@ router.put(
       return res.status(400).json({ errors: errors.array() });
     }
     //Next step is to deconstruct the req.body to pull out the information in the request
-    const {
-      title,
-      company,
-      location,
-      from,
-      to,
-      current,
-      description,
-    } = req.body;
+    const { title, company, location, from, to, current, description } =
+      req.body;
 
     // Make a new Object for the new Experiences
 
@@ -286,15 +275,8 @@ router.put(
       return res.status(400).json({ errors: errors.array() });
     }
     //Next step is to deconstruct the req.body to pull out the information in the request
-    const {
-      school,
-      degree,
-      fieldofstudy,
-      from,
-      to,
-      current,
-      description,
-    } = req.body;
+    const { school, degree, fieldofstudy, from, to, current, description } =
+      req.body;
 
     // Make a new Object for the new Experiences
 
