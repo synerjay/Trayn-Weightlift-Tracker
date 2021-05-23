@@ -12,7 +12,7 @@ connectDB();
 
 app.use(express.json({ extended: false }));
 
-app.get('/', (req, res) => res.send('API Running now bitch!!'));
+app.get('/', (req, res) => res.send('API is now running'));
 
 //Define Routes
 
