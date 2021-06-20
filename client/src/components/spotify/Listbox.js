@@ -6,7 +6,7 @@ function Listbox(props) {
     props.clicked(e.target.id);
   };
   return (
-    <div className='top-0'>
+    <div className='flex flex-col gap-y-5'>
       {props.items.map((item, idx) => (
         <button key={idx} onClick={clicked} id={item.track.id}>
           {item.track.name}
