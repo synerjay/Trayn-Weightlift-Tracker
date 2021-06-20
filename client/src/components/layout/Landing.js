@@ -16,7 +16,8 @@ const Landing = ({ isAuthenticated }) => {
           The Meeting Place for Music Lovers
         </h1>
         <p className='lead my-1'>
-          See what music your friends are currently listening to.
+          See what music your friends are currently listening to. Recommend your
+          new favorite songs to friends.
         </p>
         <div className='buttons my-1'>
           <Link
