@@ -9,18 +9,23 @@ function Spotify() {
     { value: 3, name: 'C' },
   ];
 
+  const { REACT_APP_CLIENT_ID, REACT_APP_CLIENT_SECRET } = process.env;
+
   const [token, setToken] = useState('');
+
+  // Make a call to Spotify api using axios
 
   useEffect(() => {
     axios('https://accounts.spotify.com/api/token', {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         Authorization:
-          'Basic ' + btoa(spotify.ClientId + ':' + spotify.ClientSecret),
+          'Basic ' + btoa(REACT_APP_CLIENT_ID + ':' + REACT_APP_CLIENT_SECRET),
       },
       data: 'grant_type=client_credentials',
       method: 'POST',
     }).then((tokenResponse) => {
+      console.log('Successfully Recieve Spotify Token');
       console.log(tokenResponse.data.access_token);
       setToken(tokenResponse.data.access_token);
     });
