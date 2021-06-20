@@ -8,7 +8,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul>
       <li>
-        <Link to='/profiles'>Developers</Link>
+        <Link to='/profiles'>Members</Link>
       </li>
       <li>
         <Link to='/Posts'>Posts</Link>
@@ -46,7 +46,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     <nav className='navbar bg-dark'>
       <h1 className='text-xl font-bold'>
         <Link to='/'>
-          <i className='fas fa-code'></i> DevCircle
+          <i className='fas fa-code'></i> agora music space
         </Link>
       </h1>
       {!loading && (
