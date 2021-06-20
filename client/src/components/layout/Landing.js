@@ -13,11 +13,10 @@ const Landing = ({ isAuthenticated }) => {
     <section className='landing'>
       <div className='landing-inner mx-40'>
         <h1 className='mb-1 text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-black to-blue-500'>
-          The Meeting Place for Developers
+          The Meeting Place for Music Lovers
         </h1>
         <p className='lead my-1'>
-          Join hundreds of developers sharing ideas and networking with numerous
-          software companies now
+          See what music your friends are currently listening to.
         </p>
         <div className='buttons my-1'>
           <Link
