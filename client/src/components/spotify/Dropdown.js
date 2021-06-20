@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 
 function Dropdown(props) {
-  const [selectedValue, setSelectedValue] = useState('');
+  const dropdownChanged = (e) => {
+    props.changed(e.target.value);
+  };
+
   return (
     <div>
-      <select
-        value={selectedValue}
-        onChange={(e) => setSelectedValue(e.target.value)}
-      >
+      <select value={props.selectedValue} onChange={dropdownChanged}>
+        <option key={0}>Select...</option>
         {props.options.map((item, idx) => (
-          <option key={idx} value={item.value}>
+          <option key={idx + 1} value={item.id}>
             {item.name}
           </option>
         ))}
       </select>
-      <p>{selectedValue}</p>
     </div>
   );
 }
