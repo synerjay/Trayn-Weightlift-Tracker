@@ -31,7 +31,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const guestLinks = (
     <ul className='font-bold'>
       <li>
-        <Link to='/profiles'>Developers</Link>
+        <Link to='/profiles'>Members</Link>
       </li>
       <li>
         <Link to='/register'>Register</Link>
@@ -46,7 +46,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     <nav className='navbar bg-dark'>
       <h1 className='text-xl font-bold'>
         <Link to='/'>
-          <i className='fas fa-code'></i> agora music space
+          <i className='fas fa-code'></i> agora music
         </Link>
       </h1>
       {!loading && (
