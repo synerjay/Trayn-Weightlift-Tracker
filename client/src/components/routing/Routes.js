@@ -14,6 +14,7 @@ import Post from '../post/Post';
 import PrivateRoute from '../routing/PrivateRoute';
 import NotFound from '../layout/NotFound';
 import Spotify from '../spotify/Spotify';
+import SearchSpot from '../search/SearchSpot';
 
 const Routes = () => {
   return (
@@ -26,7 +27,7 @@ const Routes = () => {
         <Route exact path='/login' component={Login} />
         {/* Underneath temporarily change this route so u can practice on Spotify APi / Remember to change back to Profiles component*/}
         {/* <Route exact path='/profiles' component={Profiles} />  */}
-        <Route exact path='/profiles' component={Spotify} />
+        <Route exact path='/profiles' component={SearchSpot} />
         <Route exact path='/profile/:id' component={Profile} />
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
         <PrivateRoute exact path='/create-profile' component={ProfileForm} />

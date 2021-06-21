@@ -41,7 +41,7 @@ function Spotify() {
         console.error(err);
       }
     );
-    spotifyApi.searchTracks('track:Humble artist:Kendrick Lamar').then(
+    spotifyApi.searchTracks('Humble Kendrick Lamar').then(
       function (data) {
         console.log(
           'Search tracks by "Alright" in the track name and "Kendrick Lamar" in the artist name',
@@ -71,15 +71,15 @@ function Spotify() {
       spotifyApi.setAccessToken(tokenResponse.data.access_token); // Getting accessToken to spotifyApi is very important!!!
       setToken(tokenResponse.data.access_token);
 
-      // axios('https://api.spotify.com/v1/browse/categories?locale=sv_US', {
-      //   method: 'GET',
-      //   headers: { Authorization: 'Bearer ' + tokenResponse.data.access_token },
-      // }).then((genreResponse) => {
-      //   setGenres({
-      //     selectedGenre: genres.selectedGenre,
-      //     listOfGenresFromAPI: genreResponse.data.categories.items,
-      //   });
-      // });
+      axios('https://api.spotify.com/v1/browse/categories?locale=sv_US', {
+        method: 'GET',
+        headers: { Authorization: 'Bearer ' + tokenResponse.data.access_token },
+      }).then((genreResponse) => {
+        setGenres({
+          selectedGenre: genres.selectedGenre,
+          listOfGenresFromAPI: genreResponse.data.categories.items,
+        });
+      });
     });
   }, []);
 
