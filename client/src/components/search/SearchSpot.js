@@ -84,12 +84,14 @@ function SearchSpot() {
     }).then((tokenResponse) => {
       // Once we get a Spotify token we can get the Genres list using the token
       console.log('Successfully Recieve Spotify Token');
+      console.log(tokenResponse.data);
       spotifyApi.setAccessToken(tokenResponse.data.access_token); // Getting accessToken to spotifyApi is very important!!!
       setToken(tokenResponse.data.access_token);
     });
   }, []);
 
   //REFERENCE on how to get SEARCH going: https://github.com/WebDevSimplified/spotify-clone/blob/main/client/src/Dashboard.js
+  // Spotify API gets expired in around 3600. I think it's better to make a node endpoints specifcially for the refreshed tokens
   return (
     <div className='flex justify-center items-center mt-5 h-screen w-screen'>
       <form value={search} onChange={(e) => setSearch(e.target.value)}>
