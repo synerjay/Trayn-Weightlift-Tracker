@@ -3,18 +3,13 @@ import Dropdown from './Dropdown';
 import axios from 'axios';
 import Listbox from './Listbox';
 import Detail from './Detail';
+import SpotifyWebApi from 'spotify-web-api-node';
 
 function Spotify() {
-  const data = [
-    { value: 1, name: 'A' },
-    { value: 2, name: 'B' },
-    { value: 3, name: 'C' },
-  ];
-
-  // .env variables in React MUST start with REACT_APP_++ prefix!!!!
-  const { REACT_APP_CLIENT_ID, REACT_APP_CLIENT_SECRET } = process.env;
-
   const [token, setToken] = useState('');
+  const [search, setSearch] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+
   const [genres, setGenres] = useState({
     selectedGenre: '',
     listOfGenresFromAPI: [],
@@ -28,6 +23,36 @@ function Spotify() {
     listOfTracksFromAPI: [],
   });
   const [trackDetail, setTrackDetail] = useState(null);
+
+  // .env variables in React MUST start with REACT_APP_++ prefix!!!!
+  const { REACT_APP_CLIENT_ID, REACT_APP_CLIENT_SECRET } = process.env;
+
+  // New instance of the SpotifyWebApi
+  const spotifyApi = new SpotifyWebApi();
+
+  // Testing spotify-web-api node
+
+  useEffect(() => {
+    spotifyApi.searchArtists('doja cat').then(
+      function (data) {
+        console.log('Search artist', data.body);
+      },
+      function (err) {
+        console.error(err);
+      }
+    );
+    spotifyApi.searchTracks('track:Humble artist:Kendrick Lamar').then(
+      function (data) {
+        console.log(
+          'Search tracks by "Alright" in the track name and "Kendrick Lamar" in the artist name',
+          data.body
+        );
+      },
+      function (err) {
+        console.log('Something went wrong!', err);
+      }
+    );
+  }, [token]);
 
   // Make a call to Spotify api using axios
 
@@ -43,18 +68,18 @@ function Spotify() {
     }).then((tokenResponse) => {
       // Once we get a Spotify token we can get the Genres list using the token
       console.log('Successfully Recieve Spotify Token');
-      console.log(tokenResponse.data.access_token);
+      spotifyApi.setAccessToken(tokenResponse.data.access_token); // Getting accessToken to spotifyApi is very important!!!
       setToken(tokenResponse.data.access_token);
 
-      axios('https://api.spotify.com/v1/browse/categories?locale=sv_US', {
-        method: 'GET',
-        headers: { Authorization: 'Bearer ' + tokenResponse.data.access_token },
-      }).then((genreResponse) => {
-        setGenres({
-          selectedGenre: genres.selectedGenre,
-          listOfGenresFromAPI: genreResponse.data.categories.items,
-        });
-      });
+      // axios('https://api.spotify.com/v1/browse/categories?locale=sv_US', {
+      //   method: 'GET',
+      //   headers: { Authorization: 'Bearer ' + tokenResponse.data.access_token },
+      // }).then((genreResponse) => {
+      //   setGenres({
+      //     selectedGenre: genres.selectedGenre,
+      //     listOfGenresFromAPI: genreResponse.data.categories.items,
+      //   });
+      // });
     });
   }, []);
 
