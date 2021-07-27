@@ -226,6 +226,59 @@ router.put(
   }
 );
 
+// Testing for adding a workout
+// @route PUT api/profile/workout
+// @desc Add profile workout
+// @access Private
+
+router.put(
+  '/workout',
+  [
+    auth,
+    // [
+    //   // check('title', 'Title is required').not().isEmpty(),
+    //   // check('company', 'Company is required').not().isEmpty(),
+    //   // check('from', 'From date is required').not().isEmpty(),
+    // ],
+  ],
+  async (req, res) => {
+    //Check to see if there errors in fields not filling in
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    //Next step is to deconstruct the req.body to pull out the information in the request
+    const { type, name, duration, weight, reps, sets, distance } = req.body;
+
+    // Make a new Object for the new Experiences
+
+    const newWorkout = {
+      type,
+      name,
+      duration,
+      weight,
+      reps,
+      sets,
+      distance,
+    };
+
+    //Try and catch error to find profile using id from req.user (token)
+
+    try {
+      const profile = await Profile.findOne({ user: req.user.id });
+
+      profile.workout.push(newWorkout);
+
+      await profile.save(); // save to database
+
+      res.json(profile); // send a response with the profile object
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
 // @route DELETE api/profile/experience/:exp_id
 // @desc Delete experience from profile
 // @access Private

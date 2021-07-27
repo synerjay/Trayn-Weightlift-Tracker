@@ -31,6 +31,10 @@ const exerciseSchema = new mongoose.Schema({
     type: Number,
     required: isRequired('distance'),
   },
+  day: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 function isRequired(field) {
@@ -71,15 +75,7 @@ const ProfileSchema = new mongoose.Schema({
   githubusername: {
     type: String,
   },
-  workout: [
-    {
-      day: {
-        type: Date,
-        default: Date.now,
-      },
-      exercises: [exerciseSchema],
-    },
-  ],
+  workout: [exerciseSchema],
   // experience: [
   //   {
   //     title: {
