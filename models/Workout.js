@@ -1,0 +1,25 @@
+const mongoose = require('mongoose');
+
+const setSchema = new mongoose.Schema({
+  // setNumber: { type: Number },
+  weight: { type: Number },
+  reps: { type: Number },
+});
+
+const exerciseSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  sets: [setSchema],
+});
+
+const WorkoutSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+  },
+  workoutName: { type: String },
+  date: { type: Date, default: Date.now },
+  type: { type: String, required: true }, // either PULL, PUSH, LEG
+  workout: [exerciseSchema],
+});
+
+module.exports = Workout = mongoose.model('workout', WorkoutSchema);
