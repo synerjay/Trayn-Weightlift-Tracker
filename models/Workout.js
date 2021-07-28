@@ -18,8 +18,7 @@ const WorkoutSchema = new mongoose.Schema({
   },
   workoutName: { type: String },
   date: { type: Date, default: Date.now },
-  type: { type: String, required: true }, // either PULL, PUSH, LEG
-  workout: [exerciseSchema],
+  exercise: [exerciseSchema],
 });
 
 module.exports = Workout = mongoose.model('workout', WorkoutSchema);
