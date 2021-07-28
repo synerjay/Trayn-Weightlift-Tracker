@@ -393,6 +393,7 @@ router.post(
       workout = new Workout(workoutFields);
       const newExercise = {};
       newExercise.name = exerciseName;
+      newExercise.sets = [{ weight, reps }];
       workout.exercise.push(newExercise);
       await workout.save();
       res.json(workout);
