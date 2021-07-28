@@ -445,4 +445,49 @@ router.put(
   }
 );
 
+// Testing for Adding a SET to an Exercise
+// @route POST api/profile/workout/:workout_id/:exercise_id
+// @desc Add WORKOUT session
+// @access Private
+
+router.put(
+  '/workout/:workout_id/:exercise_id',
+  [
+    auth,
+    // [
+    //   // check('title', 'Title is required').not().isEmpty(),
+    //   // check('company', 'Company is required').not().isEmpty(),
+    //   // check('from', 'From date is required').not().isEmpty(),
+    // ],
+  ],
+  async (req, res) => {
+    //Check to see if there errors in fields not filling in
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    //Next step is to deconstruct the req.body to pull out the information in the request
+    const { weight, reps } = req.body;
+
+    // Build workout object
+    const newSet = {};
+    newSet.weight = weight;
+    newSet.reps = reps;
+
+    //Try and catch error to find profile using id from req.user (token)
+    try {
+      const workout = await Workout.findOne({ _id: req.params.workout_id });
+      const exerciseIndex = workout.exercise.findIndex(
+        (element) => element._id == req.params.exercise_id // non-Strict equal sign because id is a number while the exercise id is a string
+      );
+      workout.exercise[exerciseIndex].sets.push(newSet);
+      await workout.save();
+      res.json(workout);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
 module.exports = router;
