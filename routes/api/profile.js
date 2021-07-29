@@ -490,4 +490,21 @@ router.put(
   }
 );
 
+// @router  GET api/profile/workout
+// @desc    Get all Workout Sessions
+// @access  Private
+
+router.get('/workout', auth, async (req, res) => {
+  try {
+    const workoutSessions = await Workout.find({ user: req.user.id }).sort({
+      date: -1,
+    }); // -1 means the most recent. Most oldest is date: 1 which is the default
+
+    res.json(workoutSessions);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;
