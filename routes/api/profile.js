@@ -380,7 +380,7 @@ router.post(
 
     //Next step is to deconstruct the req.body to pull out the information in the request
 
-    const { workoutName, exerciseName, weight, reps } = req.body;
+    const { workoutName } = req.body;
 
     // Build workout object
     const workoutFields = {};
@@ -391,10 +391,7 @@ router.post(
 
     try {
       workout = new Workout(workoutFields);
-      const newExercise = {};
-      newExercise.name = exerciseName;
-      newExercise.sets = [{ weight, reps }];
-      workout.exercise.push(newExercise);
+
       await workout.save();
       res.json(workout);
     } catch (err) {
