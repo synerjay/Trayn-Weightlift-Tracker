@@ -24,8 +24,12 @@ export const ADD_POST = 'ADD_POST';
 export const CLEAR_POST = 'CLEAR_POST';
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
+// Workouts are below
 export const GET_WORKOUT = 'GET_WORKOUT';
-export const UPDATE_WORKOUT = 'UPDATE_WORKOUT';
 export const GET_WORKOUTS = 'GET_WORKOUTS';
+export const ADD_WORKOUT = 'ADD_WORKOUT'; // create a new workout
 export const WORKOUT_ERROR = 'WORKOUT_ERROR';
 export const CLEAR_WORKOUT = 'CLEAR_WORKOUT';
+export const ADD_EXERCISE = 'ADD_EXERCISE';
+export const ADD_SET = 'ADD_SET';
+export const DELETE_WORKOUTS = 'DELETE_WORKOUTS';
