@@ -95,3 +95,11 @@ export const getWorkouts = () => async (dispatch) => {
     });
   }
 };
+
+// Get one WORKOUT endpoint here GET_WORKOUT
+
+// Remove a Workout here REMOVE_WORKOUT
+
+// Remove an Exercise here REMOVE_EXERCISE
+
+// Remove a set here REMOVE_SET
