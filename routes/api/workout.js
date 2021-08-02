@@ -255,4 +255,106 @@ router.delete('/:id/:exercise_id', auth, async (req, res) => {
   }
 });
 
+// @router  DELETE api/workout/:id/:exercise_id
+// @desc    Deleting an exercise
+// @access  Private
+
+router.delete('/:id/:exercise_id', auth, async (req, res) => {
+  try {
+    const workout = await Workout.findById(req.params.id);
+
+    // If workout id doesnt exist, then send 404 error
+    if (!workout) {
+      return res.status(404).json({ msg: 'Workout not found' });
+    }
+
+    //Pull out comment
+    const exercise = workout.exercise.find(
+      (exercise) => exercise.id === req.params.exercise_id
+    );
+
+    //Make sure comment exists
+    if (!exercise) {
+      return res.status(404).json({ msg: 'Exercise does not exist' });
+    }
+
+    // Check user
+
+    // if (comment.user.toString() !== req.user.id) {
+    //   return res.status(400).json({ msg: 'User not authorized' });
+    // } // Not needed because the exercise array does not have a user field
+
+    //Get remove index
+    const removeIndex = workout.exercise
+      .map((item) => item.id)
+      .indexOf(req.params.exercise_id);
+
+    workout.exercise.splice(removeIndex, 1);
+
+    await workout.save();
+
+    res.json(workout);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @router  DELETE api/workout/:id/:exercise_id/:set_id
+// @desc    Deleting an exercise
+// @access  Private
+
+router.delete('/:id/:exercise_id/:set_id', auth, async (req, res) => {
+  try {
+    const workout = await Workout.findById(req.params.id);
+
+    // If workout id doesnt exist, then send 404 error
+    if (!workout) {
+      return res.status(404).json({ msg: 'Workout not found' });
+    }
+
+    //Pull out comment
+    const exercise = workout.exercise.find(
+      (exercise) => exercise.id === req.params.exercise_id
+    );
+
+    //Make sure comment exists
+    if (!exercise) {
+      return res.status(404).json({ msg: 'Exercise does not exist' });
+    }
+
+    // Check user
+
+    // if (comment.user.toString() !== req.user.id) {
+    //   return res.status(400).json({ msg: 'User not authorized' });
+    // } // Not needed because the exercise array does not have a user field
+
+    //Get remove index
+    const exerciseIndex = workout.exercise
+      .map((item) => item.id)
+      .indexOf(req.params.exercise_id);
+
+    const set = workout.exercise[exerciseIndex].sets.find(
+      (set) => set.id === req.params.set_id
+    );
+
+    if (!set) {
+      return res.status(404).json({ msg: 'Set does not exist' });
+    }
+
+    const removeIndex = workout.exercise[exerciseIndex].sets
+      .map((item) => item.id)
+      .indexOf(req.params.set_id);
+
+    workout.exercise[exerciseIndex].sets.splice(removeIndex, 1);
+
+    await workout.save();
+
+    res.json(workout);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;
