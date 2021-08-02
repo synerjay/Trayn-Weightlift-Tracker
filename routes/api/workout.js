@@ -223,7 +223,6 @@ router.delete('/:id/:exercise_id', auth, async (req, res) => {
       return res.status(404).json({ msg: 'Workout not found' });
     }
 
-    //Pull out comment
     const exercise = workout.exercise.find(
       (exercise) => exercise.id === req.params.exercise_id
     );
@@ -232,12 +231,6 @@ router.delete('/:id/:exercise_id', auth, async (req, res) => {
     if (!exercise) {
       return res.status(404).json({ msg: 'Exercise does not exist' });
     }
-
-    // Check user
-
-    // if (comment.user.toString() !== req.user.id) {
-    //   return res.status(400).json({ msg: 'User not authorized' });
-    // } // Not needed because the exercise array does not have a user field
 
     //Get remove index
     const removeIndex = workout.exercise
@@ -278,12 +271,6 @@ router.delete('/:id/:exercise_id', auth, async (req, res) => {
       return res.status(404).json({ msg: 'Exercise does not exist' });
     }
 
-    // Check user
-
-    // if (comment.user.toString() !== req.user.id) {
-    //   return res.status(400).json({ msg: 'User not authorized' });
-    // } // Not needed because the exercise array does not have a user field
-
     //Get remove index
     const removeIndex = workout.exercise
       .map((item) => item.id)
@@ -313,7 +300,6 @@ router.delete('/:id/:exercise_id/:set_id', auth, async (req, res) => {
       return res.status(404).json({ msg: 'Workout not found' });
     }
 
-    //Pull out comment
     const exercise = workout.exercise.find(
       (exercise) => exercise.id === req.params.exercise_id
     );
@@ -322,12 +308,6 @@ router.delete('/:id/:exercise_id/:set_id', auth, async (req, res) => {
     if (!exercise) {
       return res.status(404).json({ msg: 'Exercise does not exist' });
     }
-
-    // Check user
-
-    // if (comment.user.toString() !== req.user.id) {
-    //   return res.status(400).json({ msg: 'User not authorized' });
-    // } // Not needed because the exercise array does not have a user field
 
     //Get remove index
     const exerciseIndex = workout.exercise
