@@ -58,6 +58,7 @@ export default function foo(state = initialState, action) {
       return {
         ...state,
         post: null,
+        posts: [],
         loading: false,
       };
     case UPDATE_LIKES:

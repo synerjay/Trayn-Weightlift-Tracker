@@ -56,6 +56,7 @@ export default function foo(state = initialState, action) {
       return {
         ...state,
         workout: null,
+        workouts: [],
         loading: false,
       };
     // case UPDATE_LIKES:

@@ -16,13 +16,7 @@ import {
 
 export const addWorkout = (formData) => async (dispatch) => {
   try {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-
-    const res = await axios.post('/api/workout', formData, config);
+    const res = await axios.post('/api/workout', formData);
     // in a post request to the backend, the data is inputed in the second argument of the axios.post method
 
     dispatch({
@@ -59,7 +53,7 @@ export const addExercise = (workoutId, formData) => async (dispatch) => {
   }
 };
 
-// Add a Set to an Exercise
+// Add a Set to an Exercise within a Workout
 
 export const addSet = (workoutId, exerciseId, formData) => async (dispatch) => {
   try {
@@ -74,6 +68,26 @@ export const addSet = (workoutId, exerciseId, formData) => async (dispatch) => {
     });
 
     dispatch(setAlert('Set Added', 'success'));
+  } catch (err) {
+    dispatch({
+      type: WORKOUT_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// get all Workouts by user
+
+export const getWorkouts = () => async (dispatch) => {
+  dispatch({ type: CLEAR_WORKOUT });
+
+  try {
+    const res = await axios.get('/api/workout');
+
+    dispatch({
+      type: GET_WORKOUTS,
+      payload: res.data,
+    });
   } catch (err) {
     dispatch({
       type: WORKOUT_ERROR,
