@@ -136,7 +136,7 @@ export const deleteWorkout = (id) => async (dispatch) => {
   }
 };
 
-// Remove an Exercise here REMOVE_EXERCISE
+// Remove an Exercise
 
 export const deleteExercise = (workoutId, id) => async (dispatch) => {
   try {
