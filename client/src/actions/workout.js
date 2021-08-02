@@ -6,6 +6,8 @@ import {
   ADD_WORKOUT,
   ADD_SET,
   ADD_EXERCISE,
+  REMOVE_EXERCISE,
+  REMOVE_SET,
   GET_WORKOUTS,
   DELETE_WORKOUTS,
   WORKOUT_ERROR,
@@ -98,8 +100,80 @@ export const getWorkouts = () => async (dispatch) => {
 
 // Get one WORKOUT endpoint here GET_WORKOUT
 
+export const getWorkout = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/workout/${id}`);
+
+    dispatch({
+      type: GET_WORKOUT,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: WORKOUT_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
 // Remove a Workout here REMOVE_WORKOUT
+
+export const deleteWorkout = (id) => async (dispatch) => {
+  try {
+    await axios.delete(`api/workout/${id}`);
+
+    dispatch({
+      type: DELETE_WORKOUTS,
+      payload: id,
+    });
+
+    dispatch(setAlert('Workout Removed', 'success'));
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
 
 // Remove an Exercise here REMOVE_EXERCISE
 
+export const deleteExercise = (workoutId, id) => async (dispatch) => {
+  try {
+    const res = await axios.delete(`/api/workout/${workoutId}/${id}`);
+
+    dispatch({
+      type: REMOVE_EXERCISE,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('Exercise Removed', 'success'));
+  } catch (err) {
+    dispatch({
+      type: EXERCISE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
 // Remove a set here REMOVE_SET
+
+export const deleteSet = (workoutId, exerciseId, id) => async (dispatch) => {
+  try {
+    const res = await axios.delete(
+      `/api/workout/${workoutId}/${exerciseId}/${id}`
+    );
+
+    dispatch({
+      type: REMOVE_SET,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('Set Removed', 'success'));
+  } catch (err) {
+    dispatch({
+      type: EXERCISE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};

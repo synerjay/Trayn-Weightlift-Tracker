@@ -31,5 +31,7 @@ export const ADD_WORKOUT = 'ADD_WORKOUT'; // create a new workout
 export const WORKOUT_ERROR = 'WORKOUT_ERROR';
 export const CLEAR_WORKOUT = 'CLEAR_WORKOUT';
 export const ADD_EXERCISE = 'ADD_EXERCISE';
+export const REMOVE_EXERCISE = 'REMOVE_EXERCISE';
+export const REMOVE_SET = 'REMOVE_SET';
 export const ADD_SET = 'ADD_SET';
 export const DELETE_WORKOUTS = 'DELETE_WORKOUTS';

@@ -4,6 +4,8 @@ import {
   ADD_WORKOUT,
   ADD_SET,
   ADD_EXERCISE,
+  REMOVE_EXERCISE,
+  REMOVE_SET,
   DELETE_WORKOUTS,
   WORKOUT_ERROR,
   CLEAR_WORKOUT,
@@ -29,7 +31,7 @@ export default function foo(state = initialState, action) {
     case GET_WORKOUT:
       return {
         ...state,
-        post: payload,
+        workout: payload,
         loading: false,
       };
     case ADD_WORKOUT:
@@ -59,28 +61,22 @@ export default function foo(state = initialState, action) {
         workouts: [],
         loading: false,
       };
-    // case UPDATE_LIKES:
-    //   return {
-    //     ...state,
-    //     workouts: state.workouts.map((post) =>
-    //       post._id === payload.id ? { ...post, likes: payload.likes } : post
-    //     ), // we're mapping through every post and if that post has the same id as the payload, then update the likes count of that post. Otherwise, return post
-    //     loading: false,
-    //   };
     case ADD_SET:
     case ADD_EXERCISE:
+    case REMOVE_EXERCISE:
+    case REMOVE_SET:
       return {
         ...state,
         workout: payload,
         loading: false,
       };
-    // case REMOVE_WORKOUT:
+    // case REMOVE_EXERCISE:
     //   return {
     //     ...state,
-    //     post: {
-    //       ...state.post,
-    //       comments: state.post.comments.filter(
-    //         (comment) => comment._id !== payload
+    //     workout: {
+    //       ...state.workout,
+    //       exercise: state.workout.exercise.filter(
+    //         (item) => item._id !== payload
     //       ),
     //     },
     //   };
