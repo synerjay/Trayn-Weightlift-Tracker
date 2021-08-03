@@ -8,14 +8,23 @@ const AddExercise = ({ workout: { workout }, addExercise }) => {
     exerciseName: '',
   });
 
+  const [exercise, setExercise] = useState([]);
+
   const { exerciseName } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   useEffect(() => {
-    console.log(workout);
+    if (workout.exercise.length === 0) return;
+    workout.exercise.length === 1
+      ? setExercise([...workout.exercise])
+      : setExercise([...exercise, workout.exercise]); // THIS IS FRUSTRATING!!!!!
   }, [workout]);
+
+  useEffect(() => {
+    console.log(exercise);
+  }, [exercise]);
 
   return (
     <Fragment>
