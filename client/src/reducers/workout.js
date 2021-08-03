@@ -9,7 +9,7 @@ import {
   DELETE_WORKOUTS,
   WORKOUT_ERROR,
   CLEAR_WORKOUT,
-} from './types';
+} from '../actions/types';
 
 const initialState = {
   workouts: [],
