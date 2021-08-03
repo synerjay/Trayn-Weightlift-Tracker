@@ -16,7 +16,7 @@ import {
 
 // Create a workout
 
-export const addWorkout = (formData) => async (dispatch) => {
+export const addWorkout = (formData, history) => async (dispatch) => {
   try {
     const res = await axios.post('/api/workout', formData);
     // in a post request to the backend, the data is inputed in the second argument of the axios.post method
@@ -26,7 +26,10 @@ export const addWorkout = (formData) => async (dispatch) => {
       payload: res.data,
     });
 
+    // res.data._id give to the exercise
+
     dispatch(setAlert('Workout Created', 'success'));
+    history.push(`/add-exercise/${res.data._id}`);
   } catch (err) {
     dispatch({
       type: WORKOUT_ERROR,
@@ -130,7 +133,7 @@ export const deleteWorkout = (id) => async (dispatch) => {
     dispatch(setAlert('Workout Removed', 'success'));
   } catch (err) {
     dispatch({
-      type: POST_ERROR,
+      type: WORKOUT_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
@@ -150,7 +153,7 @@ export const deleteExercise = (workoutId, id) => async (dispatch) => {
     dispatch(setAlert('Exercise Removed', 'success'));
   } catch (err) {
     dispatch({
-      type: EXERCISE_ERROR,
+      type: WORKOUT_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
@@ -172,7 +175,7 @@ export const deleteSet = (workoutId, exerciseId, id) => async (dispatch) => {
     dispatch(setAlert('Set Removed', 'success'));
   } catch (err) {
     dispatch({
-      type: EXERCISE_ERROR,
+      type: WORKOUT_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }

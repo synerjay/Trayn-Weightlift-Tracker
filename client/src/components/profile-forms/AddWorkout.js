@@ -15,7 +15,7 @@ const AddWorkout = ({ addWorkout, history }) => {
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Add Your Education</h1>
+      <h1 className='large text-primary'>Add Your Workout</h1>
       <form
         className='form'
         onSubmit={(e) => {
@@ -27,7 +27,7 @@ const AddWorkout = ({ addWorkout, history }) => {
         <div className='form-group'>
           <input
             type='text'
-            placeholder='* School or Bootcamp'
+            placeholder='* Choose a Workout Name'
             name='workoutName'
             value={workoutName}
             onChange={onChange}
@@ -40,7 +40,7 @@ const AddWorkout = ({ addWorkout, history }) => {
   );
 };
 
-AddEducation.propTypes = {
+AddWorkout.propTypes = {
   addWorkout: PropTypes.func.isRequired,
 };
 
