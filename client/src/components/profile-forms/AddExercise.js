@@ -1,0 +1,51 @@
+import React, { Fragment, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { addExercise } from '../../actions/workout';
+
+const AddExercise = ({ workout: { workout }, addExercise }) => {
+  const [formData, setFormData] = useState({
+    exerciseName: '',
+  });
+
+  const { exerciseName } = formData;
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  useEffect(() => {
+    console.log(workout);
+  }, [workout]);
+
+  return (
+    <Fragment>
+      <h1 className='large text-primary'>Add an Exericse</h1>
+      <form
+        className='form'
+        onSubmit={(e) => {
+          e.preventDefault();
+          addExercise(workout._id, formData);
+        }}
+      >
+        {' '}
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='* Choose an Exercise'
+            name='exerciseName'
+            value={exerciseName}
+            onChange={onChange}
+            required
+          />
+        </div>
+        <input type='submit' className='btn btn-primary my-1' />
+      </form>
+    </Fragment>
+  );
+};
+
+const mapStateToProps = (state) => ({
+  workout: state.workout,
+});
+
+export default connect(mapStateToProps, { addExercise })(AddExercise);

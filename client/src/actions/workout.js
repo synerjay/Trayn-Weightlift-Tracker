@@ -29,7 +29,7 @@ export const addWorkout = (formData, history) => async (dispatch) => {
     // res.data._id give to the exercise
 
     dispatch(setAlert('Workout Created', 'success'));
-    history.push(`/add-exercise/${res.data._id}`);
+    history.push('/add-exercise');
   } catch (err) {
     dispatch({
       type: WORKOUT_ERROR,

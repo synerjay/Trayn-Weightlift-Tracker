@@ -16,6 +16,7 @@ import NotFound from '../layout/NotFound';
 import Spotify from '../spotify/Spotify';
 import SearchSpot from '../search/SearchSpot';
 import AddWorkout from '../profile-forms/AddWorkout';
+import AddExercise from '../profile-forms/AddExercise';
 
 const Routes = () => {
   return (
@@ -35,6 +36,7 @@ const Routes = () => {
         <PrivateRoute exact path='/add-experience' component={AddExperience} />
         <PrivateRoute exact path='/add-education' component={AddEducation} />
         <PrivateRoute exact path='/add-workout' component={AddWorkout} />
+        <PrivateRoute exact path='/add-exercise' component={AddExercise} />
         <PrivateRoute exact path='/posts' component={Posts} />
         <PrivateRoute exact path='/posts/:id' component={Post} />
         <Route component={NotFound} />
