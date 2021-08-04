@@ -2,18 +2,20 @@ import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteExercise } from '../../actions/workout';
+import { addSet } from '../../actions/workout';
 import SetItem from './SetItem';
 
 const ExerciseItem = ({
   workoutId,
   exercise: { _id, name, sets },
   deleteExercise,
+  addSet,
 }) => {
   const [formValues, setFormValues] = useState([{ weight: '', reps: '' }]);
 
   let handleChange = (i, e) => {
     let newFormValues = [...formValues];
-    newFormValues[i][e.target.name] = parseInt(e.target.value);
+    newFormValues[i][e.target.name] = parseInt(e.target.value); // backend expects integers not strings so parseInt is used
     setFormValues(newFormValues);
   };
 
@@ -30,6 +32,7 @@ const ExerciseItem = ({
   let handleSubmit = (event) => {
     event.preventDefault();
     console.log(formValues);
+    addSet(workoutId, _id, formValues);
     // alert(JSON.stringify(formValues));
   };
 
@@ -74,9 +77,10 @@ const ExerciseItem = ({
 
 ExerciseItem.propTypes = {
   deleteExercise: PropTypes.func.isRequired,
+  addSet: PropTypes.func.isRequired,
 };
 
-export default connect(null, { deleteExercise })(ExerciseItem);
+export default connect(null, { deleteExercise, addSet })(ExerciseItem);
 
 {
   /* <div className='post bg-white p-1 my-1'>
