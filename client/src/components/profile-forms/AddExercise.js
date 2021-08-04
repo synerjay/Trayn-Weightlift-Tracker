@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addExercise } from '../../actions/workout';
+import ExerciseItem from './ExerciseItem';
 
 const AddExercise = ({ workout: { workout }, addExercise }) => {
   const [formData, setFormData] = useState({
@@ -46,6 +47,15 @@ const AddExercise = ({ workout: { workout }, addExercise }) => {
         </div>
         <input type='submit' className='btn btn-primary my-1' />
       </form>
+      <div className='posts'>
+        {exercise.map((exercise) => (
+          <ExerciseItem
+            key={exercise._id}
+            exercise={exercise}
+            workoutId={workout._id}
+          />
+        ))}
+      </div>
     </Fragment>
   );
 };
