@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addExercise } from '../../actions/workout';
 import ExerciseItem from './ExerciseItem';
+import { setAlert } from '../../actions/alert';
 
 const AddExercise = ({ workout: { workout }, addExercise, history }) => {
   const [formData, setFormData] = useState({
@@ -19,6 +20,7 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
   useEffect(() => {
     if (!workout) {
       history.push('/add-workout');
+      setAlert('Please name this workout first', 'danger');
     }
   }, []);
 
@@ -34,7 +36,7 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>{workout.workoutName}</h1>
+      <h1 className='large text-primary'>{workout && workout.workoutName}</h1>
       <h2> Add an exercise to this workout:</h2>
       <form
         className='form'

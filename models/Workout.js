@@ -8,6 +8,7 @@ const setSchema = new mongoose.Schema({
 
 const exerciseSchema = new mongoose.Schema({
   name: { type: String, required: true },
+  date: { type: Date, default: Date.now },
   sets: [setSchema],
 });
 
