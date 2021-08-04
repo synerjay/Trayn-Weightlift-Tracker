@@ -7,7 +7,7 @@ import SetItem from './SetItem';
 
 const ExerciseItem = ({
   workoutId,
-  exercise: { _id, name, sets },
+  exercise: { _id, name },
   deleteExercise,
   addSet,
 }) => {
@@ -33,7 +33,6 @@ const ExerciseItem = ({
     event.preventDefault();
     console.log(formValues);
     addSet(workoutId, _id, formValues);
-    // alert(JSON.stringify(formValues));
   };
 
   return (
@@ -81,16 +80,3 @@ ExerciseItem.propTypes = {
 };
 
 export default connect(null, { deleteExercise, addSet })(ExerciseItem);
-
-{
-  /* <div className='post bg-white p-1 my-1'>
-  <p className='my-1'>{name}</p>
-  <button
-    onClick={() => deleteExercise(workoutId, _id)}
-    type='button'
-    className='w-16 bg-red-600 text-white'
-  >
-    DELETE
-  </button>
-</div>; */
-}
