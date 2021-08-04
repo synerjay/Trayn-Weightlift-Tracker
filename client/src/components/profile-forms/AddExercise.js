@@ -16,10 +16,7 @@ const AddExercise = ({ workout: { workout }, addExercise }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   useEffect(() => {
-    if (workout.exercise.length === 0) return;
-    workout.exercise.length === 1
-      ? setExercise([...workout.exercise])
-      : setExercise([...exercise, workout.exercise]); // THIS IS FRUSTRATING!!!!!
+    setExercise([...workout.exercise]);
   }, [workout]);
 
   useEffect(() => {
