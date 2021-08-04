@@ -114,7 +114,7 @@ router.put(
     }
     //Next step is to deconstruct the req.body to pull out the information in the request
     // const { weight, reps } = req.body;
-    console.log(req.body); // req.body should be an array of objects already
+    // req.body should be an array of objects already
 
     // Build workout object
     // const newSet = {};

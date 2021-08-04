@@ -13,7 +13,7 @@ const ExerciseItem = ({
 
   let handleChange = (i, e) => {
     let newFormValues = [...formValues];
-    newFormValues[i][e.target.name] = e.target.value;
+    newFormValues[i][e.target.name] = parseInt(e.target.value);
     setFormValues(newFormValues);
   };
 
