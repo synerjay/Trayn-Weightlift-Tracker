@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { addExercise } from '../../actions/workout';
 import ExerciseItem from './ExerciseItem';
 
-const AddExercise = ({ workout: { workout }, addExercise }) => {
+const AddExercise = ({ workout: { workout }, addExercise, history }) => {
   const [formData, setFormData] = useState({
     exerciseName: '',
   });
@@ -17,7 +17,15 @@ const AddExercise = ({ workout: { workout }, addExercise }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   useEffect(() => {
-    setExercise([...workout.exercise]);
+    if (!workout) {
+      history.push('/add-workout');
+    }
+  }, []);
+
+  useEffect(() => {
+    if (workout) {
+      setExercise([...workout.exercise]);
+    }
   }, [workout]);
 
   useEffect(() => {
