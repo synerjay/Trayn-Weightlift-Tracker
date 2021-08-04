@@ -113,12 +113,13 @@ router.put(
       return res.status(400).json({ errors: errors.array() });
     }
     //Next step is to deconstruct the req.body to pull out the information in the request
-    const { weight, reps } = req.body;
+    // const { weight, reps } = req.body;
+    console.log(req.body); // req.body should be an array of objects already
 
     // Build workout object
-    const newSet = {};
-    newSet.weight = weight;
-    newSet.reps = reps;
+    // const newSet = {};
+    // newSet.weight = weight;
+    // newSet.reps = reps;
 
     //Try and catch error to find profile using id from req.user (token)
     try {
@@ -126,7 +127,8 @@ router.put(
       const exerciseIndex = workout.exercise.findIndex(
         (element) => element._id == req.params.exercise_id // non-Strict equal sign because id is a number while the exercise id is a string
       );
-      workout.exercise[exerciseIndex].sets.push(newSet);
+      // workout.exercise[exerciseIndex].sets.push(newSet);
+      workout.exercise[exerciseIndex].sets = req.body;
       await workout.save();
       res.json(workout);
     } catch (err) {

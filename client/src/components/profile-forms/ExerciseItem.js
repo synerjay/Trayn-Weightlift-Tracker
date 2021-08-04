@@ -18,7 +18,7 @@ const ExerciseItem = ({
   };
 
   let addFormFields = () => {
-    setFormValues([...formValues, { name: '', email: '' }]);
+    setFormValues([...formValues, { weight: '', reps: '' }]);
   };
 
   let removeFormFields = (i) => {
