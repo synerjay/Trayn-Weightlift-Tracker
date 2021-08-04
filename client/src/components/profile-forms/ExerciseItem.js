@@ -37,7 +37,7 @@ const ExerciseItem = ({
   };
 
   return (
-    <div className='bg-white mb-5 w-3/5   p-8 rounded-lg shadow-lg relative hover:shadow-2xl transition duration-500'>
+    <div className='bg-white mb-5 w-4/5  p-8 rounded-lg shadow-lg relative hover:shadow-2xl transition duration-500'>
       <h1 className='text-2xl text-gray-800 font-semibold mb-3'>{name}</h1>
       <form onSubmit={handleSubmit}>
         {formValues.map((element, index) => (
@@ -54,10 +54,10 @@ const ExerciseItem = ({
             type='button'
             onClick={() => addFormFields()}
           >
-            Add
+            Add Set
           </button>
           <button className='button submit' type='submit'>
-            Submit
+            Save
           </button>
         </div>
       </form>

@@ -3,6 +3,7 @@ import React from 'react';
 const SetItem = ({ element, index, handleChange, removeFormFields }) => {
   return (
     <div className='form-inline' key={index}>
+      <label>Set {index + 1}</label>
       <label>Weight</label>
       <input
         type='text'

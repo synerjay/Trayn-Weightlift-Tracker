@@ -72,7 +72,7 @@ export const addSet = (workoutId, exerciseId, formData) => async (dispatch) => {
       payload: res.data,
     });
 
-    dispatch(setAlert('Set Added', 'success'));
+    dispatch(setAlert('Your sets have been saved', 'success'));
   } catch (err) {
     dispatch({
       type: WORKOUT_ERROR,

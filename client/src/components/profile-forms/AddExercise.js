@@ -34,7 +34,8 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Add an Exericse</h1>
+      <h1 className='large text-primary'>{workout.workoutName}</h1>
+      <h2> Add an exercise to this workout:</h2>
       <form
         className='form'
         onSubmit={(e) => {
@@ -46,7 +47,7 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
         <div className='form-group'>
           <input
             type='text'
-            placeholder='* Choose an Exercise'
+            placeholder='* Add an Exercise'
             name='exerciseName'
             value={exerciseName}
             onChange={onChange}
