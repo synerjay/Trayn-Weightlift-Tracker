@@ -2,26 +2,62 @@ import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteExercise } from '../../actions/workout';
+import SetItem from './SetItem';
 
 const ExerciseItem = ({
   workoutId,
   exercise: { _id, name, sets },
   deleteExercise,
 }) => {
+  const [formValues, setFormValues] = useState([{ weight: '', reps: '' }]);
+
+  let handleChange = (i, e) => {
+    let newFormValues = [...formValues];
+    newFormValues[i][e.target.name] = e.target.value;
+    setFormValues(newFormValues);
+  };
+
+  let addFormFields = () => {
+    setFormValues([...formValues, { name: '', email: '' }]);
+  };
+
+  let removeFormFields = (i) => {
+    let newFormValues = [...formValues];
+    newFormValues.splice(i, 1);
+    setFormValues(newFormValues);
+  };
+
+  let handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(formValues);
+    // alert(JSON.stringify(formValues));
+  };
+
   return (
-    // <div className='min-h-screen bg-gray-100 flex items-center justify-center'>
-    //   <div className='containter mx-auto px-20'>
     <div className='bg-white mb-5 w-3/5   p-8 rounded-lg shadow-lg relative hover:shadow-2xl transition duration-500'>
       <h1 className='text-2xl text-gray-800 font-semibold mb-3'>{name}</h1>
-      <p className='text-gray-600 leading-6 tracking-normal'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae itaque
-        debitis saepe, eaque similique quo doloribus ducimus ex veniam accusamus
-        aliquid esse, veritatis totam quia impedit tempore aperiam, doloremque
-        eius.
-      </p>
-      <button className='p-4 mt-8 bg-indigo-600 text-white rounded-md shadow-xl'>
-        Add a set
-      </button>
+      <form onSubmit={handleSubmit}>
+        {formValues.map((element, index) => (
+          <SetItem
+            element={element}
+            index={index}
+            handleChange={handleChange}
+            removeFormFields={removeFormFields}
+          />
+        ))}
+        <div className='button-section'>
+          <button
+            className='button add'
+            type='button'
+            onClick={() => addFormFields()}
+          >
+            Add
+          </button>
+          <button className='button submit' type='submit'>
+            Submit
+          </button>
+        </div>
+      </form>
       <div>
         <button
           onClick={() => deleteExercise(workoutId, _id)}
@@ -33,8 +69,6 @@ const ExerciseItem = ({
         </button>
       </div>
     </div>
-    //   </div>
-    // </div>
   );
 };
 
