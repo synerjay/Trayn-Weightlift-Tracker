@@ -38,49 +38,53 @@ const ExerciseItem = ({
   return (
     <div className='bg-white mb-5 w-full  p-8 rounded-lg shadow-lg relative hover:shadow-2xl transition duration-500'>
       <h1 className='text-2xl text-gray-800 font-semibold mb-3'>{name}</h1>
-      <form onSubmit={handleSubmit}>
-        <table className='table'>
-          <thead>
-            <tr>
-              <th className='w-5 text-center'>Set</th>
-              <th className='w-32 text-center'>Weight</th>
-              <th className='w-32 text-center'>Reps</th>
-              <th className='5' />
-              <th className='5' />
-            </tr>
-          </thead>
-          <tbody>
-            {formValues.map((element, index) => (
-              <SetItem
-                element={element}
-                index={index}
-                handleChange={handleChange}
-                removeFormFields={removeFormFields}
-                deleteExercise={deleteExercise}
-                workoutId={workoutId}
-                id={_id}
-              />
-            ))}
-          </tbody>
-        </table>
-        <div className='button-section'>
-          <button
-            className='button add'
-            type='button'
-            onClick={() => addFormFields()}
-          >
-            Add Set
-          </button>
-          <button className='button submit' type='submit'>
+      {/* <form onSubmit={handleSubmit}> */}
+      <table className='table'>
+        <thead>
+          <tr>
+            <th className='w-5 text-center'>Set</th>
+            <th className='w-32 text-center'>Weight</th>
+            <th className='w-32 text-center'>Reps</th>
+            <th className='5' />
+            <th className='5' />
+          </tr>
+        </thead>
+        {/* <form onSubmit={handleSubmit}> */}
+        <tbody>
+          {formValues.map((element, index) => (
+            <SetItem
+              key={index}
+              element={element}
+              index={index}
+              handleChange={handleChange}
+              removeFormFields={removeFormFields}
+              handleSubmit={handleSubmit}
+              deleteExercise={deleteExercise}
+              workoutId={workoutId}
+              id={_id}
+            />
+          ))}
+        </tbody>
+        {/* </form> */}
+      </table>
+      <div className='button-section'>
+        <button
+          className='w-full bg-gray-300'
+          type='button'
+          onClick={() => addFormFields()}
+        >
+          Add Set
+        </button>
+        {/* <button className='button submit' type='submit'>
             Save
-          </button>
-        </div>
-      </form>
+          </button> */}
+      </div>
+      {/* </form> */}
       <div>
         <button
           onClick={() => deleteExercise(workoutId, _id)}
           type='button'
-          className='absolute p-4 text-sm text-white top-0 right-0 bg-red-600 rounded-3xl transform translate-x-2 -translate-y-3 shadow-xl'
+          className='absolute h-10 w-10 p-0 text-2xl flex justify-center items-center text-white top-0 right-0 bg-red-600 rounded-3xl transform translate-x-2 -translate-y-3 shadow-xl'
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'

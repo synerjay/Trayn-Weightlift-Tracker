@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 
 const SetItem = ({
   element,
@@ -7,10 +7,18 @@ const SetItem = ({
   removeFormFields,
   deleteExercise,
   workoutId,
+  handleSubmit,
   id,
 }) => {
+  const [submitted, setSubmitted] = useState(false);
+
+  const buttonClicked = (event) => {
+    setSubmitted(!submitted);
+    handleSubmit(event);
+  };
   return (
-    <tr key={index}>
+    <tr className={submitted ? 'bg-green-100' : null} key={index}>
+      {/* form starts here */}
       <td>{index + 1}</td>
       <td className='hide-sm'>
         <input
@@ -31,11 +39,13 @@ const SetItem = ({
         />
       </td>
       <td>
-        <button onClick={() => {}}>
+        <button type='submit' onClick={(event) => buttonClicked(event)}>
           {' '}
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            className='h-6 w-6 text-green-600'
+            className={
+              'h-6 w-6 ' + (submitted ? 'text-green-600' : 'text-gray-600')
+            }
             viewBox='0 0 20 20'
             fill='currentColor'
           >
@@ -48,6 +58,8 @@ const SetItem = ({
           </svg>
         </button>
       </td>
+
+      {/* Put form end here */}
       <td>
         {index ? (
           <button

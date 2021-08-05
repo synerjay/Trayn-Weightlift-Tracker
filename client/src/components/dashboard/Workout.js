@@ -57,7 +57,7 @@ const Workout = ({ workouts, deleteWorkout }) => {
 
 Workout.propTypes = {
   deleteWorkout: PropTypes.func.isRequired,
-  workout: PropTypes.array.isRequired,
+  workouts: PropTypes.array.isRequired,
 };
 
 export default connect(null, { deleteWorkout })(Workout);
