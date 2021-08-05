@@ -15,13 +15,10 @@ const Workout = ({ workouts, deleteWorkout }) => {
         {workout.exercise.slice(0, 5).map((item) => (
           <Fragment>{item.name}, </Fragment>
         ))}
-        etc.
+        etc...
       </td>
       <td>
-        <button
-          onClick={() => deleteWorkout(workout._id)}
-          // className='btn btn-danger'
-        >
+        <button onClick={() => deleteWorkout(workout._id)}>
           {' '}
           <svg
             xmlns='http://www.w3.org/2000/svg'
