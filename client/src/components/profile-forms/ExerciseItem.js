@@ -42,11 +42,11 @@ const ExerciseItem = ({
       <table className='table'>
         <thead>
           <tr>
-            <th className='w-5 text-center'>Set</th>
-            <th className='w-32 text-center'>Weight</th>
-            <th className='w-32 text-center'>Reps</th>
-            <th className='5' />
-            <th className='5' />
+            <th className='md:w-5 w-10 text-center'>Set</th>
+            <th className='md:w-32 w-36  text-center'>Weight</th>
+            <th className='md:w-32 w-36 text-center'>Reps</th>
+            <th className='md:w-5 w-10 ' />
+            <th className='md:w-5 w-10' />
           </tr>
         </thead>
         {/* <form onSubmit={handleSubmit}> */}

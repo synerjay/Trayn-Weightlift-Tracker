@@ -62,7 +62,7 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
           value='Add Exercise'
         />
       </form>
-      <div className='w-full grid grid-cols-2 gap-5 p-5'>
+      <div className='w-full flex flex-col md:grid md:grid-cols-2 md:gap-5 p-5'>
         {exercise.map((exercise) => (
           <ExerciseItem
             key={exercise._id}

@@ -20,7 +20,7 @@ const SetItem = ({
     <tr className={submitted ? 'bg-green-100' : null} key={index}>
       {/* form starts here */}
       <td>{index + 1}</td>
-      <td className='hide-sm'>
+      <td>
         <input
           type='text'
           className='w-full -ml-0 p-0 rounded-lg border-2 bg-white border-black outline-none focus:border-indigo-500'
