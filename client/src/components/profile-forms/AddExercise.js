@@ -56,9 +56,13 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
             required
           />
         </div>
-        <input type='submit' className='btn btn-primary my-1' />
+        <input
+          type='submit'
+          className='btn btn-primary my-1'
+          value='Add Exercise'
+        />
       </form>
-      <div className='posts'>
+      <div className='w-full grid grid-cols-2 gap-5 p-5'>
         {exercise.map((exercise) => (
           <ExerciseItem
             key={exercise._id}

@@ -36,17 +36,33 @@ const ExerciseItem = ({
   };
 
   return (
-    <div className='bg-white mb-5 w-4/5  p-8 rounded-lg shadow-lg relative hover:shadow-2xl transition duration-500'>
+    <div className='bg-white mb-5 w-full  p-8 rounded-lg shadow-lg relative hover:shadow-2xl transition duration-500'>
       <h1 className='text-2xl text-gray-800 font-semibold mb-3'>{name}</h1>
       <form onSubmit={handleSubmit}>
-        {formValues.map((element, index) => (
-          <SetItem
-            element={element}
-            index={index}
-            handleChange={handleChange}
-            removeFormFields={removeFormFields}
-          />
-        ))}
+        <table className='table'>
+          <thead>
+            <tr>
+              <th className='w-5 text-center'>Set</th>
+              <th className='w-32 text-center'>Weight</th>
+              <th className='w-32 text-center'>Reps</th>
+              <th className='5' />
+              <th className='5' />
+            </tr>
+          </thead>
+          <tbody>
+            {formValues.map((element, index) => (
+              <SetItem
+                element={element}
+                index={index}
+                handleChange={handleChange}
+                removeFormFields={removeFormFields}
+                deleteExercise={deleteExercise}
+                workoutId={workoutId}
+                id={_id}
+              />
+            ))}
+          </tbody>
+        </table>
         <div className='button-section'>
           <button
             className='button add'
@@ -64,10 +80,20 @@ const ExerciseItem = ({
         <button
           onClick={() => deleteExercise(workoutId, _id)}
           type='button'
-          className='absolute p-4 text-sm text-white top-0 right-0 bg-red-600 rounded-md transform translate-x-2 -translate-y-3 shadow-xl'
+          className='absolute p-4 text-sm text-white top-0 right-0 bg-red-600 rounded-3xl transform translate-x-2 -translate-y-3 shadow-xl'
         >
-          {' '}
-          DELETE
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            className='h-5 w-5 text-white'
+            viewBox='0 0 20 20'
+            fill='currentColor'
+          >
+            <path
+              fillRule='evenodd'
+              d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
+              clipRule='evenodd'
+            />
+          </svg>
         </button>
       </div>
     </div>
