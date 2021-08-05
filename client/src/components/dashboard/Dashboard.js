@@ -2,24 +2,29 @@ import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile, deleteAccount } from '../../actions/profile';
+import { getWorkouts } from '../../actions/workout';
 import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
 import DashboardActions from './DashboardActions';
 import Experience from './Experience';
 import Education from './Education';
+import Workout from './Workout';
 
 // We are going to use the getCurrentProfile action to redux as soon as the component loads
 // So we are going to use useEffect hooks to fire getCurrentProfile in the initial load
 
 const Dashboard = ({
+  getWorkouts,
   getCurrentProfile,
   deleteAccount,
   auth: { user },
   profile: { profile, loading },
+  workout: { workouts },
 }) => {
   useEffect(() => {
+    getWorkouts();
     getCurrentProfile();
-  }, [getCurrentProfile]); // <--- getCurrentProfil function is going to fire once
+  }, [getCurrentProfile, getWorkouts]); // <--- getCurrentProfil function is going to fire once
 
   return loading && profile === null ? (
     <Spinner />
@@ -32,8 +37,9 @@ const Dashboard = ({
       {profile !== null ? (
         <Fragment>
           <DashboardActions />
-          <Experience experience={profile.experience} />
-          <Education education={profile.education} />
+          {/* <Experience experience={profile.experience} /> */}
+          {/* <Education education={profile.education} /> */}
+          <Workout workouts={workouts} />
 
           <div className='my-2'>
             <button className='btn btn-danger' onClick={() => deleteAccount()}>
@@ -63,8 +69,11 @@ Dashboard.propTypes = {
 const mapStateToProps = (state) => ({
   auth: state.auth,
   profile: state.profile,
+  workout: state.workout,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
-  Dashboard
-);
+export default connect(mapStateToProps, {
+  getWorkouts,
+  getCurrentProfile,
+  deleteAccount,
+})(Dashboard);
