@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile, deleteAccount } from '../../actions/profile';
@@ -9,6 +9,8 @@ import DashboardActions from './DashboardActions';
 import Experience from './Experience';
 import Education from './Education';
 import Workout from './Workout';
+import CustomModal from '../layout/CustomModal';
+import WorkoutProfile from '../profile/WorkoutProfile';
 
 // We are going to use the getCurrentProfile action to redux as soon as the component loads
 // So we are going to use useEffect hooks to fire getCurrentProfile in the initial load
@@ -26,6 +28,9 @@ const Dashboard = ({
     getCurrentProfile();
   }, [getCurrentProfile, getWorkouts]); // <--- getCurrentProfil function is going to fire once
 
+  const [showWorkoutModal, setShowWorkoutModal] = useState(false);
+  const [workoutId, setWorkoutId] = useState('');
+
   return loading && profile === null ? (
     <Spinner />
   ) : (
@@ -36,10 +41,22 @@ const Dashboard = ({
       </p>
       {profile !== null ? (
         <Fragment>
+          {showWorkoutModal ? (
+            <CustomModal
+              component={WorkoutProfile}
+              workoutId={workoutId}
+              setShowModal={setShowWorkoutModal}
+            />
+          ) : null}
+
           <DashboardActions />
           {/* <Experience experience={profile.experience} /> */}
           {/* <Education education={profile.education} /> */}
-          <Workout workouts={workouts} />
+          <Workout
+            workouts={workouts}
+            setWorkoutId={setWorkoutId}
+            showModal={setShowWorkoutModal}
+          />
 
           <div className='my-2'>
             <button className='btn btn-danger' onClick={() => deleteAccount()}>

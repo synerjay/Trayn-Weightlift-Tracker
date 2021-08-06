@@ -4,10 +4,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteWorkout } from '../../actions/workout';
 
-const Workout = ({ workouts, deleteWorkout }) => {
+const Workout = ({ workouts, deleteWorkout, setWorkoutId, showModal }) => {
+  const handleClick = (id) => {
+    setWorkoutId(id);
+    showModal(true);
+  };
+
   const workoutList = workouts.map((workout) => (
     <tr key={workout._id}>
-      <button className='w-full h-16'>
+      <button onClick={() => handleClick(workout._id)} className='w-full h-16'>
         <td>{workout.workoutName}</td>
         <td className='hide-sm'>
           {format(new Date(workout.date), 'yyyy/MM/dd')}
