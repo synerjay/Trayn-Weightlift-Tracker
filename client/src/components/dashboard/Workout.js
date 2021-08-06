@@ -7,16 +7,18 @@ import { deleteWorkout } from '../../actions/workout';
 const Workout = ({ workouts, deleteWorkout }) => {
   const workoutList = workouts.map((workout) => (
     <tr key={workout._id}>
-      <td>{workout.workoutName}</td>
-      <td className='hide-sm'>
-        {format(new Date(workout.date), 'yyyy/MM/dd')}
-      </td>
-      <td>
-        {workout.exercise.slice(0, 5).map((item) => (
-          <Fragment>{item.name}, </Fragment>
-        ))}
-        etc...
-      </td>
+      <button className='w-full h-16'>
+        <td>{workout.workoutName}</td>
+        <td className='hide-sm'>
+          {format(new Date(workout.date), 'yyyy/MM/dd')}
+        </td>
+        <td>
+          {workout.exercise.slice(0, 3).map((item) => (
+            <Fragment>{item.name}, </Fragment>
+          ))}
+          etc...
+        </td>
+      </button>
       <td>
         <button onClick={() => deleteWorkout(workout._id)}>
           {' '}
@@ -40,12 +42,12 @@ const Workout = ({ workouts, deleteWorkout }) => {
   return (
     <Fragment>
       <h2 className='my-2'>Your Past Workouts</h2>
-      <table className='table'>
+      <table className='table w-1/2'>
         <thead>
           <tr>
-            <th className='w-44'>Workout</th>
-            <th className='w-32'>Date</th>
-            <th className='w-80'>Exercises</th>
+            <th className='w-full  '>Workout</th>
+            {/* <th className='w-32'>Date</th>
+            <th className='w-80'>Exercises</th> */}
             <th className='5' />
           </tr>
         </thead>
