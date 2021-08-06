@@ -14,7 +14,7 @@ const Workout = ({ workouts, deleteWorkout, setWorkoutId, showModal }) => {
     <tr key={workout._id}>
       <button
         onClick={() => handleClick(workout._id)}
-        className='w-full h-16 border-10 border-black bg-white rounded-lg my-0.5'
+        className='w-full h-16 border-10 border-black bg-white rounded-lg my-0.5 hover:bg-gray-200'
       >
         <td className='w-36 '>{workout.workoutName}</td>
         <td className='w-28 '>

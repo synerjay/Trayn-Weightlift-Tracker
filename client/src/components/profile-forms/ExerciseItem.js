@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteExercise } from '../../actions/workout';
@@ -7,11 +7,23 @@ import SetItem from './SetItem';
 
 const ExerciseItem = ({
   workoutId,
-  exercise: { _id, name },
+  exercise: { _id, name, sets },
   deleteExercise,
   addSet,
 }) => {
   const [formValues, setFormValues] = useState([{ weight: '', reps: '' }]);
+
+  useEffect(() => {
+    if (sets && sets.length !== 0) {
+      setFormValues(
+        sets.map((set) => ({ weight: set.weight, reps: set.reps }))
+      );
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log(formValues);
+  }, [formValues]);
 
   let handleChange = (i, e) => {
     let newFormValues = [...formValues];
