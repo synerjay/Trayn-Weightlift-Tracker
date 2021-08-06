@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getWorkout } from '../../actions/workout';
+import { Link } from 'react-router-dom';
 
 const WorkoutProfile = ({
   getWorkout,
@@ -21,6 +22,9 @@ const WorkoutProfile = ({
         <div>
           <h2> The Workout is {workout.workoutName}</h2>
           <h2> The id is {workout._id}</h2>
+          <Link className='btn btn-light my-1' to='/add-exercise'>
+            Edit Workout
+          </Link>
         </div>
       )}
     </>
