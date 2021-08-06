@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { addExercise } from '../../actions/workout';
 import ExerciseItem from './ExerciseItem';
 import { setAlert } from '../../actions/alert';
+import { format } from 'date-fns';
 
 const AddExercise = ({ workout: { workout }, addExercise, history }) => {
   const [formData, setFormData] = useState({
@@ -37,6 +38,10 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
   return (
     <Fragment>
       <h1 className='large text-primary'>{workout && workout.workoutName}</h1>
+      <h2 className='text-xl'>
+        Workout being performed on{' '}
+        {workout && format(new Date(workout.date), 'yyyy/MM/dd')}
+      </h2>
       <h2> Add an exercise to this workout:</h2>
       <form
         className='form'
