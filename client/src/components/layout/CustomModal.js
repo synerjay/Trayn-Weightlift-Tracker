@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const CustomModal = ({ component: Component, setShowModal, workoutId }) => {
   return (

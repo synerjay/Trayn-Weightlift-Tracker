@@ -44,8 +44,8 @@ const Dashboard = ({
           {showWorkoutModal ? (
             <CustomModal
               component={WorkoutProfile}
-              workoutId={workoutId}
               setShowModal={setShowWorkoutModal}
+              workoutId={workoutId}
             />
           ) : null}
 
@@ -54,8 +54,8 @@ const Dashboard = ({
           {/* <Education education={profile.education} /> */}
           <Workout
             workouts={workouts}
-            setWorkoutId={setWorkoutId}
             showModal={setShowWorkoutModal}
+            setWorkoutId={setWorkoutId}
           />
 
           <div className='my-2'>
