@@ -97,7 +97,7 @@ const ExerciseItem = ({
               clipRule='evenodd'
             />
           </svg>{' '}
-          ADD SET
+          ADD ONE MORE SET
         </button>
         {/* <button className='button submit' type='submit'>
             Save
