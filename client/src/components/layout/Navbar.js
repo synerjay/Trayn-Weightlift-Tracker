@@ -46,7 +46,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     <nav className='navbar bg-dark'>
       <h1 className='text-xl font-bold'>
         <Link to='/'>
-          <i className='fas fa-code'></i> LYFT
+          <i className='fas fa-code'></i> TRAYN
         </Link>
       </h1>
       {!loading && (
