@@ -12,13 +12,14 @@ const Workout = ({ workouts, deleteWorkout, setWorkoutId, showModal }) => {
 
   const workoutList = workouts.map((workout) => (
     <tr key={workout._id}>
-      <button onClick={() => handleClick(workout._id)} className='w-full h-16'>
-        <td>{workout.workoutName}</td>
-        <td className='hide-sm'>
-          {format(new Date(workout.date), 'yyyy/MM/dd')}
-        </td>
+      <button
+        onClick={() => handleClick(workout._id)}
+        className='w-full h-16 border-10 border-black bg-white rounded-lg my-1'
+      >
+        <td className='w-36 '>{workout.workoutName}</td>
+        <td>{format(new Date(workout.date), 'yyyy/MM/dd')}</td>
         <td>
-          {workout.exercise.slice(0, 3).map((item) => (
+          {workout.exercise.slice(0, 1).map((item) => (
             <Fragment>{item.name}, </Fragment>
           ))}
           etc...
@@ -46,11 +47,10 @@ const Workout = ({ workouts, deleteWorkout, setWorkoutId, showModal }) => {
 
   return (
     <Fragment>
-      <h2 className='my-2'>Your Past Workouts</h2>
-      <table className='table w-1/2'>
+      <table className='table w-1/2 my-2'>
         <thead>
           <tr>
-            <th className='w-full  '>Workout</th>
+            <th className='w-full'> Your Workout History </th>
             {/* <th className='w-32'>Date</th>
             <th className='w-80'>Exercises</th> */}
             <th className='5' />
