@@ -14,11 +14,13 @@ const Workout = ({ workouts, deleteWorkout, setWorkoutId, showModal }) => {
     <tr key={workout._id}>
       <button
         onClick={() => handleClick(workout._id)}
-        className='w-full h-16 border-10 border-black bg-white rounded-lg my-1'
+        className='w-full h-16 border-10 border-black bg-white rounded-lg my-0.5'
       >
         <td className='w-36 '>{workout.workoutName}</td>
-        <td>{format(new Date(workout.date), 'yyyy/MM/dd')}</td>
-        <td>
+        <td className='w-28 '>
+          {format(new Date(workout.date), 'yyyy/MM/dd')}
+        </td>
+        <td className='w-40 '>
           {workout.exercise.slice(0, 1).map((item) => (
             <Fragment>{item.name}, </Fragment>
           ))}
@@ -30,7 +32,7 @@ const Workout = ({ workouts, deleteWorkout, setWorkoutId, showModal }) => {
           {' '}
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            className='text-red-700 h-5 w-5'
+            className='text-red-700 h-5 w-5 ml-5'
             viewBox='0 0 20 20'
             fill='currentColor'
           >
@@ -47,13 +49,13 @@ const Workout = ({ workouts, deleteWorkout, setWorkoutId, showModal }) => {
 
   return (
     <Fragment>
-      <table className='table w-1/2 my-2'>
+      <table className=' w-1/2 my-2'>
         <thead>
           <tr>
             <th className='w-full'> Your Workout History </th>
             {/* <th className='w-32'>Date</th>
             <th className='w-80'>Exercises</th> */}
-            <th className='5' />
+            <th className='w-5 ml-2' />
           </tr>
         </thead>
         <tbody>{workoutList}</tbody>
