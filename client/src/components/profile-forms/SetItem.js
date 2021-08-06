@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 
 const SetItem = ({
   element,
@@ -16,6 +16,7 @@ const SetItem = ({
     setSubmitted(!submitted);
     handleSubmit(event);
   };
+
   return (
     <tr className={submitted ? 'bg-green-100' : null} key={index}>
       {/* form starts here */}

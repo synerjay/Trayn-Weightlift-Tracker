@@ -21,10 +21,6 @@ const ExerciseItem = ({
     }
   }, []);
 
-  useEffect(() => {
-    console.log(formValues);
-  }, [formValues]);
-
   let handleChange = (i, e) => {
     let newFormValues = [...formValues];
     newFormValues[i][e.target.name] = parseInt(e.target.value); // backend expects integers not strings so parseInt is used
