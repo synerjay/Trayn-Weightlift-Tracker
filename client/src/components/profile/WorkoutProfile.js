@@ -26,7 +26,7 @@ const WorkoutProfile = ({
         <Spinner />
       ) : (
         <div>
-          <div className='w-full flex flex-col md:grid md:grid-cols-2 md:gap-5 p-5'>
+          <div className='w-full flex flex-col md:grid md:grid-cols-2 md:gap-5 p-1 -mt-6'>
             {workout.exercise.map((exercise) => (
               <ExerciseProfile key={exercise._id} exercise={exercise} />
             ))}

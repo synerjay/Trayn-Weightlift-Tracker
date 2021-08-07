@@ -57,7 +57,7 @@ const CustomModal = ({ component: Component, setShowModal, workoutId }) => {
               />
             </div>
             {/*footer*/}
-            <div className=' h-px bg-opacity-0 bg-transparent flex items-center justify-end p-6 rounded-b'>
+            {/* <div className=' h-px bg-opacity-0 bg-transparent flex items-center justify-end p-6 rounded-b'>
               <button
                 className='text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
                 type='button'
@@ -65,7 +65,7 @@ const CustomModal = ({ component: Component, setShowModal, workoutId }) => {
               >
                 Close
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
