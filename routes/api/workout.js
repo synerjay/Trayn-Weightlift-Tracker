@@ -71,19 +71,33 @@ router.put(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    //Next step is to deconstruct the req.body to pull out the information in the request
-    const { exerciseName } = req.body;
+    //Next step is to deconstruct the req.body IF the req.body is NOT an array
+    // if (!Array.isArray(req.body)) {
+    //   const { exerciseName } = req.body;
 
-    // Build workout object
-    const newExercise = {};
-    newExercise.name = exerciseName;
+    //   const newExercise = {};
+    //   newExercise.name = exerciseName;
+    // }
 
     //Try and catch error to find profile using id from req.user (token)
     try {
       const workout = await Workout.findOne({ _id: req.params.workout_id });
-      workout.exercise.push(newExercise);
-      await workout.save();
-      res.json(workout);
+      if (Array.isArray(req.body)) {
+        const newExercise = req.body.map((item) => ({
+          name: item.exerciseName,
+        }));
+        workout.exercise = newExercise;
+        await workout.save();
+        return res.json(workout);
+      } else {
+        const { exerciseName } = req.body;
+
+        const newExercise = {};
+        newExercise.name = exerciseName;
+        workout.exercise.push(newExercise);
+        await workout.save();
+        return res.json(workout);
+      }
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');
