@@ -26,8 +26,33 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
   }, []);
 
   useEffect(() => {
-    if (workout) {
+    if (workout.exercise.length !== 0) {
       setExercise([...workout.exercise]);
+    } else {
+      switch (workout.workoutName) {
+        case 'Push (Chest, Shoulders, Triceps)':
+          addExercise(workout._id, [
+            { exerciseName: 'Chest Press' },
+            { exerciseName: 'Shoulder Press' },
+            { exerciseName: 'Tricep Extension' },
+          ]);
+          break;
+        case 'Pull (Back, Biceps, Lats)':
+          addExercise(workout._id, [
+            { exerciseName: 'Lat Pull Down' },
+            { exerciseName: 'Deadlift' },
+            { exerciseName: 'Bicep curls' },
+          ]);
+          break;
+        case 'Legs':
+          addExercise(workout._id, [
+            { exerciseName: 'Squat' },
+            { exerciseName: 'Leg extension' },
+            { exerciseName: 'Backleg extension' },
+          ]);
+        default:
+          addExercise(workout._id, [{ exerciseName: 'Custom Exercise' }]);
+      }
     }
   }, [workout]);
 

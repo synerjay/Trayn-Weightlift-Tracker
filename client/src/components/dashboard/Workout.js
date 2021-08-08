@@ -16,7 +16,7 @@ const Workout = ({ workouts, deleteWorkout, setWorkoutId, showModal }) => {
         onClick={() => handleClick(workout._id)}
         className='w-full h-16 border-10 border-black bg-white rounded-lg my-0.5 hover:bg-gray-200'
       >
-        <td className='w-36 '>{workout.workoutName}</td>
+        <td className='w-56 '>{workout.workoutName}</td>
         <td className='w-28 '>
           {format(new Date(workout.date), 'yyyy/MM/dd')}
         </td>
@@ -52,7 +52,7 @@ const Workout = ({ workouts, deleteWorkout, setWorkoutId, showModal }) => {
       <table className=' w-1/2 my-2'>
         <thead>
           <tr>
-            <th className='w-full'> Your Workout History </th>
+            <th className='w-full'> Your Workouts </th>
             {/* <th className='w-32'>Date</th>
             <th className='w-80'>Exercises</th> */}
             <th className='w-5 ml-2' />

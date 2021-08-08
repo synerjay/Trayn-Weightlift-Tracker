@@ -20,7 +20,7 @@ const CustomModal = ({ component: Component, setShowModal, workoutId }) => {
                 {workoutHeader && (
                   <p className='text-lg'>
                     {' '}
-                    Workout performed on{' '}
+                    First performed on{' '}
                     {format(new Date(workoutHeader.date), 'yyyy/MM/dd')}
                   </p>
                 )}
