@@ -5,6 +5,10 @@ import { addExercise } from '../../actions/workout';
 import ExerciseItem from './ExerciseItem';
 import { setAlert } from '../../actions/alert';
 import { format } from 'date-fns';
+import { pushExercises } from '../../utils/exerciseData';
+import { pullExercises } from '../../utils/exerciseData';
+import { legExercises } from '../../utils/exerciseData';
+import { customExercises } from '../../utils/exerciseData';
 
 const AddExercise = ({ workout: { workout }, addExercise, history }) => {
   const [formData, setFormData] = useState({
@@ -31,27 +35,15 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
     } else {
       switch (workout.workoutName) {
         case 'Push (Chest, Shoulders, Triceps)':
-          addExercise(workout._id, [
-            { exerciseName: 'Chest Press' },
-            { exerciseName: 'Shoulder Press' },
-            { exerciseName: 'Tricep Extension' },
-          ]);
+          addExercise(workout._id, pushExercises);
           break;
         case 'Pull (Back, Biceps, Lats)':
-          addExercise(workout._id, [
-            { exerciseName: 'Lat Pull Down' },
-            { exerciseName: 'Deadlift' },
-            { exerciseName: 'Bicep curls' },
-          ]);
+          addExercise(workout._id, pullExercises);
           break;
         case 'Legs':
-          addExercise(workout._id, [
-            { exerciseName: 'Squat' },
-            { exerciseName: 'Leg extension' },
-            { exerciseName: 'Backleg extension' },
-          ]);
+          addExercise(workout._id, legExercises);
         default:
-          addExercise(workout._id, [{ exerciseName: 'Custom Exercise' }]);
+          addExercise(workout._id, customExercises);
       }
     }
   }, [workout]);
