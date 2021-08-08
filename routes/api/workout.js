@@ -71,13 +71,6 @@ router.put(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    //Next step is to deconstruct the req.body IF the req.body is NOT an array
-    // if (!Array.isArray(req.body)) {
-    //   const { exerciseName } = req.body;
-
-    //   const newExercise = {};
-    //   newExercise.name = exerciseName;
-    // }
 
     //Try and catch error to find profile using id from req.user (token)
     try {

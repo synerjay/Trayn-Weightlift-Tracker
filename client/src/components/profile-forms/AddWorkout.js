@@ -2,45 +2,26 @@ import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addWorkout } from '../../actions/workout';
+import AddWorkoutModal from '../layout/AddWorkoutModal';
 
 const AddWorkout = ({ addWorkout, history }) => {
-  const [formData, setFormData] = useState({
-    workoutName: '',
-  });
-
-  const { workoutName } = formData;
-
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-
   const handleClick = (event) => {
     console.log(event.target.innerText);
     addWorkout({ [event.target.name]: event.target.innerText }, history);
   };
 
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <Fragment>
-      <h1 className='large text-primary'>Add Your Workout</h1>
-      <form
-        className='form'
-        onSubmit={(e) => {
-          e.preventDefault();
-          addWorkout(formData, history);
-        }}
-      >
-        {' '}
-        <div className='form-group'>
-          <input
-            type='text'
-            placeholder='* Choose a Workout Name'
-            name='workoutName'
-            value={workoutName}
-            onChange={onChange}
-            required
-          />
-        </div>
-        <input type='submit' className='btn btn-primary my-1' />
-      </form>
+      <h1 className='large text-primary'>Choose Your Workout</h1>
+      {showModal ? (
+        <AddWorkoutModal
+          addWorkout={addWorkout}
+          setShowModal={setShowModal}
+          history={history}
+        />
+      ) : null}
       <button
         name='workoutName'
         onClick={(event) => handleClick(event)}
@@ -64,7 +45,7 @@ const AddWorkout = ({ addWorkout, history }) => {
       </button>
       <button
         name='workoutName'
-        onClick={(event) => handleClick(event)}
+        onClick={() => setShowModal(!showModal)}
         className='w-full h-16 border-10 border-black bg-white rounded-lg my-0.5 hover:bg-gray-200'
       >
         Custom Workout
