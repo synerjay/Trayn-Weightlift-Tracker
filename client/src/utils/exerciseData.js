@@ -7,13 +7,13 @@ export const pushExercises = [
 export const pullExercises = [
   { exerciseName: 'Lat Pull Down' },
   { exerciseName: 'Deadlift' },
-  { exerciseName: 'Bicep curls' },
-  { exerciseName: 'Incline bicep curls' },
+  { exerciseName: 'Bicep Curls' },
+  { exerciseName: 'Incline Bicep Curls' },
 ];
 export const legExercises = [
   { exerciseName: 'Squat' },
-  { exerciseName: 'Leg extension' },
-  { exerciseName: 'Backleg extension' },
+  { exerciseName: 'Leg Extension' },
+  { exerciseName: 'Backleg Extension' },
   { exerciseName: 'Seated Leg Push' },
 ];
 export const customExercises = [{ exerciseName: 'Custom Exercise' }];
