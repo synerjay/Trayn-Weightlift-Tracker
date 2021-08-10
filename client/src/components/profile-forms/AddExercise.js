@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addExercise } from '../../actions/workout';
@@ -9,14 +9,19 @@ import { pushExercises } from '../../utils/exerciseData';
 import { pullExercises } from '../../utils/exerciseData';
 import { legExercises } from '../../utils/exerciseData';
 import { customExercises } from '../../utils/exerciseData';
+import Editable from '../layout/Editable';
 
 const AddExercise = ({ workout: { workout }, addExercise, history }) => {
   const [formData, setFormData] = useState({
     exerciseName: '',
   });
 
-  const [exercise, setExercise] = useState([]);
+  // Workout Name Editable Dependencies
+  const inputRef = useRef();
+  const [workoutName, setWorkoutName] = useState('');
 
+  // Adding Exercises
+  const [exercise, setExercise] = useState([]);
   const { exerciseName } = formData;
 
   const onChange = (e) =>
@@ -49,12 +54,30 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
   }, [workout]);
 
   useEffect(() => {
-    console.log(exercise);
-  }, [exercise]);
+    setWorkoutName(workout.workoutName);
+  }, [workout]);
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>{workout && workout.workoutName}</h1>
+      {/* Start of Editable area */}
+      <Editable
+        text={workoutName}
+        placeholder='Write a task name'
+        childRef={inputRef}
+        type='input'
+      >
+        <input
+          ref={inputRef}
+          type='text'
+          name='workoutName'
+          className='shadow text-4xl appearance-none border rounded w-1/2 py-1 px-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300'
+          placeholder='Type the name of your workout'
+          value={workoutName}
+          onChange={(e) => setWorkoutName(e.target.value)}
+        />
+      </Editable>
+      {/* End of Editable area */}
+      {/* <h1 className='large text-primary'>{workout && workout.workoutName}</h1> */}
       <h2 className='text-xl'>
         Workout being performed on{' '}
         {workout && format(new Date(workout.date), 'yyyy/MM/dd')}
