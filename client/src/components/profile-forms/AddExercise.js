@@ -16,10 +16,18 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
     exerciseName: '',
   });
 
+  useEffect(() => {
+    if (!workout) {
+      history.push('/add-workout');
+      setAlert('Please name this workout first', 'danger');
+    }
+  }, []);
+
   // Workout Name Editable Dependencies
   const workoutRef = useRef();
   const [workoutName, setWorkoutName] = useState('');
   useEffect(() => {
+    if (!workout) return;
     setWorkoutName(workout.workoutName);
   }, [workout]);
 
@@ -35,13 +43,7 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   useEffect(() => {
-    if (!workout) {
-      history.push('/add-workout');
-      setAlert('Please name this workout first', 'danger');
-    }
-  }, []);
-
-  useEffect(() => {
+    if (!workout) return;
     if (workout.exercise.length !== 0) {
       setExercise([...workout.exercise]);
     } else {
@@ -62,7 +64,6 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
 
   return (
     <Fragment>
-      {/* Start of Editable area */}
       <Editable
         text={workoutName}
         placeholder='Write an workout name'
@@ -81,8 +82,6 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
           onChange={(e) => setWorkoutName(e.target.value)}
         />
       </Editable>
-      {/* End of Editable area */}
-      {/* <h1 className='large text-primary'>{workout && workout.workoutName}</h1> */}
       <h2 className='text-xl'>
         Workout being performed on{' '}
         {workout && format(new Date(workout.date), 'yyyy/MM/dd')}

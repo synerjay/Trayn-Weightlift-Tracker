@@ -63,7 +63,6 @@ const ExerciseItem = ({
 
   return (
     <div className='bg-white mb-5 w-full  p-8 rounded-lg shadow-lg relative hover:shadow-2xl transition duration-500'>
-      {/* Editable Exercise Name here */}
       <Editable
         text={exerciseName}
         placeholder='Write an workout name'
@@ -83,9 +82,6 @@ const ExerciseItem = ({
         />
       </Editable>
 
-      {/* <h1 className='text-2xl text-gray-800 font-semibold mb-3'>{name}</h1> */}
-      {/* End of editable exercise Name here */}
-      {/* <form onSubmit={handleSubmit}> */}
       <table className='table'>
         <thead>
           <tr>
@@ -96,7 +92,6 @@ const ExerciseItem = ({
             <th className='md:w-5 w-10' />
           </tr>
         </thead>
-        {/* <form onSubmit={handleSubmit}> */}
         <tbody>
           {formValues.map((element, index) => (
             <SetItem
@@ -113,7 +108,6 @@ const ExerciseItem = ({
             />
           ))}
         </tbody>
-        {/* </form> */}
       </table>
       <div className='flex flex-col gap-y-5'>
         <button
@@ -143,7 +137,6 @@ const ExerciseItem = ({
           SAVE ALL SETS
         </button>
       </div>
-      {/* </form> */}
       <div>
         <button
           onClick={() => deleteExercise(workoutId, _id)}
