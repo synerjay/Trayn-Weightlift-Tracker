@@ -51,8 +51,8 @@ router.post(
 );
 
 // Testing for Adding an Exercise
-// @route POST api/workout/:workout_id
-// @desc Add WORKOUT session
+// @route PUT api/workout/:workout_id
+// @desc Add exercise and Edit Workout name
 // @access Private
 
 router.put(
@@ -83,13 +83,21 @@ router.put(
         await workout.save();
         return res.json(workout);
       } else {
-        const { exerciseName } = req.body;
+        if (req.body['exerciseName']) {
+          const { exerciseName } = req.body;
 
-        const newExercise = {};
-        newExercise.name = exerciseName;
-        workout.exercise.push(newExercise);
-        await workout.save();
-        return res.json(workout);
+          const newExercise = {};
+          newExercise.name = exerciseName;
+          workout.exercise.push(newExercise);
+          await workout.save();
+          return res.json(workout);
+        } else {
+          const { workoutName } = req.body;
+
+          workout.workoutName = workoutName;
+          await workout.save();
+          return res.json(workout);
+        }
       }
     } catch (err) {
       console.error(err.message);
@@ -134,10 +142,16 @@ router.put(
       const exerciseIndex = workout.exercise.findIndex(
         (element) => element._id == req.params.exercise_id // non-Strict equal sign because id is a number while the exercise id is a string
       );
-      // workout.exercise[exerciseIndex].sets.push(newSet);
-      workout.exercise[exerciseIndex].sets = req.body;
-      await workout.save();
-      res.json(workout);
+      if (Array.isArray(req.body)) {
+        workout.exercise[exerciseIndex].sets = req.body;
+        await workout.save();
+        res.json(workout);
+      } else {
+        const { exerciseName } = req.body;
+        workout.exercise[exerciseIndex].name = exerciseName;
+        await workout.save();
+        res.json(workout);
+      }
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');
