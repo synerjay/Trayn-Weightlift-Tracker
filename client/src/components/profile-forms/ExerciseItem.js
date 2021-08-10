@@ -51,7 +51,7 @@ const ExerciseItem = ({
         <thead>
           <tr>
             <th className='md:w-5 w-10 text-center'>Set</th>
-            <th className='md:w-32 w-36  text-center'>Weight</th>
+            <th className='md:w-32 w-36  text-center'>Kg</th>
             <th className='md:w-32 w-36 text-center'>Reps</th>
             <th className='md:w-5 w-10 ' />
             <th className='md:w-5 w-10' />
@@ -75,7 +75,7 @@ const ExerciseItem = ({
         </tbody>
         {/* </form> */}
       </table>
-      <div className='button-section'>
+      <div className='flex flex-col gap-y-5'>
         <button
           className='w-full h-5 bg-gray-300 flex justify-center items-center max-w-xs mx-auto hover:bg-gray-200 focus:bg-gray-200 text-gray-700 rounded-lg p-1 font-semibold'
           type='button'
@@ -95,9 +95,13 @@ const ExerciseItem = ({
           </svg>{' '}
           ADD ONE MORE SET
         </button>
-        {/* <button className='button submit' type='submit'>
-            Save
-          </button> */}
+        <button
+          className='w-1/3  h-5 bg-green-400 flex justify-center items-center max-w-xs mx-auto hover:bg-green-300 focus:bg-green-200 text-white rounded-lg p-1 font-semibold'
+          onClick={(event) => handleSubmit(event)}
+          type='submit'
+        >
+          SAVE ALL SETS
+        </button>
       </div>
       {/* </form> */}
       <div>

@@ -24,7 +24,7 @@ const SetItem = ({
       <td>
         <input
           type='text'
-          className='w-full -ml-0 p-0 rounded-lg border-2 bg-white border-black outline-none focus:border-indigo-500'
+          className='w-2/3 -ml-0 pl-2 rounded-lg border-2 bg-white border-black outline-none focus:border-indigo-500'
           name='weight'
           value={element.weight || ''}
           onChange={(e) => handleChange(index, e)}
@@ -33,7 +33,7 @@ const SetItem = ({
       <td>
         <input
           type='text'
-          className='w-full p-0 rounded-lg border-2 bg-white border-black outline-none focus:border-indigo-500'
+          className='w-1/2 pl-2 rounded-lg border-2 bg-white border-black outline-none focus:border-indigo-500'
           name='reps'
           value={element.reps || ''}
           onChange={(e) => handleChange(index, e)}
