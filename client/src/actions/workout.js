@@ -48,8 +48,11 @@ export const addExercise = (workoutId, formData) => async (dispatch) => {
       type: ADD_EXERCISE,
       payload: res.data,
     });
-
-    dispatch(setAlert('Exercise Added', 'success'));
+    if (formData['workoutName']) {
+      dispatch(setAlert('Workout Changes Saved', 'success'));
+    } else {
+      dispatch(setAlert('Exercise Added', 'success'));
+    }
   } catch (err) {
     dispatch({
       type: WORKOUT_ERROR,
@@ -72,7 +75,11 @@ export const addSet = (workoutId, exerciseId, formData) => async (dispatch) => {
       payload: res.data,
     });
 
-    dispatch(setAlert('Your sets have been saved', 'success'));
+    if (formData['exerciseName']) {
+      dispatch(setAlert('Exercise name change saved', 'success'));
+    } else {
+      dispatch(setAlert('Exercise sets saved', 'success'));
+    }
   } catch (err) {
     dispatch({
       type: WORKOUT_ERROR,

@@ -23,6 +23,10 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
     setWorkoutName(workout.workoutName);
   }, [workout]);
 
+  const handleChangeName = () => {
+    addExercise(workout._id, { workoutName: workoutName });
+  };
+
   // Adding Exercises
   const [exercise, setExercise] = useState([]);
   const { exerciseName } = formData;
@@ -64,6 +68,7 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
         placeholder='Write an workout name'
         childRef={workoutRef}
         type='input'
+        handleChangeName={handleChangeName}
         smallLetters={false}
       >
         <input

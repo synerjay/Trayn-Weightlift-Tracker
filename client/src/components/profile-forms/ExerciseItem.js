@@ -22,6 +22,10 @@ const ExerciseItem = ({
     setExerciseName(name);
   }, [name]);
 
+  const handleChangeName = () => {
+    addSet(workoutId, _id, { exerciseName: exerciseName });
+  };
+
   useEffect(() => {
     if (sets && sets.length !== 0) {
       setFormValues(
@@ -66,6 +70,7 @@ const ExerciseItem = ({
         childRef={exerciseRef}
         type='input'
         smallLetters={true}
+        handleChangeName={handleChangeName}
       >
         <input
           ref={exerciseRef}

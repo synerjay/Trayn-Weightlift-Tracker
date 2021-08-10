@@ -7,6 +7,7 @@ const Editable = ({
   children,
   childRef,
   smallLetters,
+  handleChangeName,
   ...props
 }) => {
   const [isEditing, setEditing] = useState(false);
@@ -17,26 +18,34 @@ const Editable = ({
     }
   }, [isEditing, childRef]);
 
-  const handleKeyDown = (event, type) => {
-    const { key } = event;
-    const keys = ['Escape', 'Tab'];
-    const enterKey = 'Enter';
-    const allKeys = [...keys, enterKey];
-    if (
-      (type === 'textarea' && keys.indexOf(key) > -1) ||
-      (type !== 'textarea' && allKeys.indexOf(key) > -1)
-    ) {
+  const handleKeyDown = (event) => {
+    // const { key } = event;
+    // const keys = ['Escape', 'Tab'];
+    // const enterKey = 'Enter';
+    // const allKeys = [...keys, enterKey];
+    // if (
+    //   (type === 'textarea' && keys.indexOf(key) > -1) ||
+    //   (type !== 'textarea' && allKeys.indexOf(key) > -1)
+    // ) {
+    //   setEditing(false);
+    //   handleChangeName();
+    // }
+
+    if (event.keyCode === 13) {
       setEditing(false);
+      handleChangeName();
     }
+  };
+
+  const handleBlur = () => {
+    setEditing(false);
+    handleChangeName();
   };
 
   return (
     <section {...props}>
       {isEditing ? (
-        <div
-          onBlur={() => setEditing(false)}
-          onKeyDown={(e) => handleKeyDown(e, type)}
-        >
+        <div onBlur={() => handleBlur()} onKeyDown={(e) => handleKeyDown(e)}>
           {children}
         </div>
       ) : (
