@@ -12,6 +12,7 @@ const ExerciseItem = ({
   addSet,
 }) => {
   const [formValues, setFormValues] = useState([{ weight: '', reps: '' }]);
+  const [saveAll, setSaveAll] = useState(false);
 
   useEffect(() => {
     if (sets && sets.length !== 0) {
@@ -43,6 +44,11 @@ const ExerciseItem = ({
     addSet(workoutId, _id, formValues);
   };
 
+  const handleSaveAll = (event) => {
+    setSaveAll(true);
+    handleSubmit(event);
+  };
+
   return (
     <div className='bg-white mb-5 w-full  p-8 rounded-lg shadow-lg relative hover:shadow-2xl transition duration-500'>
       <h1 className='text-2xl text-gray-800 font-semibold mb-3'>{name}</h1>
@@ -70,6 +76,7 @@ const ExerciseItem = ({
               deleteExercise={deleteExercise}
               workoutId={workoutId}
               id={_id}
+              saveAll={saveAll}
             />
           ))}
         </tbody>
@@ -96,8 +103,8 @@ const ExerciseItem = ({
           ADD ONE MORE SET
         </button>
         <button
-          className='w-1/3  h-5 bg-green-400 flex justify-center items-center max-w-xs mx-auto hover:bg-green-300 focus:bg-green-200 text-white rounded-lg p-1 font-semibold'
-          onClick={(event) => handleSubmit(event)}
+          className='w-1/2 md:w-1/3  h-5 bg-green-500 flex justify-center items-center max-w-xs mx-auto hover:bg-green-300 focus:bg-green-200 text-white rounded-lg p-1 font-semibold'
+          onClick={(event) => handleSaveAll(event)}
           type='submit'
         >
           SAVE ALL SETS

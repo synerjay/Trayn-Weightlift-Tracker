@@ -9,6 +9,7 @@ const SetItem = ({
   workoutId,
   handleSubmit,
   id,
+  saveAll,
 }) => {
   const [submitted, setSubmitted] = useState(false);
 
@@ -18,7 +19,7 @@ const SetItem = ({
   };
 
   return (
-    <tr className={submitted ? 'bg-green-100' : null} key={index}>
+    <tr className={submitted || saveAll ? 'bg-green-100' : null} key={index}>
       {/* form starts here */}
       <td>{index + 1}</td>
       <td>
@@ -33,7 +34,7 @@ const SetItem = ({
       <td>
         <input
           type='text'
-          className='w-1/2 pl-2 rounded-lg border-2 bg-white border-black outline-none focus:border-indigo-500'
+          className='w-2/3 pl-2 rounded-lg border-2 bg-white border-black outline-none focus:border-indigo-500'
           name='reps'
           value={element.reps || ''}
           onChange={(e) => handleChange(index, e)}
@@ -45,7 +46,8 @@ const SetItem = ({
           <svg
             xmlns='http://www.w3.org/2000/svg'
             className={
-              'h-6 w-6 ' + (submitted ? 'text-green-600' : 'text-gray-600')
+              'h-6 w-6 ' +
+              (submitted || saveAll ? 'text-green-600' : 'text-gray-600')
             }
             viewBox='0 0 20 20'
             fill='currentColor'
