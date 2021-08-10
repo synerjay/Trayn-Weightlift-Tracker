@@ -6,6 +6,7 @@ const Editable = ({
   placeholder,
   children,
   childRef,
+  smallLetters,
   ...props
 }) => {
   const [isEditing, setEditing] = useState(false);
@@ -40,16 +41,22 @@ const Editable = ({
         </div>
       ) : (
         <div
-          className={`flex items-center rounded py-2 px-3 text-gray-700 leading-tight whitespace-pre-wrap hover:shadow-outline editable-${type}`}
+          className={`flex items-center rounded p-1 -ml-4 text-gray-700 leading-tight whitespace-pre-wrap hover:shadow-outline editable-${type}`}
           onClick={() => setEditing(true)}
         >
-          <span className={`text-4xl ${text ? 'text-black' : 'text-gray-500'}`}>
-            {text || placeholder || 'Editable content'}
+          <span
+            className={`${
+              smallLetters
+                ? 'text-2xl text-gray-800 font-semibold'
+                : 'text-4xl font-semibold'
+            } ${text ? 'text-black' : 'text-gray-500'}`}
+          >
+            {text || placeholder || 'Choose a name'}
           </span>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             onClick={() => setEditing(true)}
-            className='ml-5 h-5 w-5 text-indigo-600 cursor-pointer'
+            className='ml-3 h-5 w-5 text-indigo-600 cursor-pointer'
             fill='none'
             viewBox='0 0 24 24'
             stroke='currentColor'

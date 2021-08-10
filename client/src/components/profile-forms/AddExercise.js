@@ -17,8 +17,11 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
   });
 
   // Workout Name Editable Dependencies
-  const inputRef = useRef();
+  const workoutRef = useRef();
   const [workoutName, setWorkoutName] = useState('');
+  useEffect(() => {
+    setWorkoutName(workout.workoutName);
+  }, [workout]);
 
   // Adding Exercises
   const [exercise, setExercise] = useState([]);
@@ -53,24 +56,21 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
     }
   }, [workout]);
 
-  useEffect(() => {
-    setWorkoutName(workout.workoutName);
-  }, [workout]);
-
   return (
     <Fragment>
       {/* Start of Editable area */}
       <Editable
         text={workoutName}
-        placeholder='Write a task name'
-        childRef={inputRef}
+        placeholder='Write an workout name'
+        childRef={workoutRef}
         type='input'
+        smallLetters={false}
       >
         <input
-          ref={inputRef}
+          ref={workoutRef}
           type='text'
           name='workoutName'
-          className='shadow text-4xl appearance-none border rounded w-1/2 py-1 px-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300'
+          className='shadow text-4xl font-semibold appearance-none border rounded w-1/2 p-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300'
           placeholder='Type the name of your workout'
           value={workoutName}
           onChange={(e) => setWorkoutName(e.target.value)}

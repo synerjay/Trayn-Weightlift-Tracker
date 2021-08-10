@@ -1,9 +1,10 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteExercise } from '../../actions/workout';
 import { addSet } from '../../actions/workout';
 import SetItem from './SetItem';
+import Editable from '../layout/Editable';
 
 const ExerciseItem = ({
   workoutId,
@@ -13,6 +14,13 @@ const ExerciseItem = ({
 }) => {
   const [formValues, setFormValues] = useState([{ weight: '', reps: '' }]);
   const [saveAll, setSaveAll] = useState(false);
+
+  // Exercise Name Editable Dependencies
+  const exerciseRef = useRef();
+  const [exerciseName, setExerciseName] = useState('');
+  useEffect(() => {
+    setExerciseName(name);
+  }, [name]);
 
   useEffect(() => {
     if (sets && sets.length !== 0) {
@@ -51,7 +59,27 @@ const ExerciseItem = ({
 
   return (
     <div className='bg-white mb-5 w-full  p-8 rounded-lg shadow-lg relative hover:shadow-2xl transition duration-500'>
-      <h1 className='text-2xl text-gray-800 font-semibold mb-3'>{name}</h1>
+      {/* Editable Exercise Name here */}
+      <Editable
+        text={exerciseName}
+        placeholder='Write an workout name'
+        childRef={exerciseRef}
+        type='input'
+        smallLetters={true}
+      >
+        <input
+          ref={exerciseRef}
+          type='text'
+          name='exerciseName'
+          className='shadow text-2xl font-semibold appearance-none border rounded w-1/2 p-1 text-gray-600 leading-tight focus:outline-none focus:shadow-outline border-blue-300'
+          placeholder='Type the name of your workout'
+          value={exerciseName}
+          onChange={(e) => setExerciseName(e.target.value)}
+        />
+      </Editable>
+
+      {/* <h1 className='text-2xl text-gray-800 font-semibold mb-3'>{name}</h1> */}
+      {/* End of editable exercise Name here */}
       {/* <form onSubmit={handleSubmit}> */}
       <table className='table'>
         <thead>
