@@ -6,9 +6,11 @@
 
 /* Global Styles */
 :root {
+  --tw-bg-opacity: 1;
   --primary-color: #17a2b8;
   --dark-color: #343a40;
-  --light-color: #f4f4f4;
+  /* --light-color: #f4f4f4; */
+  --light-color: rgba(99, 102, 241, var(--tw-bg-opacity));
   --danger-color: #dc3545;
   --success-color: #28a745;
 }
@@ -464,8 +466,13 @@ button {
 
 .table th,
 .table td {
-  padding: 1rem;
-  text-align: left;
+  /* padding: 1rem; */
+  padding: 10px;
+  text-align: center;
+}
+
+.table th {
+  color: #fff;
 }
 
 .table th {

@@ -49,7 +49,7 @@ export const addExercise = (workoutId, formData) => async (dispatch) => {
       payload: res.data,
     });
     if (formData['workoutName']) {
-      dispatch(setAlert('Workout Changes Saved', 'success'));
+      return;
     } else {
       dispatch(setAlert('Exercise Added', 'success'));
     }
@@ -76,7 +76,7 @@ export const addSet = (workoutId, exerciseId, formData) => async (dispatch) => {
     });
 
     if (formData['exerciseName']) {
-      dispatch(setAlert('Exercise name change saved', 'success'));
+      return;
     } else {
       dispatch(setAlert('Exercise sets saved', 'success'));
     }
