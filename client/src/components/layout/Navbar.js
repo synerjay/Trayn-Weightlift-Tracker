@@ -66,7 +66,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         Login
       </Link>
       <Link
-        class='bg-indigo-300 hover:bg-gray-700 text-gray-700 p-1 rounded cursor-pointer hover:text-green-200'
+        class='bg-indigo-700 hover:bg-gray-700 text-white p-1 rounded cursor-pointer hover:text-green-200'
         to='/register'
       >
         Sign Up
@@ -77,7 +77,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   return (
     <header class='navbar w-full md:h-16 bg-indigo-500 p-1 flex justify-between items-center'>
       <div class='cursor-pointer'>
-        <h1 className='text-xl font-bold'>
+        <h1 className='text-white text-xl font-bold'>
           <Link to='/'>TRAYN</Link>{' '}
         </h1>
         {/* <img
