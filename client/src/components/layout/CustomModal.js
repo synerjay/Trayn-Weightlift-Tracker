@@ -26,7 +26,10 @@ const CustomModal = ({ component: Component, setShowModal, workoutId }) => {
                 )}
               </div>
               <div className='flex flex-row'>
-                <Link className='btn btn-light my-1' to='/add-exercise'>
+                <Link
+                  className='mt-2 md:mb-0 bg-indigo-500 md:px-6 md:py-3 px-10 py-0 h-12 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-indigo-700'
+                  to='/add-exercise'
+                >
                   Edit Workout
                 </Link>
                 <button

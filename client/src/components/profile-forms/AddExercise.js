@@ -88,17 +88,18 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
       </h2>
       <h2> Add an exercise to this workout:</h2>
       <form
-        className='form'
+        // className='form'
         onSubmit={(e) => {
           e.preventDefault();
           addExercise(workout._id, formData);
         }}
       >
         {' '}
-        <div className='form-group'>
+        <div>
           <input
             type='text'
-            placeholder='* Add an Exercise'
+            className='w-full -ml-0 p-1 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500'
+            placeholder='Add an Exercise to this Workout'
             name='exerciseName'
             value={exerciseName}
             onChange={onChange}
