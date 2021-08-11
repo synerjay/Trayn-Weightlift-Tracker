@@ -76,41 +76,53 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
           ref={workoutRef}
           type='text'
           name='workoutName'
-          className='shadow text-4xl font-semibold appearance-none w-1/2 p-1 text-gray-600 leading-tight rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500'
+          className='shadow text-4xl font-semibold appearance-none w-full md:w-1/2 p-1 text-gray-600 leading-tight rounded-lg border-2 border-indigo-400 outline-none focus:border-indigo-500'
           placeholder='Type the name of your workout'
           value={workoutName}
           onChange={(e) => setWorkoutName(e.target.value)}
         />
       </Editable>
-      <h2 className='text-xl'>
+      <h2 className='text-xl text-center md:text-left mb-5'>
         Workout being performed on{' '}
         {workout && format(new Date(workout.date), 'yyyy/MM/dd')}
       </h2>
-      <h2> Add an exercise to this workout:</h2>
       <form
-        // className='form'
+        className='flex flex-col items-center gap-y-3 md:flex-row w-full md:gap-x-5'
         onSubmit={(e) => {
           e.preventDefault();
           addExercise(workout._id, formData);
         }}
       >
-        {' '}
-        <div>
-          <input
-            type='text'
-            className='w-full -ml-0 p-1 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500'
-            placeholder='Add an Exercise to this Workout'
-            name='exerciseName'
-            value={exerciseName}
-            onChange={onChange}
-            required
-          />
-        </div>
         <input
-          type='submit'
-          className='btn btn-primary my-1'
-          value='Add Exercise'
+          type='text'
+          className='w-5/6  md:w-1/4 p-1 rounded-lg border-2 border-indigo-400 outline-none focus:border-indigo-500'
+          placeholder='Add an Exercise to this Workout'
+          name='exerciseName'
+          value={exerciseName}
+          onChange={onChange}
+          required
         />
+        <button
+          type='submit'
+          className='flex items-center w-1/3 md:w-1/6  max-w-xs cursor-pointer bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg p-1 font-semibold'
+        >
+          {' '}
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            className='h-6 w-6 mr-2'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke='currentColor'
+          >
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth={2}
+              d='M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z'
+            />
+          </svg>{' '}
+          Add Exercise
+        </button>
       </form>
       <div className='w-full flex flex-col md:grid md:grid-cols-2 md:gap-5 p-5'>
         {exercise.map((exercise) => (

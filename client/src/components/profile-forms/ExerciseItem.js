@@ -75,7 +75,7 @@ const ExerciseItem = ({
           ref={exerciseRef}
           type='text'
           name='exerciseName'
-          className='shadow text-2xl font-semibold appearance-none w-1/2 p-1 text-gray-600 leading-tight rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500'
+          className='shadow text-2xl font-semibold appearance-none w-full md:w-1/2 p-1 text-gray-600 leading-tight rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500'
           placeholder='Type the name of your workout'
           value={exerciseName}
           onChange={(e) => setExerciseName(e.target.value)}

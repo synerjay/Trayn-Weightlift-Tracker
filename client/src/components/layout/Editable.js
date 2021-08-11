@@ -50,14 +50,14 @@ const Editable = ({
         </div>
       ) : (
         <div
-          className={`flex items-center rounded p-1 -ml-4 text-gray-700 leading-tight whitespace-pre-wrap hover:shadow-outline editable-${type}`}
+          className={`flex items-center justify-center md:justify-start rounded p-1 -ml-4 text-gray-700 leading-tight whitespace-pre-wrap hover:shadow-outline editable-${type}`}
           onClick={() => setEditing(true)}
         >
           <span
             className={`${
               smallLetters
                 ? 'text-2xl text-gray-800 font-semibold'
-                : 'text-4xl font-semibold'
+                : 'text-4xl text-indigo-600 font-semibold text-center md:text-left'
             } ${text ? 'text-black' : 'text-gray-500'}`}
           >
             {text || placeholder || 'Choose a name'}
