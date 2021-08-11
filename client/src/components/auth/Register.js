@@ -502,7 +502,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               <div className='flex -mx-3'>
                 <div className='w-full px-3 mb-5'>
                   <label for='' className='text-xs font-semibold px-1'>
-                    Username
+                    Name
                   </label>
                   <div className='flex'>
                     <div className='w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center'>
@@ -511,9 +511,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                     <input
                       type='text'
                       className='w-full -ml-10 p-1 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500'
-                      placeholder='JohnSmith7'
-                      name='username'
-                      // value={username}
+                      placeholder='Name'
+                      name='name'
+                      value={name}
                       onChange={(e) => onChange(e)}
                       required
                     />
@@ -532,7 +532,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                     <input
                       type='email'
                       className='w-full -ml-10 p-1 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500'
-                      placeholder='johnsmith@example.com'
+                      placeholder='your@email.com'
                       name='email'
                       value={email}
                       onChange={(e) => onChange(e)}
@@ -554,8 +554,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                       type='password'
                       className='w-full -ml-10 p-1 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500'
                       placeholder='************'
-                      name='password1'
-                      // value={password1}
+                      name='password'
+                      value={password}
                       onChange={(e) => onChange(e)}
                       minLength='6'
                     />
