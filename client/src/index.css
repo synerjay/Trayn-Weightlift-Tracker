@@ -147,10 +147,10 @@ body {
   color: #333;
 }
 
-a {
+/* a {
   color: var(--primary-color);
   text-decoration: none;
-}
+} */
 
 ul {
   list-style: none;
@@ -490,10 +490,10 @@ button {
   width: 100%;
   top: 0;
   /* border-bottom: solid 1px var(--primary-color); */
-  opacity: 0.9;
+  /* opacity: 0.9; */
 }
 
-.navbar ul {
+/* .navbar ul {
   display: flex;
 }
 
@@ -509,7 +509,7 @@ button {
 
 .navbar .welcome span {
   margin-right: 0.6rem;
-}
+} */
 
 /* Landing Page */
 .landing {

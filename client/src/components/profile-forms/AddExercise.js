@@ -1,7 +1,7 @@
 import React, { Fragment, useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addExercise } from '../../actions/workout';
+import { addExercise, deleteWorkout } from '../../actions/workout';
 import ExerciseItem from './ExerciseItem';
 import { setAlert } from '../../actions/alert';
 import { format } from 'date-fns';
@@ -10,8 +10,14 @@ import { pullExercises } from '../../utils/exerciseData';
 import { legExercises } from '../../utils/exerciseData';
 import { customExercises } from '../../utils/exerciseData';
 import Editable from '../layout/Editable';
+import { Link } from 'react-router-dom';
 
-const AddExercise = ({ workout: { workout }, addExercise, history }) => {
+const AddExercise = ({
+  workout: { workout },
+  addExercise,
+  deleteWorkout,
+  history,
+}) => {
   const [formData, setFormData] = useState({
     exerciseName: '',
   });
@@ -33,6 +39,11 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
 
   const handleChangeName = () => {
     addExercise(workout._id, { workoutName: workoutName });
+  };
+
+  const handleDelete = () => {
+    deleteWorkout(workout._id);
+    history.push('/dashboard');
   };
 
   // Adding Exercises
@@ -133,6 +144,48 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
           />
         ))}
       </div>
+      <div className='flex w-full gap-x-7 justify-center items-center '>
+        <button
+          className='flex w-48   items-center mt-2 md:mb-0 bg-red-600 md:px-6 md:py-2 px-10  h-12 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-700'
+          onClick={() => handleDelete()}
+        >
+          {' '}
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            className='h-4 md:h-3 w-4 md:w-3 mr-0 md:mr-2'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke='currentColor'
+          >
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth={2}
+              d='M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16'
+            />
+          </svg>
+          Cancel Workout
+        </button>
+        <Link
+          className='flex w-44  items-center mt-2 md:mb-0 bg-indigo-600 md:px-6 md:py-2 px-10  h-12 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-indigo-700'
+          to='/dashboard'
+        >
+          {' '}
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            className='h-5 md:h-3 w-5 md:w-3 mr-2'
+            viewBox='0 0 20 20'
+            fill='currentColor'
+          >
+            <path
+              fillRule='evenodd'
+              d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z'
+              clipRule='evenodd'
+            />
+          </svg>
+          Finish Workout
+        </Link>
+      </div>
     </Fragment>
   );
 };
@@ -141,4 +194,6 @@ const mapStateToProps = (state) => ({
   workout: state.workout,
 });
 
-export default connect(mapStateToProps, { addExercise })(AddExercise);
+export default connect(mapStateToProps, { addExercise, deleteWorkout })(
+  AddExercise
+);
