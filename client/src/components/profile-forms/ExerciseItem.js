@@ -62,7 +62,7 @@ const ExerciseItem = ({
   };
 
   return (
-    <div className='bg-white mb-5 w-full  p-8 rounded-lg shadow-lg relative hover:shadow-2xl transition duration-500'>
+    <div className='bg-gray-100 mb-5 w-full  p-8 rounded-lg shadow-lg relative hover:shadow-2xl transition duration-500'>
       <Editable
         text={exerciseName}
         placeholder='Write an workout name'
@@ -75,7 +75,7 @@ const ExerciseItem = ({
           ref={exerciseRef}
           type='text'
           name='exerciseName'
-          className='shadow text-2xl font-semibold appearance-none border rounded w-1/2 p-1 text-gray-600 leading-tight focus:outline-none focus:shadow-outline border-blue-300'
+          className='shadow text-2xl font-semibold appearance-none w-1/2 p-1 text-gray-600 leading-tight rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500'
           placeholder='Type the name of your workout'
           value={exerciseName}
           onChange={(e) => setExerciseName(e.target.value)}
@@ -130,7 +130,7 @@ const ExerciseItem = ({
           ADD ONE MORE SET
         </button>
         <button
-          className='w-1/2 md:w-1/3  h-5 bg-green-500 flex justify-center items-center max-w-xs mx-auto hover:bg-green-300 focus:bg-green-200 text-white rounded-lg p-1 font-semibold'
+          className='w-1/2 md:w-1/3  h-5 bg-indigo-500 flex justify-center items-center max-w-xs mx-auto hover:bg-indigo-300 focus:bg-indigo-200 text-white rounded-lg p-1 font-semibold'
           onClick={(event) => handleSaveAll(event)}
           type='submit'
         >

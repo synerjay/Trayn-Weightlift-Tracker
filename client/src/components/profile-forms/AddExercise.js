@@ -76,7 +76,7 @@ const AddExercise = ({ workout: { workout }, addExercise, history }) => {
           ref={workoutRef}
           type='text'
           name='workoutName'
-          className='shadow text-4xl font-semibold appearance-none border rounded w-1/2 p-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300'
+          className='shadow text-4xl font-semibold appearance-none w-1/2 p-1 text-gray-600 leading-tight rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500'
           placeholder='Type the name of your workout'
           value={workoutName}
           onChange={(e) => setWorkoutName(e.target.value)}
