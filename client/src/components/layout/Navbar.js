@@ -9,13 +9,13 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     <div class='md:flex text-white text-xs hidden sm:block ml-2 gap-x-1 '>
       <Link
         to='/add-workout'
-        class='bg-indigo-300 hover:bg-gray-700 text-gray-900 p-1 rounded cursor-pointer ml-1 hover:text-green-400'
+        class='bg-indigo-600 hover:bg-indigo-700 text-white p-1 font-semibold rounded cursor-pointer hover:text-indigo-200'
       >
         New Workout
       </Link>
       <Link
         to='/dashboard'
-        class='bg-gray-100 hover:bg-gray-700 text-gray-900 p-1 rounded cursor-pointer hover:text-green-400'
+        class='bg-indigo-50 border-2 border-indigo-700 hover:bg-indigo-700 text-gray-700 p-1 rounded cursor-pointer hover:text-indigo-50'
       >
         Dashboard
       </Link>
@@ -60,13 +60,13 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         Members
       </Link> */}
       <Link
-        class='bg-gray-100 hover:bg-gray-700 text-gray-700 p-1 rounded cursor-pointer hover:text-green-400'
+        class='bg-indigo-50 border-2 border-indigo-700 hover:bg-indigo-700 text-gray-700 p-1 rounded cursor-pointer hover:text-indigo-50'
         to='/login'
       >
         Login
       </Link>
       <Link
-        class='bg-indigo-700 hover:bg-gray-700 text-white p-1 rounded cursor-pointer hover:text-green-200'
+        class='bg-indigo-600 hover:bg-indigo-700 text-gray-200 p-1 rounded cursor-pointer hover:text-indigo-200'
         to='/register'
       >
         Sign Up
@@ -75,9 +75,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   );
 
   return (
-    <header class='navbar w-full md:h-16 bg-indigo-500 p-1 flex justify-between items-center'>
+    <header class='navbar w-full md:h-16 bg-gray-200 p-1 flex justify-between items-center'>
       <div class='cursor-pointer'>
-        <h1 className='text-white text-xl font-bold'>
+        <h1 className='text-indigo-600 text-3xl font-bold'>
           <Link to='/'>TRAYN</Link>{' '}
         </h1>
         {/* <img

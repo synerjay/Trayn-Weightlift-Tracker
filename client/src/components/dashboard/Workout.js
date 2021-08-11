@@ -49,7 +49,7 @@ const Workout = ({ workouts, deleteWorkout, setWorkoutId, showModal }) => {
 
   return (
     <Fragment>
-      <table className=' w-1/2 my-2'>
+      <table className='w-full my-2'>
         <thead>
           <tr>
             <th className='w-full'> Your Workouts </th>

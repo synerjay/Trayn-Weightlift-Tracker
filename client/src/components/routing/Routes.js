@@ -30,7 +30,6 @@ const Routes = () => {
         {/* Underneath temporarily change this route so u can practice on Spotify APi / Remember to change back to Profiles component*/}
         <Route exact path='/profiles' component={Profiles} />
         <Route exact path='/profile/:id' component={Profile} />
-        <PrivateRoute exact path='/dashboard' component={Dashboard} />
         <PrivateRoute exact path='/create-profile' component={ProfileForm} />
         <PrivateRoute exact path='/edit-profile' component={ProfileForm} />
         <PrivateRoute exact path='/add-experience' component={AddExperience} />

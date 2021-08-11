@@ -15,6 +15,8 @@ import { loadUser } from './actions/auth';
 //Security Token and Actions
 import setAuthToken from './utils/setAuthToken';
 import { LOGOUT } from './actions/types';
+import PrivateRoute from './components/routing/PrivateRoute';
+import Dashboard from './components/dashboard/Dashboard';
 
 //Provider tag provides the components with the props that will be the redux states
 //This connects React and Redux together
@@ -45,6 +47,7 @@ const App = () => {
           <Navbar />
           <Switch>
             <Route exact path='/' component={Landing} />
+            <PrivateRoute exact path='/dashboard' component={Dashboard} />
             <Route component={Routes} />
           </Switch>
         </Fragment>

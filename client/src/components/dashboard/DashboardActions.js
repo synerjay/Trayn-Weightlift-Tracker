@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const DashboardActions = () => {
   return (
-    <div className='dash-buttons'>
+    <div className='block md:hidden'>
       {/* <Link to='/edit-profile' className='btn btn-light'>
         <i className='fas fa-user-circle text-primary'></i> Edit Profile
       </Link> */}
@@ -15,7 +15,7 @@ const DashboardActions = () => {
       </Link> */}
       <Link
         to='/add-workout'
-        className='flex items-center w-1/6  max-w-xs cursor-pointer bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg p-1 font-semibold'
+        className='flex items-center w-44 max-w-xs cursor-pointer bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg p-1 font-semibold'
       >
         {' '}
         <svg
