@@ -27,9 +27,24 @@ const CustomModal = ({ component: Component, setShowModal, workoutId }) => {
               </div>
               <div className='flex flex-row'>
                 <Link
-                  className='mt-2 md:mb-0 bg-indigo-500 md:px-6 md:py-3 px-10 py-0 h-12 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-indigo-700'
+                  className='flex items-center mt-2 md:mb-0 bg-indigo-500 md:px-6 md:py-3 px-10 py-0 h-12 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-indigo-700'
                   to='/add-exercise'
                 >
+                  {' '}
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    className='h-4 w-4 mr-2'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    stroke='currentColor'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth={2}
+                      d='M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z'
+                    />
+                  </svg>
                   Edit Workout
                 </Link>
                 <button
@@ -57,18 +72,9 @@ const CustomModal = ({ component: Component, setShowModal, workoutId }) => {
               <Component
                 setWorkoutHeader={setWorkoutHeader}
                 workoutId={workoutId}
+                setShowModal={setShowModal}
               />
             </div>
-            {/*footer*/}
-            {/* <div className=' h-px bg-opacity-0 bg-transparent flex items-center justify-end p-6 rounded-b'>
-              <button
-                className='text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
-                type='button'
-                onClick={() => setShowModal(false)}
-              >
-                Close
-              </button>
-            </div> */}
           </div>
         </div>
       </div>

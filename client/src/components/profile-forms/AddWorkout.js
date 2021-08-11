@@ -14,7 +14,9 @@ const AddWorkout = ({ addWorkout, history }) => {
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Choose Your Workout</h1>
+      <h1 className='text-4xl mb-5 font-semibold text-indigo-700'>
+        Choose Your Workout
+      </h1>
       {showModal ? (
         <AddWorkoutModal
           addWorkout={addWorkout}

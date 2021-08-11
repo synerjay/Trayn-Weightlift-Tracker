@@ -111,7 +111,7 @@ const ExerciseItem = ({
       </table>
       <div className='flex flex-col gap-y-5'>
         <button
-          className='w-full h-5 bg-gray-300 flex justify-center items-center max-w-xs mx-auto hover:bg-gray-200 focus:bg-gray-200 text-gray-700 rounded-lg p-1 text-sm font-semibold'
+          className='w-full h-5 bg-gray-400 flex justify-center items-center max-w-xs mx-auto hover:bg-gray-500 focus:bg-gray-400 focus:border-indigo-500 focus:outline-none text-gray-200 rounded-lg p-1 text-sm font-semibold'
           type='button'
           onClick={() => addFormFields()}
         >
