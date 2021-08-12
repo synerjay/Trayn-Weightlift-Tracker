@@ -496,8 +496,9 @@ tr th:nth-child(1) {
 }
 
 .WorkoutTable th {
-  background: var(--light-color);
-  color: #fff;
+  /* background: var(--light-color); */
+  background: #fff;
+  color: #696969;
 }
 
 /* Navbar */

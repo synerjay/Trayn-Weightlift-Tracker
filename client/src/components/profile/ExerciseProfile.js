@@ -8,9 +8,12 @@ const ExerciseProfile = ({ exercise: { name, sets } }) => {
 
       <table className='WorkoutTable w-full'>
         <thead>
-          <tr>
+          <tr className='shadow-md'>
             <th className='md:w-2 w-2 text-center'>Set</th>
-            <th className='md:w-32 w-36  text-center'>Weight x Reps</th>
+            <th />
+            <th />
+            <th />
+            <th className='md:w-32 w-36  text-center'>Kg x Reps</th>
           </tr>
         </thead>
 

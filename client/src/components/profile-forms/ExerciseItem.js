@@ -84,7 +84,7 @@ const ExerciseItem = ({
 
       <table className='WorkoutTable'>
         <thead>
-          <tr>
+          <tr className='shadow-md'>
             <th className='md:w-5 w-10 text-center'>Set</th>
             <th className='md:w-32 w-36  text-center'>Kg</th>
             <th className='md:w-32 w-36 text-center'>Reps</th>

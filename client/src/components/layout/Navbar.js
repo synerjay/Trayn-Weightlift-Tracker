@@ -6,7 +6,7 @@ import { logout } from '../../actions/auth';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
-    <div class='md:flex text-white text-xs hidden sm:block ml-2 gap-x-1 '>
+    <div class='md:flex text-white text-xs hidden md:hidden sm:block ml-2 gap-x-1 '>
       <Link
         to='/add-workout'
         class='bg-indigo-600 hover:bg-indigo-700 text-white p-1 font-semibold rounded cursor-pointer hover:text-indigo-200'

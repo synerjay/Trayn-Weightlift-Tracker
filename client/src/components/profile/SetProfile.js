@@ -5,6 +5,9 @@ const SetProfile = ({ set: { weight, reps }, index }) => {
     <>
       <tr key={index}>
         <td>{index + 1}</td>
+        <td />
+        <td />
+        <td />
         <td>
           {weight} kg x {reps}
         </td>
