@@ -43,16 +43,16 @@ const Workout = ({ workouts, deleteWorkout, setWorkoutId, showModal }) => {
           {workout.exercise.length}
         </span>
       </td>
-      <td class='p-1 flex flex-col space-x-0 space-y-5 md:space-y-0 justify-center align-items md:flex-row md:space-x-5'>
+      <td class='p-0 md:space-y-0 justify-center align-items space-x-5'>
         <button
           onClick={() => handleClick(workout._id)}
-          class='text-gray-400 hover:text-gray-600 md:mr-2'
+          class='text-gray-400 hover:text-gray-600 mr-1'
         >
           <i class='material-icons-outlined text-base'>visibility</i>
         </button>
         <button
           onClick={() => deleteWorkout(workout._id)}
-          class='text-red-400 hover:text-red-600  md:ml-2'
+          class='text-red-400 hover:text-red-600  ml-1'
         >
           <i class='material-icons-round text-base'>delete_outline</i>
         </button>
