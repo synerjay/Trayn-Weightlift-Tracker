@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { logout } from '../../actions/auth';
 
-const DashboardActions = () => {
+const DashboardActions = ({ logout }) => {
   return (
     <div class='py-12 px-10 w-1/4 hidden md:flex md:flex-col bg-gray-200'>
       <Link
@@ -45,7 +48,7 @@ const DashboardActions = () => {
           <li>
             <a
               href='#'
-              class='flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200 hover:text-indigo-600'
+              class='flex items-center text-sm font-semibold text-gray-500 transition duration-200 hover:text-indigo-600'
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -158,11 +161,15 @@ const DashboardActions = () => {
           </li>
         </ul>
       </div>
-      <div class='flex mt-20 space-x-4 items-center'>
-        <div>
+      <div class=''>
+        <a
+          onClick={logout}
+          // href='#'
+          class='flex mt-20 space-x-4 items-center font-semibold text-gray-500 hover:text-indigo-600 transition duration-200 cursor-pointer'
+        >
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            class='h-6 w-6 text-gray-400 hover:text-indigo-600 transition duration-200'
+            class='h-6 w-6 text-gray-400'
             fill='none'
             viewBox='0 0 24 24'
             stroke='currentColor'
@@ -174,16 +181,15 @@ const DashboardActions = () => {
               d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1'
             />
           </svg>
-        </div>
-        <a
-          href='#'
-          class='block font-semibold text-gray-500 hover:text-indigo-600 transition duration-200'
-        >
-          Logout
+          <p>Logout</p>
         </a>
       </div>
     </div>
   );
 };
 
-export default DashboardActions;
+DashboardActions.propTypes = {
+  logout: PropTypes.func.isRequired,
+};
+
+export default connect(null, { logout })(DashboardActions);
