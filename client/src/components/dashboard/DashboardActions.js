@@ -9,7 +9,7 @@ const DashboardActions = ({ logout }) => {
     <div class='py-12 px-10 w-1/4 hidden md:flex md:flex-col bg-gray-200'>
       <Link
         to='/add-workout'
-        class='flex items-center space-x-2 mt-6 p-1 bg-indigo-600 rounded-md'
+        class='flex items-center space-x-2 mt-6 p-1 bg-indigo-500 rounded-md'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -46,8 +46,8 @@ const DashboardActions = ({ logout }) => {
             </Link>
           </li>
           <li>
-            <a
-              href='#'
+            <Link
+              to='/activity'
               class='flex items-center text-sm font-semibold text-gray-500 transition duration-200 hover:text-indigo-600'
             >
               <svg
@@ -64,10 +64,10 @@ const DashboardActions = ({ logout }) => {
                   d='M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2'
                 />
               </svg>
-              Library
-            </a>
+              Activity
+            </Link>
           </li>
-          <li>
+          {/* <li>
             <a
               href='#'
               class='flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200'
@@ -130,7 +130,7 @@ const DashboardActions = ({ logout }) => {
               </svg>
               Payouts
             </a>
-          </li>
+          </li> */}
           <li>
             <a
               href='#'

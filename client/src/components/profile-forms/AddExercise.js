@@ -74,7 +74,7 @@ const AddExercise = ({
   }, [workout]);
 
   return (
-    <Fragment>
+    <div>
       <Editable
         text={workoutName}
         placeholder='Write an workout name'
@@ -186,7 +186,7 @@ const AddExercise = ({
           Finish Workout
         </Link>
       </div>
-    </Fragment>
+    </div>
   );
 };
 
