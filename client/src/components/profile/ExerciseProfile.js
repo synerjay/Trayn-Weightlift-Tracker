@@ -6,7 +6,7 @@ const ExerciseProfile = ({ exercise: { name, sets } }) => {
     <div className='bg-gray-100 mb-5 w-full  p-8 rounded-lg shadow-lg relative hover:shadow-2xl transition duration-500'>
       <h1 className='text-2xl text-gray-800 font-semibold mb-3'>{name}</h1>
 
-      <table className='table w-full'>
+      <table className='WorkoutTable w-full'>
         <thead>
           <tr>
             <th className='md:w-2 w-2 text-center'>Set</th>

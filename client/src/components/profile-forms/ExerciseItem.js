@@ -82,7 +82,7 @@ const ExerciseItem = ({
         />
       </Editable>
 
-      <table className='table'>
+      <table className='WorkoutTable'>
         <thead>
           <tr>
             <th className='md:w-5 w-10 text-center'>Set</th>
