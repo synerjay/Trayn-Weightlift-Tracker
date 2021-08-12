@@ -43,22 +43,16 @@ const Workout = ({ workouts, deleteWorkout, setWorkoutId, showModal }) => {
           {workout.exercise.length}
         </span>
       </td>
-      <td class='p-1 space-x-5'>
+      <td class='p-1 flex flex-col space-x-0 space-y-5 md:space-y-0 justify-center align-items md:flex-row md:space-x-5'>
         <button
           onClick={() => handleClick(workout._id)}
-          class='text-gray-400 hover:text-gray-100 mr-2'
+          class='text-gray-400 hover:text-gray-600 md:mr-2'
         >
           <i class='material-icons-outlined text-base'>visibility</i>
         </button>
-        {/* <Link
-          to='/add-exercise'
-          class='text-gray-400 hover:text-gray-100  mx-2'
-        >
-          <i class='material-icons-outlined text-base'>edit</i>
-        </Link> */}
         <button
           onClick={() => deleteWorkout(workout._id)}
-          class='text-red-400 hover:text-gray-100  ml-2'
+          class='text-red-400 hover:text-red-600  md:ml-2'
         >
           <i class='material-icons-round text-base'>delete_outline</i>
         </button>
@@ -71,7 +65,7 @@ const Workout = ({ workouts, deleteWorkout, setWorkoutId, showModal }) => {
       <div class='overflow-auto lg:overflow-visible '>
         <table class='table text-gray-400 border-separate space-y-6 text-sm'>
           <thead class='bg-white shadow-lg text-gray-500'>
-            <tr>
+            <tr className='text-indigo-600'>
               <th class='p-1'>Workout</th>
               <th class='p-1 text-left'>Date</th>
               <th class='p-1 text-left'>Exercises</th>
