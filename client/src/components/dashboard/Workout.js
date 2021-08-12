@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteWorkout } from '../../actions/workout';
+import { Link } from 'react-router-dom';
 
 const Workout = ({ workouts, deleteWorkout, setWorkoutId, showModal }) => {
   const handleClick = (id) => {
@@ -42,16 +43,25 @@ const Workout = ({ workouts, deleteWorkout, setWorkoutId, showModal }) => {
           {workout.exercise.length}
         </span>
       </td>
-      <td class='p-1 '>
-        <a href='#' class='text-gray-400 hover:text-gray-100 mr-2'>
+      <td class='p-1 space-x-5'>
+        <button
+          onClick={() => handleClick(workout._id)}
+          class='text-gray-400 hover:text-gray-100 mr-2'
+        >
           <i class='material-icons-outlined text-base'>visibility</i>
-        </a>
-        <a href='#' class='text-gray-400 hover:text-gray-100  mx-2'>
+        </button>
+        {/* <Link
+          to='/add-exercise'
+          class='text-gray-400 hover:text-gray-100  mx-2'
+        >
           <i class='material-icons-outlined text-base'>edit</i>
-        </a>
-        <a href='#' class='text-gray-400 hover:text-gray-100  ml-2'>
+        </Link> */}
+        <button
+          onClick={() => deleteWorkout(workout._id)}
+          class='text-red-400 hover:text-gray-100  ml-2'
+        >
           <i class='material-icons-round text-base'>delete_outline</i>
-        </a>
+        </button>
       </td>
     </tr>
   ));
