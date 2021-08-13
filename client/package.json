@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^12.8.1",
     "axios": "^0.21.1",
     "date-fns": "^2.19.0",
+    "luxon": "^2.0.2",
     "moment": "^2.29.1",
     "nivo": "^0.31.0",
     "react": "^17.0.1",

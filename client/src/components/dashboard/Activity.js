@@ -1,54 +1,92 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import DashboardActions from './DashboardActions';
 import { ResponsiveBar } from '@nivo/bar';
+import { getWorkouts } from '../../actions/workout';
+import { DateTime } from 'luxon';
+import { connect } from 'react-redux';
 
-const Activity = () => {
-  const data = [
-    {
-      Day: 1,
-      number: 5,
-    },
-    {
-      Day: 2,
-      number: 4,
-    },
-    {
-      Day: 3,
-      number: 1,
-    },
-    {
-      Day: 4,
-      number: 10,
-    },
-    {
-      Day: 5,
-      number: 20,
-    },
-    {
-      Day: 6,
-      number: 15,
-    },
-    {
-      Day: 7,
-      number: 14,
-    },
-    {
-      Day: 8,
-      number: 11,
-    },
-  ];
+const Activity = ({ workout: { workouts } }) => {
+  // const data = [
+  //   {
+  //     Week: 1,
+  //     Frequency: 5,
+  //   },
+  //   {
+  //     Week: 2,
+  //     Frequency: 2,
+  //   },
+  //   {
+  //     Week: 3,
+  //     Frequency: 1,
+  //   },
+  //   {
+  //     Week: 4,
+  //     Frequency: 6,
+  //   },
+  //   {
+  //     Week: 5,
+  //     Frequency: 9,
+  //   },
+  //   {
+  //     Week: 6,
+  //     Frequency: 15,
+  //   },
+  //   {
+  //     Week: 7,
+  //     Frequency: 8,
+  //   },
+  //   {
+  //     Week: 8,
+  //     Frequency: 5,
+  //   },
+  // ];
+
+  // To get week and the number of workouts done in that week
+
+  // Map through the data
+  console.log(workouts);
+
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const frequencyObject = workouts
+      .map((workout) => {
+        return DateTime.fromISO(workout.date).weekNumber;
+      })
+      .reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
+    const frequencyKeys = Object.keys(frequencyObject).map((item) => ({
+      Week: item,
+      Frequency: frequencyObject[item],
+    }));
+    setData(frequencyKeys);
+  }, [workouts]);
+
+  // needs to be
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
+  const weekToday = DateTime.now().weekNumber; // Date now -- count the workouts that fall to this week
+
+  const parseDateWeek = DateTime.fromISO(
+    '2021-07-28T10:42:49.370+00:00'
+  ).weekNumber; // count the
+  const parseDate = DateTime.fromISO('2021-07-28T10:42:49.370+00:00');
+  console.log(parseDate);
 
   return (
     <div className='min-h-screen flex mt-8'>
       <DashboardActions />
       <div className='w-full flex-grow py-10 px-2'>
-        <div class='flex h-96 w-96 space-x-10 justify-around p-6 bg-white rounded-xl space-x-2 mt-10 shadow-lg'>
+        <div class='flex flex-col items-center h-1/2 w-1/2 space-x-10 justify-around p-6 bg-white rounded-xl space-x-2 mt-10 shadow-lg'>
           {/* Start of component  */}
+          <h2>Your Workout Frequency per Week</h2>
           <ResponsiveBar
             data={data}
-            keys={['number']}
-            indexBy='Day'
-            margin={{ top: 16, right: 16, bottom: 32, left: 16 }}
+            keys={['Frequency']}
+            indexBy='Week'
+            margin={{ top: 16, right: 16, bottom: 32, left: -16 }}
             padding={0.4}
             colors='#6366F1'
             theme={{
@@ -80,7 +118,11 @@ const Activity = () => {
   );
 };
 
-export default Activity;
+const mapStateToProps = (state) => ({
+  workout: state.workout,
+});
+
+export default connect(mapStateToProps)(Activity);
 
 {
   /* <div class='flex items-center justify-around p-6 bg-white w-64 rounded-xl space-x-2 mt-10 shadow-lg'>
