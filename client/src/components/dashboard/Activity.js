@@ -1,87 +1,69 @@
 import React, { useEffect, useState } from 'react';
 import DashboardActions from './DashboardActions';
 import { ResponsiveBar } from '@nivo/bar';
+import { ResponsiveCalendar } from '@nivo/calendar';
 import { getWorkouts } from '../../actions/workout';
 import { DateTime } from 'luxon';
 import { connect } from 'react-redux';
 
 const Activity = ({ workout: { workouts } }) => {
-  // const data = [
-  //   {
-  //     Week: 1,
-  //     Frequency: 5,
-  //   },
-  //   {
-  //     Week: 2,
-  //     Frequency: 2,
-  //   },
-  //   {
-  //     Week: 3,
-  //     Frequency: 1,
-  //   },
-  //   {
-  //     Week: 4,
-  //     Frequency: 6,
-  //   },
-  //   {
-  //     Week: 5,
-  //     Frequency: 9,
-  //   },
-  //   {
-  //     Week: 6,
-  //     Frequency: 15,
-  //   },
-  //   {
-  //     Week: 7,
-  //     Frequency: 8,
-  //   },
-  //   {
-  //     Week: 8,
-  //     Frequency: 5,
-  //   },
-  // ];
-
-  // To get week and the number of workouts done in that week
-
   // Map through the data
   console.log(workouts);
 
   const [data, setData] = useState(null);
+  const [calendarData, setCalendarData] = useState(null);
 
+  // Weekly Frequency Data
   useEffect(() => {
     const frequencyObject = workouts
       .map((workout) => {
         return DateTime.fromISO(workout.date).weekNumber;
       })
       .reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
-    const frequencyKeys = Object.keys(frequencyObject).map((item) => ({
+    const weekFrequencyData = Object.keys(frequencyObject).map((item) => ({
       Week: item,
       Frequency: frequencyObject[item],
     }));
-    setData(frequencyKeys);
+    setData(weekFrequencyData);
+  }, [workouts]);
+
+  // Daily Calendar Data
+  useEffect(() => {
+    const frequencyObject = workouts
+      .map((workout) => {
+        return DateTime.fromISO(workout.date).toISODate();
+      })
+      .reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
+    const dailyFrequencyData = Object.keys(frequencyObject).map((item) => ({
+      day: item,
+      value: frequencyObject[item],
+    }));
+    setCalendarData(dailyFrequencyData);
   }, [workouts]);
 
   // needs to be
 
   useEffect(() => {
-    console.log(data);
-  }, [data]);
+    console.log(calendarData);
+  }, [calendarData]);
 
   const weekToday = DateTime.now().weekNumber; // Date now -- count the workouts that fall to this week
 
   const parseDateWeek = DateTime.fromISO(
     '2021-07-28T10:42:49.370+00:00'
   ).weekNumber; // count the
-  const parseDate = DateTime.fromISO('2021-07-28T10:42:49.370+00:00');
-  console.log(parseDate);
+
+  const parseDate = DateTime.fromISO(
+    '2021-07-28T10:42:49.370+00:00'
+  ).toISODate();
 
   return (
     <div className='min-h-screen flex mt-8'>
       <DashboardActions />
-      <div className='w-full flex-grow py-10 px-2'>
-        <div class='flex flex-col items-center h-1/2 w-1/2 space-x-10 justify-around p-6 bg-white rounded-xl space-x-2 mt-10 shadow-lg'>
-          {/* Start of component  */}
+      <div className='w-full flex space-x-5 py-10 px-2'>
+        <div class='flex flex-col items-center h-1/2 w-2/5  space-x-10 justify-around p-6 bg-white rounded-xl space-x-2 mt-10 shadow-lg'>
           <h2>Your Workout Frequency per Week</h2>
+          <h2>parsedate is {parseDate}</h2>
           <ResponsiveBar
             data={data}
             keys={['Frequency']}
@@ -111,6 +93,36 @@ const Activity = ({ workout: { workouts } }) => {
             labelSkipHeight={12}
             isInteractive={false}
             motionStiffness={140}
+          />
+        </div>
+        <div class='flex flex-col items-center h-1/2 w-5/6 justify-around p-3 bg-white rounded-xl mt-10 shadow-lg'>
+          {/* Start of component  */}
+          <h2>Your Daily Progress</h2>
+          <ResponsiveCalendar
+            data={calendarData}
+            from='2021-07-01'
+            to='2021-08-13'
+            emptyColor='#eeeeee'
+            colors={['#f47560', '#e8c1a0', '#97e3d5', '#61cdbb']}
+            minValue={0}
+            maxValue={1}
+            margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+            yearSpacing={60}
+            monthBorderColor='#ffffff'
+            dayBorderWidth={2}
+            dayBorderColor='#ffffff'
+            legends={[
+              {
+                anchor: 'bottom-right',
+                direction: 'row',
+                translateY: 36,
+                itemCount: 4,
+                itemWidth: 42,
+                itemHeight: 36,
+                itemsSpacing: 14,
+                itemDirection: 'right-to-left',
+              },
+            ]}
           />
         </div>
       </div>
