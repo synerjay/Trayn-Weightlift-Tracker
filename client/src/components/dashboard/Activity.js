@@ -7,25 +7,34 @@ import { DateTime } from 'luxon';
 import { connect } from 'react-redux';
 
 const Activity = ({ workout: { workouts } }) => {
-  // Map through the data
-  console.log(workouts);
-
+  // Local State
   const [data, setData] = useState(null);
   const [calendarData, setCalendarData] = useState(null);
+
+  // Date constants
   const today = DateTime.now().toLocaleString(DateTime.DATETIME_MED); // Date and time now
+  const twoWeeksBefore = DateTime.now().weekNumber - 2;
+  const lastWeek = DateTime.now().weekNumber - 1;
+  const weekToday = DateTime.now().weekNumber;
 
   // Weekly Frequency Data
   useEffect(() => {
-    const frequencyObject = workouts
+    const filteredWorkouts = workouts
       .map((workout) => {
-        const twoWeeksBefore = DateTime.now().weekNumber - 2;
-        const lastWeek = DateTime.now().weekNumber - 1;
-        const weekToday = DateTime.now().weekNumber;
-        if (DateTime.fromISO(workout.date).weekNumber == twoWeeksBefore) {
-          return '2 Weeks Before';
-        } else if (DateTime.fromISO(workout.date).weekNumber == lastWeek) {
+        return DateTime.fromISO(workout.date).weekNumber;
+      })
+      .filter(
+        (item) =>
+          item == twoWeeksBefore || item == lastWeek || item == weekToday
+      );
+
+    const frequencyObject = filteredWorkouts
+      .map((workout) => {
+        if (workout == twoWeeksBefore) {
+          return 'Weeks Before';
+        } else if (workout == lastWeek) {
           return 'Last Week';
-        } else {
+        } else if (workout == weekToday) {
           return 'This Week';
         }
       })
@@ -51,16 +60,6 @@ const Activity = ({ workout: { workouts } }) => {
     setCalendarData(dailyFrequencyData);
   }, [workouts]);
 
-  // needs to be
-
-  const twoWeeksBefore = DateTime.now().weekNumber - 2;
-  const lastWeek = DateTime.now().weekNumber - 1;
-  const weekToday = DateTime.now().weekNumber; // Date now -- count the workouts that fall to this week
-
-  console.log(twoWeeksBefore);
-  console.log(lastWeek);
-  console.log(weekToday);
-
   const parseDateWeek = DateTime.fromISO(
     '2021-07-28T10:42:49.370+00:00'
   ).weekNumber; // count the
@@ -70,8 +69,6 @@ const Activity = ({ workout: { workouts } }) => {
   ).toISODate();
 
   return (
-    // <div className='h-screen flex mt-8'>
-    //   <DashboardActions />
     <div className='w-full flex flex-col md:flex-row h-auto md:max-h-96 space-y-5 md:space-y-0 md:space-x-4 py-0 px-0'>
       <div className='flex w-full flex-col space-y-5'>
         <div class='flex justify-between w-full h-auto p-1 bg-white rounded-xl mt-0 shadow-lg'>
@@ -141,14 +138,14 @@ const Activity = ({ workout: { workouts } }) => {
       </div>
       <div class='flex flex-col items-center h-96 w-full md:w-2/5 justify-around p-6 bg-white rounded-xl mt-0 shadow-lg'>
         <h2 className='text-md text-indigo-600 font-bold text-center'>
-          Your Weekly Workout Frequency
+          Weekly Workout Frequency
         </h2>
         <ResponsiveBar
           data={data}
           keys={['Frequency']}
           indexBy='Week'
-          margin={{ top: 16, right: 16, bottom: 32, left: -16 }}
-          padding={0.4}
+          margin={{ top: 16, right: 0, bottom: 20, left: 0 }}
+          padding={0.2}
           colors='#6366F1'
           theme={{
             background: '#ffffff',
@@ -162,8 +159,8 @@ const Activity = ({ workout: { workouts } }) => {
           valueScale={{ type: 'linear' }}
           axisLeft={false}
           axisBottom={{
-            tickSize: 0,
-            tickPadding: 12,
+            tickSize: 5,
+            tickPadding: 5,
             textColor: '#000000',
           }}
           enableGridX={false}
@@ -175,7 +172,6 @@ const Activity = ({ workout: { workouts } }) => {
         />
       </div>
     </div>
-    // </div>
   );
 };
 
