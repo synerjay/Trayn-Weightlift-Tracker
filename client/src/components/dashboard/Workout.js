@@ -54,7 +54,7 @@ const Workout = ({ workouts, deleteWorkout, setWorkoutId, showModal }) => {
   ));
 
   return (
-    <div class='mt-7 w-full col-span-12'>
+    <div class='mt-2 md:mt-7 w-full col-span-12'>
       <div class='overflow-auto lg:overflow-visible '>
         <table class='table w-full text-gray-400 border-separate space-y-6 text-sm'>
           <thead class='bg-white shadow-lg text-gray-500'>

@@ -6,7 +6,7 @@ import { logout } from '../../actions/auth';
 
 const DashboardActions = ({ logout }) => {
   return (
-    <div class='py-12 px-10 w-1/4 hidden mr-2 md:flex md:flex-col bg-gray-200'>
+    <div class='py-12 px-7 w-1/5 hidden mr-1 md:flex md:flex-col bg-gray-200'>
       <Link
         to='/add-workout'
         class='flex items-center space-x-2 mt-6 p-1 bg-indigo-500 rounded-md'

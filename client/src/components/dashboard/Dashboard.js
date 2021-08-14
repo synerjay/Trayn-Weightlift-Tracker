@@ -37,7 +37,7 @@ const Dashboard = ({
   ) : (
     <div className='min-h-screen flex mt-8'>
       <DashboardActions />
-      <div className='w-4/5  flex-grow-0 py-10 px-2'>
+      <div className='w-full md:w-4/5 flex-grow-0 py-10 px-2'>
         <div className='my-5 mx-2'>
           <h4 class='text-sm font-bold text-indigo-600'>
             Hi {user && user.name},
@@ -59,7 +59,7 @@ const Dashboard = ({
             <div className='block md:hidden'>
               <Link
                 to='/add-workout'
-                className='flex items-center w-44 max-w-xs cursor-pointer bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg p-1 font-semibold'
+                className='flex items-center mb-7 w-44 max-w-xs cursor-pointer bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg p-1 font-semibold'
               >
                 {' '}
                 <svg

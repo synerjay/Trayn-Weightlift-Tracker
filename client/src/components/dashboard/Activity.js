@@ -60,8 +60,8 @@ const Activity = ({ workout: { workouts } }) => {
   return (
     // <div className='h-screen flex mt-8'>
     //   <DashboardActions />
-    <div className='w-full  flex max-h-96 space-x-5 py-0 px-2'>
-      <div class='flex flex-col items-center h-96 w-2/5  space-x-10 justify-around p-6 bg-white rounded-xl space-x-2 mt-0 shadow-lg'>
+    <div className='w-full flex flex-col align-items justify-center md:flex-row h-auto md:max-h-96 space-y-5 md:space-y-0 md:space-x-4 py-0 px-2'>
+      <div class='flex flex-col items-center h-96 w-full md:w-2/5 justify-around p-6 bg-white rounded-xl mt-0 shadow-lg'>
         <h2>Your Workout Frequency per Week</h2>
         <h2>parsedate is {parseDate}</h2>
         <ResponsiveBar
@@ -95,7 +95,7 @@ const Activity = ({ workout: { workouts } }) => {
           motionStiffness={140}
         />
       </div>
-      <div class='flex flex-col items-center h-96 w-5/6 justify-around p-3 bg-white rounded-xl mt-0 shadow-lg'>
+      <div class='flex flex-col items-center h-60 w-full md:w-5/6 justify-around p-1 bg-white rounded-xl mt-0 shadow-lg'>
         {/* Start of component  */}
         <h2>Your Daily Progress</h2>
         <ResponsiveCalendar
