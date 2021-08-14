@@ -46,66 +46,62 @@ const Dashboard = ({
             Welcome to Trayn!
           </h1>
         </div>
-        {profile !== null ? (
-          <Fragment>
-            {showWorkoutModal ? (
-              <CustomModal
-                component={WorkoutProfile}
-                setShowModal={setShowWorkoutModal}
-                workoutId={workoutId}
-              />
-            ) : null}
-
-            <div className='block md:hidden'>
-              <Link
-                to='/add-workout'
-                className='flex items-center mb-7 w-44 max-w-xs cursor-pointer bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg p-1 font-semibold'
-              >
-                {' '}
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  className='h-6 w-6 mr-2'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  stroke='currentColor'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth={2}
-                    d='M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z'
-                  />
-                </svg>
-                New Workout
-              </Link>
-            </div>
-            {/* <Experience experience={profile.experience} /> */}
-            {/* <Education education={profile.education} /> */}
-
-            <Activity />
-            <Workout
-              workouts={workouts}
-              showModal={setShowWorkoutModal}
-              setWorkoutId={setWorkoutId}
+        <Fragment>
+          {showWorkoutModal ? (
+            <CustomModal
+              component={WorkoutProfile}
+              setShowModal={setShowWorkoutModal}
+              workoutId={workoutId}
             />
+          ) : null}
 
-            <div className='my-2'>
-              <button
-                className='btn btn-danger'
-                onClick={() => deleteAccount()}
+          <div className='block md:hidden'>
+            <Link
+              to='/add-workout'
+              className='flex items-center mb-7 w-44 max-w-xs cursor-pointer bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg p-1 font-semibold'
+            >
+              {' '}
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                className='h-6 w-6 mr-2'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
               >
-                <i className='fas fa-user-minus' /> Delete My Account
-              </button>
-            </div>
-          </Fragment>
-        ) : (
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth={2}
+                  d='M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z'
+                />
+              </svg>
+              New Workout
+            </Link>
+          </div>
+          {/* <Experience experience={profile.experience} /> */}
+          {/* <Education education={profile.education} /> */}
+
+          <Activity />
+          <Workout
+            workouts={workouts}
+            showModal={setShowWorkoutModal}
+            setWorkoutId={setWorkoutId}
+          />
+
+          <div className='my-2'>
+            <button className='btn btn-danger' onClick={() => deleteAccount()}>
+              <i className='fas fa-user-minus' /> Delete My Account
+            </button>
+          </div>
+        </Fragment>
+        {/* ) : (
           <Fragment>
             <p>You have not yet setup a profile, please add some info</p>
             <Link to='/create-profile' className='btn btn-primary my-1'>
               Create Profile
             </Link>
           </Fragment>
-        )}
+        )} */}
       </div>
     </div>
   );

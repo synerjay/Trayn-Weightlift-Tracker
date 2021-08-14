@@ -12,12 +12,22 @@ const Activity = ({ workout: { workouts } }) => {
 
   const [data, setData] = useState(null);
   const [calendarData, setCalendarData] = useState(null);
+  const today = DateTime.now().toLocaleString(DateTime.DATETIME_MED); // Date and time now
 
   // Weekly Frequency Data
   useEffect(() => {
     const frequencyObject = workouts
       .map((workout) => {
-        return DateTime.fromISO(workout.date).weekNumber;
+        const twoWeeksBefore = DateTime.now().weekNumber - 2;
+        const lastWeek = DateTime.now().weekNumber - 1;
+        const weekToday = DateTime.now().weekNumber;
+        if (DateTime.fromISO(workout.date).weekNumber == twoWeeksBefore) {
+          return '2 Weeks Before';
+        } else if (DateTime.fromISO(workout.date).weekNumber == lastWeek) {
+          return 'Last Week';
+        } else {
+          return 'This Week';
+        }
       })
       .reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
     const weekFrequencyData = Object.keys(frequencyObject).map((item) => ({
@@ -43,11 +53,13 @@ const Activity = ({ workout: { workouts } }) => {
 
   // needs to be
 
-  useEffect(() => {
-    console.log(calendarData);
-  }, [calendarData]);
-
+  const twoWeeksBefore = DateTime.now().weekNumber - 2;
+  const lastWeek = DateTime.now().weekNumber - 1;
   const weekToday = DateTime.now().weekNumber; // Date now -- count the workouts that fall to this week
+
+  console.log(twoWeeksBefore);
+  console.log(lastWeek);
+  console.log(weekToday);
 
   const parseDateWeek = DateTime.fromISO(
     '2021-07-28T10:42:49.370+00:00'
@@ -65,7 +77,7 @@ const Activity = ({ workout: { workouts } }) => {
         <div class='flex justify-between w-full h-auto p-1 bg-white rounded-xl mt-0 shadow-lg'>
           <div>
             <h2 className='text-2xl text-indigo-700 font-bold text-left mb-2'>
-              Today is August 13th, 2021
+              Today is {today}
             </h2>
             <h2 className='text-lg mb-2 text-gray-600 font-semibold'>
               {' '}
