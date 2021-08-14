@@ -60,10 +60,77 @@ const Activity = ({ workout: { workouts } }) => {
   return (
     // <div className='h-screen flex mt-8'>
     //   <DashboardActions />
-    <div className='w-full flex flex-col align-items justify-center md:flex-row h-auto md:max-h-96 space-y-5 md:space-y-0 md:space-x-4 py-0 px-2'>
+    <div className='w-full flex flex-col md:flex-row h-auto md:max-h-96 space-y-5 md:space-y-0 md:space-x-4 py-0 px-0'>
+      <div className='flex w-full flex-col space-y-5'>
+        <div class='flex justify-between w-full h-auto p-1 bg-white rounded-xl mt-0 shadow-lg'>
+          <div>
+            <h2 className='text-2xl text-indigo-700 font-bold text-left mb-2'>
+              Today is August 13th, 2021
+            </h2>
+            <h2 className='text-lg mb-2 text-gray-600 font-semibold'>
+              {' '}
+              What workout are you doing today?
+            </h2>
+            <p className='text-gray-500'>
+              {' '}
+              Let's get started by clicking on the "New Workout" button.
+            </p>
+          </div>
+          <div>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              className='h-24 w-24 text-indigo-700'
+              fill='none'
+              viewBox='0 0 24 24'
+              stroke='currentColor'
+            >
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth={2}
+                d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
+              />
+            </svg>
+          </div>
+        </div>
+        <div class='flex flex-col items-center h-40 md:h-56 w-full justify-around p-1 bg-white rounded-xl mt-0 shadow-lg'>
+          {/* Start of component  */}
+          <h2 className='text-md text-indigo-600 font-bold text-center'>
+            Your Workout Heatmap Calendar
+          </h2>
+          <ResponsiveCalendar
+            data={calendarData}
+            from='2021-07-01'
+            to='2021-08-13'
+            emptyColor='#eeeeee'
+            // colors={['#f47560', '#e8c1a0', '#97e3d5', '#61cdbb']}
+            colors={['#6366F1']}
+            minValue={0}
+            maxValue={1}
+            margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+            yearSpacing={60}
+            monthBorderColor='#ffffff'
+            dayBorderWidth={2}
+            dayBorderColor='#ffffff'
+            legends={[
+              {
+                anchor: 'bottom-right',
+                direction: 'row',
+                translateY: 36,
+                itemCount: 4,
+                itemWidth: 42,
+                itemHeight: 36,
+                itemsSpacing: 14,
+                itemDirection: 'right-to-left',
+              },
+            ]}
+          />
+        </div>
+      </div>
       <div class='flex flex-col items-center h-96 w-full md:w-2/5 justify-around p-6 bg-white rounded-xl mt-0 shadow-lg'>
-        <h2>Your Workout Frequency per Week</h2>
-        <h2>parsedate is {parseDate}</h2>
+        <h2 className='text-md text-indigo-600 font-bold text-center'>
+          Your Weekly Workout Frequency
+        </h2>
         <ResponsiveBar
           data={data}
           keys={['Frequency']}
@@ -93,37 +160,6 @@ const Activity = ({ workout: { workouts } }) => {
           labelSkipHeight={12}
           isInteractive={false}
           motionStiffness={140}
-        />
-      </div>
-      <div class='flex flex-col items-center h-60 w-full md:w-5/6 justify-around p-1 bg-white rounded-xl mt-0 shadow-lg'>
-        {/* Start of component  */}
-        <h2>Your Daily Progress</h2>
-        <ResponsiveCalendar
-          data={calendarData}
-          from='2021-07-01'
-          to='2021-08-13'
-          emptyColor='#eeeeee'
-          // colors={['#f47560', '#e8c1a0', '#97e3d5', '#61cdbb']}
-          colors={['#6366F1']}
-          minValue={0}
-          maxValue={1}
-          margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-          yearSpacing={60}
-          monthBorderColor='#ffffff'
-          dayBorderWidth={2}
-          dayBorderColor='#ffffff'
-          legends={[
-            {
-              anchor: 'bottom-right',
-              direction: 'row',
-              translateY: 36,
-              itemCount: 4,
-              itemWidth: 42,
-              itemHeight: 36,
-              itemsSpacing: 14,
-              itemDirection: 'right-to-left',
-            },
-          ]}
         />
       </div>
     </div>
