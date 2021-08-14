@@ -11,6 +11,7 @@ import Education from './Education';
 import Workout from './Workout';
 import CustomModal from '../layout/CustomModal';
 import WorkoutProfile from '../profile/WorkoutProfile';
+import Activity from './Activity';
 
 // We are going to use the getCurrentProfile action to redux as soon as the component loads
 // So we are going to use useEffect hooks to fire getCurrentProfile in the initial load
@@ -36,7 +37,7 @@ const Dashboard = ({
   ) : (
     <div className='min-h-screen flex mt-8'>
       <DashboardActions />
-      <div className='w-full flex-grow py-10 px-2'>
+      <div className='w-4/5  flex-grow-0 py-10 px-2'>
         <div className='my-5 mx-2'>
           <h4 class='text-sm font-bold text-indigo-600'>
             Hi {user && user.name},
@@ -80,6 +81,8 @@ const Dashboard = ({
             </div>
             {/* <Experience experience={profile.experience} /> */}
             {/* <Education education={profile.education} /> */}
+
+            <Activity />
             <Workout
               workouts={workouts}
               showModal={setShowWorkoutModal}

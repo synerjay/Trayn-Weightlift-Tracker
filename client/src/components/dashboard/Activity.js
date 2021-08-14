@@ -58,75 +58,76 @@ const Activity = ({ workout: { workouts } }) => {
   ).toISODate();
 
   return (
-    <div className='min-h-screen flex mt-8'>
-      <DashboardActions />
-      <div className='w-full flex space-x-5 py-10 px-2'>
-        <div class='flex flex-col items-center h-1/2 w-2/5  space-x-10 justify-around p-6 bg-white rounded-xl space-x-2 mt-10 shadow-lg'>
-          <h2>Your Workout Frequency per Week</h2>
-          <h2>parsedate is {parseDate}</h2>
-          <ResponsiveBar
-            data={data}
-            keys={['Frequency']}
-            indexBy='Week'
-            margin={{ top: 16, right: 16, bottom: 32, left: -16 }}
-            padding={0.4}
-            colors='#6366F1'
-            theme={{
-              background: '#ffffff',
+    // <div className='h-screen flex mt-8'>
+    //   <DashboardActions />
+    <div className='w-full  flex max-h-96 space-x-5 py-0 px-2'>
+      <div class='flex flex-col items-center h-96 w-2/5  space-x-10 justify-around p-6 bg-white rounded-xl space-x-2 mt-0 shadow-lg'>
+        <h2>Your Workout Frequency per Week</h2>
+        <h2>parsedate is {parseDate}</h2>
+        <ResponsiveBar
+          data={data}
+          keys={['Frequency']}
+          indexBy='Week'
+          margin={{ top: 16, right: 16, bottom: 32, left: -16 }}
+          padding={0.4}
+          colors='#6366F1'
+          theme={{
+            background: '#ffffff',
+            textColor: '#000000',
+            axis: {
               textColor: '#000000',
-              axis: {
-                textColor: '#000000',
-                fontSize: '14px',
-                tickColor: '#eee',
-              },
-            }}
-            valueScale={{ type: 'linear' }}
-            axisLeft={false}
-            axisBottom={{
-              tickSize: 0,
-              tickPadding: 12,
-              textColor: '#000000',
-            }}
-            enableGridX={false}
-            enableGridY={false}
-            labelSkipWidth={12}
-            labelSkipHeight={12}
-            isInteractive={false}
-            motionStiffness={140}
-          />
-        </div>
-        <div class='flex flex-col items-center h-1/2 w-5/6 justify-around p-3 bg-white rounded-xl mt-10 shadow-lg'>
-          {/* Start of component  */}
-          <h2>Your Daily Progress</h2>
-          <ResponsiveCalendar
-            data={calendarData}
-            from='2021-07-01'
-            to='2021-08-13'
-            emptyColor='#eeeeee'
-            colors={['#f47560', '#e8c1a0', '#97e3d5', '#61cdbb']}
-            minValue={0}
-            maxValue={1}
-            margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-            yearSpacing={60}
-            monthBorderColor='#ffffff'
-            dayBorderWidth={2}
-            dayBorderColor='#ffffff'
-            legends={[
-              {
-                anchor: 'bottom-right',
-                direction: 'row',
-                translateY: 36,
-                itemCount: 4,
-                itemWidth: 42,
-                itemHeight: 36,
-                itemsSpacing: 14,
-                itemDirection: 'right-to-left',
-              },
-            ]}
-          />
-        </div>
+              fontSize: '14px',
+              tickColor: '#eee',
+            },
+          }}
+          valueScale={{ type: 'linear' }}
+          axisLeft={false}
+          axisBottom={{
+            tickSize: 0,
+            tickPadding: 12,
+            textColor: '#000000',
+          }}
+          enableGridX={false}
+          enableGridY={false}
+          labelSkipWidth={12}
+          labelSkipHeight={12}
+          isInteractive={false}
+          motionStiffness={140}
+        />
+      </div>
+      <div class='flex flex-col items-center h-96 w-5/6 justify-around p-3 bg-white rounded-xl mt-0 shadow-lg'>
+        {/* Start of component  */}
+        <h2>Your Daily Progress</h2>
+        <ResponsiveCalendar
+          data={calendarData}
+          from='2021-07-01'
+          to='2021-08-13'
+          emptyColor='#eeeeee'
+          // colors={['#f47560', '#e8c1a0', '#97e3d5', '#61cdbb']}
+          colors={['#6366F1']}
+          minValue={0}
+          maxValue={1}
+          margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+          yearSpacing={60}
+          monthBorderColor='#ffffff'
+          dayBorderWidth={2}
+          dayBorderColor='#ffffff'
+          legends={[
+            {
+              anchor: 'bottom-right',
+              direction: 'row',
+              translateY: 36,
+              itemCount: 4,
+              itemWidth: 42,
+              itemHeight: 36,
+              itemsSpacing: 14,
+              itemDirection: 'right-to-left',
+            },
+          ]}
+        />
       </div>
     </div>
+    // </div>
   );
 };
 

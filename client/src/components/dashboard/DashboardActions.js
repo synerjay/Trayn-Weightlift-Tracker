@@ -6,7 +6,7 @@ import { logout } from '../../actions/auth';
 
 const DashboardActions = ({ logout }) => {
   return (
-    <div class='py-12 px-10 w-1/4 hidden md:flex md:flex-col bg-gray-200'>
+    <div class='py-12 px-10 w-1/4 hidden mr-2 md:flex md:flex-col bg-gray-200'>
       <Link
         to='/add-workout'
         class='flex items-center space-x-2 mt-6 p-1 bg-indigo-500 rounded-md'
@@ -45,7 +45,7 @@ const DashboardActions = ({ logout }) => {
               Dashboard
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               to='/activity'
               class='flex items-center text-sm font-semibold text-gray-500 transition duration-200 hover:text-indigo-600'
@@ -66,7 +66,7 @@ const DashboardActions = ({ logout }) => {
               </svg>
               Activity
             </Link>
-          </li>
+          </li> */}
           {/* <li>
             <a
               href='#'
