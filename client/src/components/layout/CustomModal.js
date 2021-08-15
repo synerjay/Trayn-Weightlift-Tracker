@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
+import { DateTime } from 'luxon';
 
 const CustomModal = ({ component: Component, setShowModal, workoutId }) => {
   const [workoutHeader, setWorkoutHeader] = useState(null);
@@ -20,8 +21,10 @@ const CustomModal = ({ component: Component, setShowModal, workoutId }) => {
                 {workoutHeader && (
                   <p className='text-lg'>
                     {' '}
-                    First performed on{' '}
-                    {format(new Date(workoutHeader.date), 'yyyy/MM/dd')}
+                    Performed on{' '}
+                    {DateTime.fromISO(workoutHeader.date).toLocaleString(
+                      DateTime.DATETIME_MED
+                    )}
                   </p>
                 )}
               </div>

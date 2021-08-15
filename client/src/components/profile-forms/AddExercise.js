@@ -11,6 +11,7 @@ import { legExercises } from '../../utils/exerciseData';
 import { customExercises } from '../../utils/exerciseData';
 import Editable from '../layout/Editable';
 import { Link } from 'react-router-dom';
+import { DateTime } from 'luxon';
 
 const AddExercise = ({
   workout: { workout },
@@ -94,8 +95,9 @@ const AddExercise = ({
         />
       </Editable>
       <h2 className='text-xl text-center md:text-left mb-5'>
-        Workout being performed on{' '}
-        {workout && format(new Date(workout.date), 'yyyy/MM/dd')}
+        Workout performed on{' '}
+        {workout &&
+          DateTime.fromISO(workout.date).toLocaleString(DateTime.DATETIME_MED)}
       </h2>
       <form
         className='flex flex-col items-center gap-y-3 md:flex-row w-full md:gap-x-5'

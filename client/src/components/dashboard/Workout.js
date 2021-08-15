@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteWorkout } from '../../actions/workout';
+import { DateTime } from 'luxon';
 
 const Workout = ({ workouts, deleteWorkout, setWorkoutId, showModal }) => {
   const handleClick = (id) => {
@@ -19,7 +20,9 @@ const Workout = ({ workouts, deleteWorkout, setWorkoutId, showModal }) => {
           </div>
         </div>
       </td>
-      <td class='p-1'>{format(new Date(workout.date), 'yyyy/MM/dd')}</td>
+      <td class='p-1'>
+        {DateTime.fromISO(workout.date).toLocaleString(DateTime.DATE_HUGE)}
+      </td>
       <td class='p-1 font-bold'>
         {workout.exercise.slice(0, 2).map((item) => (
           <Fragment>{item.name}, </Fragment>
