@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import DashboardActions from './DashboardActions';
 import { ResponsiveBar } from '@nivo/bar';
 import { ResponsiveCalendar } from '@nivo/calendar';
-import { getWorkouts } from '../../actions/workout';
 import { DateTime } from 'luxon';
-import { connect } from 'react-redux';
 
-const Activity = ({ workout: { workouts } }) => {
+const Activity = ({ workouts }) => {
   // Local State
   const [data, setData] = useState(null);
   const [calendarData, setCalendarData] = useState(null);
@@ -16,6 +13,13 @@ const Activity = ({ workout: { workouts } }) => {
   const twoWeeksBefore = DateTime.now().weekNumber - 2;
   const lastWeek = DateTime.now().weekNumber - 1;
   const weekToday = DateTime.now().weekNumber;
+  // const dateOftheWeek = (weekNumber) => {
+  //   let d = new Date('Jan 04, ' + '2021' + ' 01:00:00');
+  //   let w = d.getTime() + 604800000 * (weekNumber - 1);
+  //   console.log(new Date(w));
+  //   return new Date(w);
+  //   // let n2 = new Date(w + 518400000);
+  // };
 
   // Weekly Frequency Data
   useEffect(() => {
@@ -39,11 +43,12 @@ const Activity = ({ workout: { workouts } }) => {
         }
       })
       .reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
-    const weekFrequencyData = Object.keys(frequencyObject).map((item) => ({
-      Week: item,
-      Frequency: frequencyObject[item],
-    }));
-    setData(weekFrequencyData);
+    setData(
+      Object.keys(frequencyObject).map((item) => ({
+        Week: item,
+        Frequency: frequencyObject[item],
+      }))
+    );
   }, [workouts]);
 
   // Daily Calendar Data
@@ -53,11 +58,12 @@ const Activity = ({ workout: { workouts } }) => {
         return DateTime.fromISO(workout.date).toISODate();
       })
       .reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
-    const dailyFrequencyData = Object.keys(frequencyObject).map((item) => ({
-      day: item,
-      value: frequencyObject[item],
-    }));
-    setCalendarData(dailyFrequencyData);
+    setCalendarData(
+      Object.keys(frequencyObject).map((item) => ({
+        day: item,
+        value: frequencyObject[item],
+      }))
+    );
   }, [workouts]);
 
   const parseDateWeek = DateTime.fromISO(
@@ -65,8 +71,11 @@ const Activity = ({ workout: { workouts } }) => {
   ).weekNumber; // count the
 
   const parseDate = DateTime.fromISO(
-    '2021-07-28T10:42:49.370+00:00'
-  ).toISODate();
+    '2021-01-04T10:42:49.370+00:00'
+  ).weekNumber;
+  // .toLocaleString({ month: 'long', day: 'numeric' });
+
+  console.log(parseDate);
 
   return (
     <div className='w-full flex flex-col md:flex-row h-auto md:max-h-96 space-y-5 md:space-y-0 md:space-x-4 py-0 px-0'>
@@ -149,19 +158,14 @@ const Activity = ({ workout: { workouts } }) => {
           colors='#6366F1'
           theme={{
             background: '#ffffff',
-            textColor: '#000000',
-            axis: {
-              textColor: '#000000',
-              fontSize: '14px',
-              tickColor: '#eee',
-            },
+            textColor: '#000',
           }}
           valueScale={{ type: 'linear' }}
           axisLeft={false}
           axisBottom={{
             tickSize: 5,
             tickPadding: 5,
-            textColor: '#000000',
+            textColor: '#000',
           }}
           enableGridX={false}
           enableGridY={false}
@@ -175,53 +179,4 @@ const Activity = ({ workout: { workouts } }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  workout: state.workout,
-});
-
-export default connect(mapStateToProps)(Activity);
-
-{
-  /* <div class='flex items-center justify-around p-6 bg-white w-64 rounded-xl space-x-2 mt-10 shadow-lg'>
-            <div>
-              <span class='text-sm font-semibold text-gray-400'>
-                Spent this month
-              </span>
-              <h1 class='text-2xl font-bold'>$682.5</h1>
-            </div>
-            <div>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                class='h-8 w-8 text-indigo-600'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-              >
-                <path
-                  stroke-linecap='round'
-                  stroke-linejoin='round'
-                  stroke-width='2'
-                  d='M5 11l7-7 7 7M5 19l7-7 7 7'
-                />
-              </svg>
-            </div>
-          </div>
-          <div class='flex items-center justify-around p-6 bg-white w-64 rounded-xl space-x-2 mt-10 shadow-lg'>
-            <div>
-              <span class='text-sm font-semibold text-gray-400'>
-                Spent this month
-              </span>
-              <h1 class='text-2xl font-bold'>$682.5</h1>
-            </div>
-            <div>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                class='h-8 w-8 text-indigo-600'
-                viewBox='0 0 20 20'
-                fill='currentColor'
-              >
-                <path d='M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z' />
-              </svg>
-            </div>
-          </div> */
-}
+export default Activity;

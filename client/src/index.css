@@ -172,6 +172,11 @@ img {
   margin-bottom: 3rem;
 }
 
+.CustomModal {
+  height: 90%;
+  width: 90%;
+}
+
 /* Sets Form Styles */
 
 .form-inline {
