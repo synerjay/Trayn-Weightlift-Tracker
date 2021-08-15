@@ -34,13 +34,17 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <div
-      className='bg-gray-100 text-gray-900 rounded-3xl shadow-xl w-full overflow-hidden'
+      className=' bg-gray-200 text-gray-900 rounded-3xl shadow-xl w-full overflow-hidden'
       // style='max-width:1000px'
     >
       <div className='md:flex w-full'>
-        <div className='hidden md:block w-1/2 bg-indigo-500 py-10 px-10'>
+        <div className='hidden md:block w-1/2 bg-indigo-500'>
+          <img
+            className='h-auto w-auto'
+            src='https://images.unsplash.com/photo-1576678927484-cc907957088c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2468&q=80'
+          />
           {/* Put svg here */}
-          <svg
+          {/* <svg
             id='f6ab8ba1-7e68-4bec-bb42-3789208a6270'
             data-name='Layer 1'
             xmlns='http://www.w3.org/2000/svg'
@@ -263,7 +267,7 @@ const Login = ({ login, isAuthenticated }) => {
               fill='#ffffff'
               opacity='0.3'
             />
-          </svg>
+          </svg> */}
         </div>
         <div className='w-full md:w-1/2 py-10 px-5 md:px-10'>
           <div className='text-center mb-2'>
