@@ -730,7 +730,7 @@ tr th:nth-child(1) {
   }
 
   /* Navbar */
-  .navbar {
+  /* .navbar {
     display: block;
     text-align: center;
   }
@@ -746,7 +746,7 @@ tr th:nth-child(1) {
 
   .navbar .welcome {
     display: none;
-  }
+  } */
 
   /* Profiles Page */
   .profile {
