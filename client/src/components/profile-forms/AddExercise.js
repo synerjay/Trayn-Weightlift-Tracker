@@ -75,7 +75,7 @@ const AddExercise = ({
   }, [workout]);
 
   return (
-    <div>
+    <div className='-mt-16 md:-mt-9'>
       <Editable
         text={workoutName}
         placeholder='Write an workout name'
@@ -117,7 +117,7 @@ const AddExercise = ({
         />
         <button
           type='submit'
-          className='flex items-center w-1/3 md:w-1/6  max-w-xs cursor-pointer bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg p-1 font-semibold'
+          className='flex items-center w-44 md:w-1/6  max-w-xs cursor-pointer bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg p-1 font-semibold'
         >
           {' '}
           <svg

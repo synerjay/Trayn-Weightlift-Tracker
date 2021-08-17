@@ -82,14 +82,14 @@ const Activity = ({ workouts }) => {
       <div className='flex w-full flex-col space-y-5'>
         <div class='flex justify-between w-full h-auto p-1 bg-white rounded-xl mt-0 shadow-lg'>
           <div>
-            <h2 className='text-2xl text-indigo-700 font-bold text-left mb-2'>
+            <h2 className='text-xl md:text-2xl text-indigo-700 font-bold text-left mb-2'>
               Today is {today}
             </h2>
-            <h2 className='text-lg mb-2 text-gray-600 font-semibold'>
+            <h2 className='text-md md:text-lg mb-2 text-gray-600 font-semibold'>
               {' '}
               What workout are you doing today?
             </h2>
-            <p className='text-gray-500'>
+            <p className='text-sm md:text-md text-gray-500'>
               {' '}
               Let's get started by clicking on the "New Workout" button.
             </p>

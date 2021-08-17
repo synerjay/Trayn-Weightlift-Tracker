@@ -11,6 +11,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     setMenu(false);
   }, []);
 
+  const handleLogout = () => {
+    setMenu(false);
+    logout();
+  };
+
   const authLinks = (
     <Fragment>
       <div class=' text-white text-xs md:hidden hidden sm:block ml-2 gap-x-1 '>
@@ -51,7 +56,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <div className='flex justify-around space-x-7 w-1/2 md:hidden'>
         <Link
           to='/add-workout'
-          className='flex flex-row h-10 rounded items-center bg-indigo-600 text-white p-1 mt-0 cursor-pointer hover:bg-indigo-700 hover:text-indigo-400'
+          className='flex flex-row h-10 font-bold rounded items-center bg-indigo-600 text-white p-1 mt-0 cursor-pointer hover:bg-indigo-700 hover:text-indigo-400'
         >
           {' '}
           <svg
@@ -88,7 +93,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   );
 
   const guestLinks = (
-    <div class='md:flex text-gray-700 text-sm font-bold hidden sm:block ml-2 gap-x-3 '>
+    <div class='flex items-center text-white text-sm font-bold ml-2 gap-x-3 md:gap-x-5 '>
       {/* <Link
         class='bg-gray-900 hover:bg-gray-700 text-white p-1 rounded cursor-pointer hover:text-green-400'
         to='/profiles'
@@ -96,13 +101,13 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         Members
       </Link> */}
       <Link
-        class='bg-indigo-50 border-2 border-indigo-700 hover:bg-indigo-700 text-gray-700 p-1 rounded cursor-pointer hover:text-indigo-50'
+        class='flex items-center bg-indigo-50 h-10 border-1 border-indigo-200 hover:bg-indigo-50 text-gray-700 p-1 rounded cursor-pointer hover:text-indigo-900'
         to='/login'
       >
         Login
       </Link>
       <Link
-        class='bg-indigo-600 hover:bg-indigo-700 text-gray-200 p-1 rounded cursor-pointer hover:text-indigo-200'
+        class='flex items-center bg-indigo-700 h-10 hover:bg-indigo-700 text-gray-200 p-1 rounded cursor-pointer hover:text-indigo-200'
         to='/register'
       >
         Sign Up
@@ -113,7 +118,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   return (
     <>
       <header class='navbar w-full h-16 md:h-16 bg-gray-900 p-1 flex justify-between items-center'>
-        <h1 className='text-indigo-400 text-3xl font-bold'>
+        <h1 className='text-indigo-300 text-3xl font-bold'>
           <Link to='/'>TRAYN</Link>{' '}
         </h1>
 
@@ -126,11 +131,14 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       {menu ? (
         <>
           <div class='navbar-menu relative z-50'>
-            <div class='navbar-backdrop fixed inset-0 bg-gray-800 opacity-25'></div>
-            <nav class='fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-gray-800 overflow-y-auto'>
+            <div class='navbar-backdrop fixed inset-0 bg-indigo-900 opacity-25'></div>
+            <nav class='fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-gray-900 overflow-y-auto'>
               <div class='flex justify-center items-center mb-8'>
-                <a class='mr-auto text-3xl font-bold leading-none' href='#'>
-                  heya music social
+                <a
+                  class='mr-auto text-indigo-400 text-3xl font-bold leading-none'
+                  href='#'
+                >
+                  TRAYN
                 </a>
                 <button onClick={() => setMenu(!menu)} class='navbar-close'>
                   <svg
@@ -166,10 +174,10 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                       to='/posts'
                       class='block p-4 text-sm font-semibold text-gray-400 hover:bg-gray-900 hover:text-green-600 rounded'
                     >
-                      Music Feed
+                      Settings
                     </Link>
                   </li>
-                  <li class='mb-1'>
+                  {/* <li class='mb-1'>
                     <Link
                       onClick={() => setMenu(false)}
                       to='/profiles'
@@ -177,8 +185,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                     >
                       Members
                     </Link>
-                  </li>
-                  <li class='mb-1'>
+                  </li> */}
+                  {/* <li class='mb-1'>
                     <Link
                       onClick={() => setMenu(false)}
                       class='block p-4 text-sm font-semibold text-gray-400 hover:bg-gray-900 hover:text-green-600 rounded'
@@ -204,19 +212,19 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                     >
                       Add Tracks
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
               <div class='mt-auto'>
                 <div class='pt-6'>
-                  <a
-                    class='block p-1 mb-3 leading-loose text-xs text-center font-semibold bg-gray-900 hover:bg-gray-900 rounded-xl'
+                  {/* <a
+                    class='block p-1 mb-3 leading-loose text-xs text-center font-semibold bg-indigo-300 hover:bg-indigo-300 rounded-xl'
                     href='#'
                   >
                     Settings
-                  </a>
+                  </a> */}
                   <a
-                    onClick={logout}
+                    onClick={() => handleLogout()}
                     href='#!'
                     class='block p-1 mb-2 leading-loose text-xs text-center text-white font-semibold bg-red-600 hover:bg-red-700  rounded-xl'
                   >
