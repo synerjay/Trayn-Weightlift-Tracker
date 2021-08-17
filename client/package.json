@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.1.1",
+    "@headlessui/react": "^1.4.0",
+    "@heroicons/react": "^1.0.3",
     "@nivo/bar": "^0.73.1",
     "@nivo/calendar": "^0.73.0",
     "@nivo/core": "^0.73.0",
