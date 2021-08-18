@@ -121,9 +121,59 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   return (
     <>
       <header class='navbar w-full h-16 md:h-16 bg-gray-900 p-1 flex justify-between items-center'>
-        <h1 className='text-indigo-300 text-3xl font-bold'>
-          <Link to='/'>TRAYN</Link>{' '}
-        </h1>
+        <Link
+          className='text-indigo-100 text-xl -ml-5 md:text-2xl flex font-bold justify-around items-center w-32 md:w-36 '
+          to='/'
+        >
+          <svg
+            version='1.1'
+            id='Layer_1'
+            xmlns='http://www.w3.org/2000/svg'
+            xmlnsXlink='http://www.w3.org/1999/xlink'
+            x='0px'
+            y='0px'
+            width='40px'
+            height='40px'
+            fill='white'
+            viewBox='0 0 512 512'
+            // style='enable-background:new 0 0 512 512;'
+            xmlSpace='preserve'
+          >
+            <g>
+              <g>
+                <g>
+                  <path
+                    d='M505.752,240.915L271.085,6.248c-8.331-8.331-21.839-8.331-30.17,0L6.248,240.915c-8.331,8.331-8.331,21.839,0,30.17
+				l234.667,234.667c8.331,8.331,21.839,8.331,30.17,0l234.667-234.667C514.083,262.754,514.083,249.246,505.752,240.915z
+				 M256,460.497L51.503,256L256,51.503L460.497,256L256,460.497z'
+                  />
+                  <path
+                    d='M192,234.667v-21.333c0-11.782-9.551-21.333-21.333-21.333c-11.782,0-21.333,9.551-21.333,21.333v85.333
+				c0,11.782,9.551,21.333,21.333,21.333c11.782,0,21.333-9.551,21.333-21.333v-21.333h128v21.333
+				c0,11.782,9.551,21.333,21.333,21.333c11.782,0,21.333-9.551,21.333-21.333v-85.333c0-11.782-9.551-21.333-21.333-21.333
+				C329.551,192,320,201.551,320,213.333v21.333H192z'
+                  />
+                </g>
+              </g>
+            </g>
+            <g></g>
+            <g></g>
+            <g></g>
+            <g></g>
+            <g></g>
+            <g></g>
+            <g></g>
+            <g></g>
+            <g></g>
+            <g></g>
+            <g></g>
+            <g></g>
+            <g></g>
+            <g></g>
+            <g></g>
+          </svg>
+          TRAYN
+        </Link>
 
         <nav class='w-1/2 flex items-center justify-end'>
           {!loading && (
