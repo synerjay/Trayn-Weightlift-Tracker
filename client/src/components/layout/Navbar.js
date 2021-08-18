@@ -6,7 +6,7 @@ import { logout } from '../../actions/auth';
 import { Dialog, Transition } from '@headlessui/react';
 import { XIcon } from '@heroicons/react/outline';
 
-const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   const [menu, setMenu] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -233,7 +233,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                   <div className='h-full flex flex-col py-6 bg-gray-900 shadow-xl overflow-y-scroll'>
                     <div className='px-4 sm:px-6'>
                       <Dialog.Title className='text-2xl font-bold text-indigo-300'>
-                        TRAYN MENU
+                        Welcome, {user && user.name}
                       </Dialog.Title>
                     </div>
                     <div className='mt-6 relative flex-1 px-4 sm:px-6'>

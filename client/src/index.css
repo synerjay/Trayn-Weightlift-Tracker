@@ -542,24 +542,24 @@ tr th:nth-child(1) {
 /* Landing Page */
 .landing {
   position: relative;
+  background: url('./img/landingimage.jpeg') no-repeat center center/cover;
+  height: 100vh;
   /* background: #fff; */
-  background-color: #7371ee;
-  background-image: linear-gradient(60deg, #7371ee 1%, #a1d9d6 100%);
+  /* background-color: #7371ee;
+  background-image: linear-gradient(60deg, #7371ee 1%, #a1d9d6 100%); */
   /* background-color: #abe9cd;
   background-image: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%); */
-  height: 100vh;
-  display: flex;
+  /* display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: hidden; */
 }
 
 .landing-inner {
-  margin-top: 150px;
-  color: #000;
-  height: 100vh;
-  width: 100%;
-  /* margin: auto; */
+  color: #fff;
+  height: 100%;
+  width: 80%;
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
