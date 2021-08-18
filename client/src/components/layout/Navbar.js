@@ -272,7 +272,10 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
                             </a>
                           </div>
                           <p class='my-4 text-xs text-center text-gray-400'>
-                            <span>Copyright © 2021</span>
+                            <span>
+                              Created in React & Node Express by J. Tolentino ©
+                              2021
+                            </span>
                           </p>
                         </div>
                       </div>

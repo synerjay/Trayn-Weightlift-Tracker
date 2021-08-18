@@ -13,17 +13,17 @@ const Landing = ({ isAuthenticated }) => {
     <section className='landing'>
       <div className='dark-overlay'>
         <div className='landing-inner'>
-          <h1 className='x-large font-bold text-indigo-100'>
-            Get Your Lifts to a Higher level with Trayn
+          <h1 className='x-large font-bold text-white bg-indigo-900 bg-opacity-30 px-0'>
+            Get Your Lifts to a Higher Level
           </h1>
-          <p className='lead '>
-            Track and record your progress using Trayn's intuitive set by rep
-            system
+          <p className='lead bg-indigo-900 bg-opacity-30 '>
+            Track and record your weightlifting progress using Trayn's intuitive
+            record keeping system
           </p>
           <div className=''>
             <Link
               to='/register'
-              class='flex mt-10 w-56   items-center space-x-3 p-1 bg-indigo-600 text-white rounded-lg  transition-all duration-400 transform hover:scale-105 cursor-pointer hover:shadow-lg'
+              class='flex mt-10 w-52 items-center space-x-3 p-1 bg-indigo-700 text-white rounded-lg  transition-all duration-400 transform hover:scale-105 cursor-pointer hover:shadow-lg'
             >
               <button class='text-lg text-md '>Let's get started</button>
               <span>
