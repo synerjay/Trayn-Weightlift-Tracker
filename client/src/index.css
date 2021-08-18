@@ -555,6 +555,18 @@ tr th:nth-child(1) {
   overflow: hidden; */
 }
 
+.loginbg {
+  position: relative;
+  background: url('./img/workoutpic.jpeg') no-repeat center center/cover;
+  height: 100vh;
+}
+
+.signupbg {
+  position: relative;
+  background: url('./img/workoutpic2.jpeg') no-repeat center center/cover;
+  height: 100vh;
+}
+
 .landing-inner {
   color: #fff;
   height: 100%;

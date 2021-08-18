@@ -25,8 +25,6 @@ const Routes = () => {
       {/* This section is for the Login and Register components to center in the page*/}
       <Alert />
       <Switch>
-        <Route exact path='/register' component={Register} />
-        <Route exact path='/login' component={Login} />
         {/* Underneath temporarily change this route so u can practice on Spotify APi / Remember to change back to Profiles component*/}
         <Route exact path='/profiles' component={Profiles} />
         <Route exact path='/profile/:id' component={Profile} />
