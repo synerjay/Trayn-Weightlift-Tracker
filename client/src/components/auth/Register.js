@@ -69,7 +69,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   return (
     <div className='signupbg mt-16 pt-16 md:pt-10'>
       <div className='bg-gray-200 -mt-10 md:-mt-4 text-gray-900 rounded-3xl mx-auto shadow-xl w-11/12 md:w-1/2 overflow-hidden'>
-        <div className='w-full py-10 px-5 md:px-10'>
+        <div className='w-full py-5 px-5 md:px-10'>
           <div className='text-center mb-5'>
             <h1 className='font-bold text-3xl text-indigo-800'>SIGN UP</h1>
             <p>Enter the information below to create your own account</p>
