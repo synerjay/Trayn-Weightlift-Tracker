@@ -23,9 +23,9 @@ const Landing = ({ isAuthenticated }) => {
           <div className=''>
             <Link
               to='/register'
-              class='flex mt-10 w-52 items-center space-x-3 p-1 bg-indigo-700 text-white rounded-lg  transition-all duration-400 transform hover:scale-105 cursor-pointer hover:shadow-lg'
+              class='flex mt-10 w-56 items-center space-x-3 p-1 bg-indigo-700 text-white rounded-lg  transition-all duration-400 transform hover:scale-105 cursor-pointer hover:shadow-lg'
             >
-              <button class='text-lg text-md '>Let's get started</button>
+              <button class='text-lg text-md '>Let's start trayning</button>
               <span>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
