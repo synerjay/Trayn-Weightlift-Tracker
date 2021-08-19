@@ -7,6 +7,10 @@ import { pushExercises } from '../../utils/exerciseData';
 import { pullExercises } from '../../utils/exerciseData';
 import { legExercises } from '../../utils/exerciseData';
 import { Link } from 'react-router-dom';
+import push from '../../img/push.jpeg';
+import pull from '../../img/pull.jpeg';
+import leg from '../../img/leg.jpeg';
+import custom from '../../img/custom.jpeg';
 
 const AddWorkout = ({ addWorkout, history }) => {
   const handleClick = (value) => {
@@ -37,8 +41,8 @@ const AddWorkout = ({ addWorkout, history }) => {
           <div class='w-sm'>
             <img
               class='w-full md:w-64 rounded-lg'
-              src='https://images.unsplash.com/photo-1581009137042-c552e485697a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80'
-              alt=''
+              src={push}
+              alt='Chest Exercise'
             />
             <div class='mt-4 text-indigo-500 text-center'>
               <h1 class='text-lg font-bold'>Push (Chest & Shoulders)</h1>
@@ -65,8 +69,8 @@ const AddWorkout = ({ addWorkout, history }) => {
           <div class='w-sm'>
             <img
               class='w-full md:w-64 rounded-lg'
-              src='https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2551&q=80'
-              alt=''
+              src={pull}
+              alt='Lat Pull Exercise'
             />
             <div class='mt-4 text-indigo-500 text-center'>
               <h1 class='text-lg font-bold'>Pull (Back, Biceps, Lats)</h1>
@@ -93,8 +97,8 @@ const AddWorkout = ({ addWorkout, history }) => {
           <div class='w-sm'>
             <img
               class='w-full md:w-64 rounded-lg'
-              src='https://images.unsplash.com/photo-1434608519344-49d77a699e1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2553&q=80'
-              alt=''
+              src={leg}
+              alt='Leg Exercise'
             />
             <div class='mt-4 text-indigo-500 text-center'>
               <h1 class='text-lg font-bold'>Legs</h1>
@@ -119,8 +123,8 @@ const AddWorkout = ({ addWorkout, history }) => {
           <div class='w-sm'>
             <img
               class='w-full md:w-64 rounded-lg'
-              src='https://images.unsplash.com/photo-1599058917212-d750089bc07e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2549&q=80'
-              alt=''
+              src={custom}
+              alt='Custom Exercise'
             />
             <div class='mt-4 text-indigo-500 text-center'>
               <h1 class='text-lg font-bold'>Custom Workout</h1>
