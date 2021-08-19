@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
@@ -7,6 +7,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { XIcon } from '@heroicons/react/outline';
 
 const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
+  const location = useLocation();
   const [menu, setMenu] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -57,40 +58,45 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
         </a>
       </div>
       <div className='flex justify-around space-x-7 w-1/2 md:hidden'>
-        <Link
-          to='/add-workout'
-          className='flex flex-row h-10 font-bold rounded items-center bg-indigo-600 text-white p-1 mt-0 cursor-pointer hover:bg-indigo-700 hover:text-indigo-400'
-        >
-          {' '}
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            className='h-4 w-4 mr-1'
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth={2}
-              d='M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z'
-            />
-          </svg>{' '}
-          New
-        </Link>
-        <button
-          onClick={() => setOpen(!open)}
-          class='navbar-burger flex items-center text-gray-200 mr-0'
-        >
-          <svg
-            class='block h-4 w-4 fill-current'
-            viewBox='0 0 20 20'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <title>Mobile menu</title>
-            <path d='M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z'></path>
-          </svg>
-        </button>
+        {location.pathname === '/add-workout' ||
+        location.pathname === '/add-exercise' ? null : (
+          <>
+            <Link
+              to='/add-workout'
+              className='flex flex-row h-10 font-bold rounded items-center bg-indigo-600 text-white p-1 mt-0 cursor-pointer hover:bg-indigo-700 hover:text-indigo-400'
+            >
+              {' '}
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                className='h-4 w-4 mr-1'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth={2}
+                  d='M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z'
+                />
+              </svg>{' '}
+              New
+            </Link>
+            <button
+              onClick={() => setOpen(!open)}
+              class='navbar-burger flex items-center text-gray-200 mr-0'
+            >
+              <svg
+                class='block h-4 w-4 fill-current'
+                viewBox='0 0 20 20'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <title>Mobile menu</title>
+                <path d='M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z'></path>
+              </svg>
+            </button>{' '}
+          </>
+        )}
       </div>
     </Fragment>
   );

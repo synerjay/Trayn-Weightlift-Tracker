@@ -17,7 +17,6 @@ import Activity from './Activity';
 const Dashboard = ({
   getWorkouts,
   getCurrentProfile,
-  deleteAccount,
   auth: { user },
   profile: { profile, loading },
   workout: { workouts },
@@ -90,7 +89,6 @@ const Dashboard = ({
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
-  deleteAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
 };
@@ -104,5 +102,4 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   getWorkouts,
   getCurrentProfile,
-  deleteAccount,
 })(Dashboard);
