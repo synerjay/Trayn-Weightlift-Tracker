@@ -253,7 +253,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
                             <li class='mb-1'>
                               <Link
                                 onClick={() => setOpen(false)}
-                                to='/posts'
+                                to='/settings'
                                 class='block p-4 text-md font-semibold text-indigo-100 hover:bg-gray-800 hover:text-indigo-300 rounded'
                               >
                                 Settings

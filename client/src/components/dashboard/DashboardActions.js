@@ -132,8 +132,8 @@ const DashboardActions = ({ logout }) => {
             </a>
           </li> */}
           <li>
-            <a
-              href='#'
+            <Link
+              to='/settings'
               class='flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200'
             >
               <svg
@@ -157,7 +157,7 @@ const DashboardActions = ({ logout }) => {
                 />
               </svg>
               Settings
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
