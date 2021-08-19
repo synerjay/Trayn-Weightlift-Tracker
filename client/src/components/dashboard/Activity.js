@@ -13,13 +13,6 @@ const Activity = ({ workouts }) => {
   const twoWeeksBefore = DateTime.now().weekNumber - 2;
   const lastWeek = DateTime.now().weekNumber - 1;
   const weekToday = DateTime.now().weekNumber;
-  // const dateOftheWeek = (weekNumber) => {
-  //   let d = new Date('Jan 04, ' + '2021' + ' 01:00:00');
-  //   let w = d.getTime() + 604800000 * (weekNumber - 1);
-  //   console.log(new Date(w));
-  //   return new Date(w);
-  //   // let n2 = new Date(w + 518400000);
-  // };
 
   // Weekly Frequency Data
   useEffect(() => {
@@ -66,16 +59,16 @@ const Activity = ({ workouts }) => {
     );
   }, [workouts]);
 
-  const parseDateWeek = DateTime.fromISO(
-    '2021-07-28T10:42:49.370+00:00'
-  ).weekNumber; // count the
+  // const parseDateWeek = DateTime.fromISO(
+  //   '2021-07-28T10:42:49.370+00:00'
+  // ).weekNumber; // count the
 
-  const parseDate = DateTime.fromISO(
-    '2021-01-04T10:42:49.370+00:00'
-  ).weekNumber;
-  // .toLocaleString({ month: 'long', day: 'numeric' });
+  // const parseDate = DateTime.fromISO(
+  //   '2021-01-04T10:42:49.370+00:00'
+  // ).weekNumber;
+  // // .toLocaleString({ month: 'long', day: 'numeric' });
 
-  console.log(parseDate);
+  // console.log(parseDate);
 
   return (
     <div className='w-full flex flex-col md:flex-row h-auto md:max-h-96 space-y-5 md:space-y-0 md:space-x-4 py-0 px-0'>
