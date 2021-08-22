@@ -17,14 +17,14 @@ import Activity from './Activity';
 const Dashboard = ({
   getWorkouts,
   getCurrentProfile,
-  auth: { user },
+  auth: { user, token },
   profile: { profile, loading },
   workout: { workouts },
 }) => {
   useEffect(() => {
     getWorkouts();
     getCurrentProfile();
-  }, [getCurrentProfile, getWorkouts]); // <--- getCurrentProfil function is going to fire once
+  }, [token]); // <--- getCurrentProfil function is going to fire once
 
   const [showWorkoutModal, setShowWorkoutModal] = useState(false);
   const [workoutId, setWorkoutId] = useState('');

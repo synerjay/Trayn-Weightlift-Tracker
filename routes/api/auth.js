@@ -88,31 +88,70 @@ router.post(
             const result = await workouts.deleteMany(query);
             console.log('Deleted ' + result.deletedCount + ' documents');
 
-            let workoutSeries = [
-              new Workout({
+            // let workoutSeries = [
+            //   new Workout({
+            //     user: user.id,
+            //     workoutName: 'Pull (Back, Biceps, Lats)',
+            //     date: new Date('08 October 2021 14:48 UTC').toISOString(),
+            //   }),
+            //   new Workout({
+            //     user: user.id,
+            //     workoutName: 'Pull (Back, Biceps, Lats)',
+            //     date: new Date('09 October 2021 14:48 UTC').toISOString(),
+            //   }),
+            //   new Workout({
+            //     user: user.id,
+            //     workoutName: 'Pull (Back, Biceps, Lats)',
+            //     date: new Date('10 October 2021 14:48 UTC').toISOString(),
+            //   }),
+            // ];
+
+            let workoutSeries = [];
+
+            //  Do Loops Here:
+
+            for (let i = 0; i < 25; i++) {
+              let dt = new Date();
+              let newWorkout = {
                 user: user.id,
-                workoutName: 'Pull (Back, Biceps, Lats)',
-                date: new Date('08 October 2021 14:48 UTC').toISOString(),
-              }),
-              new Workout({
-                user: user.id,
-                workoutName: 'Pull (Back, Biceps, Lats)',
-                date: new Date('09 October 2021 14:48 UTC').toISOString(),
-              }),
-              new Workout({
-                user: user.id,
-                workoutName: 'Pull (Back, Biceps, Lats)',
-                date: new Date('10 October 2021 14:48 UTC').toISOString(),
-              }),
-            ];
+                workoutName: 'BACKKKKKKK',
+                date: new Date().setDate(new Date().getDate() - i),
+              };
+              // for (let j = 0; j < randomIntFromInterval(1, 6); j++) {
+              //     let newEvent = {
+              //         timestamp_event: faker.date.past(),
+              //         weight: randomIntFromInterval(14,16),
+              //     }
+              //     newDay.events.push(newEvent);
+              // }
+              workoutSeries.push(new Workout(newWorkout));
+            }
 
             workouts.insertMany(workoutSeries);
             console.log('Successfully seeded');
+            //Payload
+
+            const payload = {
+              user: {
+                id: user.id,
+              },
+            };
+
+            // Once user signed in, the response will be the token
+            jwt.sign(
+              payload,
+              config.get('jwtSecret'),
+              { expiresIn: 360000 },
+              (err, token) => {
+                if (err) throw err;
+                res.json({ token });
+              }
+            );
           } finally {
             await client.close();
           }
         }
-        run().catch(console.dir);
+        return run().catch(console.dir);
       }
 
       //Payload

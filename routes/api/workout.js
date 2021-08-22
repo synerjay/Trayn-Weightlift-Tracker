@@ -3,14 +3,6 @@ const router = express.Router();
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
-// For seeding purposes:
-const config = require('config');
-const MongoClient = require('mongodb').MongoClient;
-const db = config.get('mongoURI');
-var ObjectId = require('mongodb').ObjectId;
-
-// ---------
-
 const Workout = require('../../models/Workout');
 
 // Testing for adding a workout
@@ -177,7 +169,7 @@ router.get('/', auth, async (req, res) => {
       date: -1,
     }); // -1 means the most recent. Most oldest is date: 1 which is the default
 
-    return res.json(workoutSessions);
+    res.json(workoutSessions);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
