@@ -128,7 +128,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
     <>
       <header class='navbar w-full h-16 md:h-16 bg-gray-900 p-1 flex justify-between items-center'>
         <Link
-          className='text-indigo-100 text-xl -ml-5 md:text-2xl flex font-bold justify-around items-center w-32 md:w-36 '
+          className='text-indigo-100 tracking-widest text-3xl -ml-5 md:text-3xl flex font-extrabold italic justify-around items-center w-36   md:w-40  '
           to='/'
         >
           <svg
