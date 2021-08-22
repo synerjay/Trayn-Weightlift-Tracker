@@ -75,7 +75,7 @@ const AddExercise = ({
   }, [workout]);
 
   return (
-    <div className='-mt-16 md:-mt-9'>
+    <div className='-mt-10 md:-mt-7'>
       <Editable
         text={workoutName}
         placeholder='Write an workout name'

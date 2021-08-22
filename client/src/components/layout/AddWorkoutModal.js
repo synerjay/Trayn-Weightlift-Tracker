@@ -19,7 +19,7 @@ const AddWorkoutModal = ({ addWorkout, setShowModal, history }) => {
             {/*header*/}
             <div className='flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t'>
               <div className='flex flex-col'>
-                <h3 className='text-3xl font-semibold'>
+                <h3 className='text-2xl md:text-3xl font-semibold'>
                   Name this Custom Workout
                 </h3>
               </div>
@@ -47,24 +47,26 @@ const AddWorkoutModal = ({ addWorkout, setShowModal, history }) => {
             </div>
             <div className='h-full w-full relative p-6 flex-auto overflow-scroll'>
               <form
-                className='form'
+                className='flex flex-col justify-center items-center'
                 onSubmit={(e) => {
                   e.preventDefault();
                   addWorkout(formData, history);
                 }}
               >
-                {' '}
-                <div className='form-group'>
-                  <input
-                    type='text'
-                    placeholder='* Choose a Workout Name'
-                    name='workoutName'
-                    value={workoutName}
-                    onChange={onChange}
-                    required
-                  />
-                </div>
-                <input type='submit' className='btn btn-primary my-1' />
+                <input
+                  type='text'
+                  className='w-full -ml-2 p-1 rounded-lg border-2 border-gray-300 outline-none focus:border-indigo-700'
+                  placeholder='Choose a Workout Name'
+                  name='workoutName'
+                  value={workoutName}
+                  onChange={onChange}
+                  required
+                />
+
+                <input
+                  type='submit'
+                  className='mt-8 mb-4 p-1 rounded-full bg-indigo-700 cursor-pointer text-white tracking-widest hover:bg-indigo-500 transition duration-200'
+                />
               </form>
             </div>
           </div>
