@@ -5,6 +5,13 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
+// For seeding purposes //
+const MongoClient = require('mongodb').MongoClient;
+const db = config.get('mongoURI');
+var ObjectId = require('mongodb').ObjectId;
+
+// ---- //
+
 const { check, validationResult } = require('express-validator');
 
 // Bring in the user model schema from Models folder to send user info
@@ -17,6 +24,7 @@ router.get('/', auth, async (req, res) => {
   try {
     // the req.user.id below is acquired from the JSON Web Token when it exists. Guest would NOT get a token
     const user = await User.findById(req.user.id).select('-password'); // -password means that the password from user info isnt being returned
+
     res.json(user);
   } catch (err) {
     console.error(err.message);
@@ -61,6 +69,50 @@ router.post(
         return res
           .status(400)
           .json({ errors: [{ msg: 'Invalid credentials' }] });
+      }
+
+      // if user is Guest, then seed the Database
+      if (user.id == '6121e0ac68bd9e4e40b9d987') {
+        const client = new MongoClient(db, {
+          useNewUrlParser: true,
+        });
+
+        async function run() {
+          try {
+            await client.connect();
+            const database = client.db('myFirstDatabase');
+            const workouts = database.collection('workouts');
+
+            // Query for all movies with the title "Santa Claus"
+            const query = { user: new ObjectId(user.id) };
+            const result = await workouts.deleteMany(query);
+            console.log('Deleted ' + result.deletedCount + ' documents');
+
+            let workoutSeries = [
+              new Workout({
+                user: user.id,
+                workoutName: 'Pull (Back, Biceps, Lats)',
+                date: new Date('08 October 2021 14:48 UTC').toISOString(),
+              }),
+              new Workout({
+                user: user.id,
+                workoutName: 'Pull (Back, Biceps, Lats)',
+                date: new Date('09 October 2021 14:48 UTC').toISOString(),
+              }),
+              new Workout({
+                user: user.id,
+                workoutName: 'Pull (Back, Biceps, Lats)',
+                date: new Date('10 October 2021 14:48 UTC').toISOString(),
+              }),
+            ];
+
+            workouts.insertMany(workoutSeries);
+            console.log('Successfully seeded');
+          } finally {
+            await client.close();
+          }
+        }
+        run().catch(console.dir);
       }
 
       //Payload

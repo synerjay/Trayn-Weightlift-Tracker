@@ -157,6 +157,7 @@ router.get('/user/:user_id', async (req, res) => {
 // @access Private
 
 router.delete('/', auth, async (req, res) => {
+  if (req.user.id == '6121e0ac68bd9e4e40b9d987') return; // prevent deletion of Guest account
   try {
     // Remove users posts
     await Post.deleteMany({ user: req.user.id });
