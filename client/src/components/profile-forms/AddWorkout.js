@@ -53,7 +53,7 @@ const AddWorkout = ({ addWorkout, history }) => {
                 })}{' '}
                 etc.
               </p>
-              <button class='mt-8 mb-4 p-1 rounded-full bg-indigo-500 text-white tracking-widest hover:bg-indigo-500 transition duration-200'>
+              <button class='mt-8 mb-4 p-1 rounded-full bg-indigo-700 text-white tracking-widest hover:bg-indigo-500 transition duration-200'>
                 SELECT
               </button>
             </div>
@@ -81,7 +81,7 @@ const AddWorkout = ({ addWorkout, history }) => {
                 })}{' '}
                 etc.
               </p>
-              <button class='mt-8 mb-4 p-1 rounded-full bg-indigo-500 text-white tracking-widest hover:bg-indigo-500 transition duration-200'>
+              <button class='mt-8 mb-4 p-1 rounded-full bg-indigo-700 text-white tracking-widest hover:bg-indigo-500 transition duration-200'>
                 SELECT
               </button>
             </div>
@@ -109,7 +109,7 @@ const AddWorkout = ({ addWorkout, history }) => {
                 })}{' '}
                 etc.
               </p>
-              <button class='mt-8 mb-4 p-1 rounded-full bg-indigo-500 text-white tracking-widest hover:bg-indigo-500 transition duration-200'>
+              <button class='mt-8 mb-4 p-1 rounded-full bg-indigo-700 text-white tracking-widest hover:bg-indigo-500 transition duration-200'>
                 SELECT
               </button>
             </div>
@@ -132,7 +132,7 @@ const AddWorkout = ({ addWorkout, history }) => {
                 Freely make your own exercises with this custom workout session.
                 Get started now.
               </p>
-              <button class='mt-8 mb-4 p-1 rounded-full bg-indigo-500 text-white tracking-widest hover:bg-indigo-500 transition duration-200'>
+              <button class='mt-8 mb-4 p-1 rounded-full bg-indigo-700 text-white tracking-widest hover:bg-indigo-500 transition duration-200'>
                 SELECT
               </button>
             </div>

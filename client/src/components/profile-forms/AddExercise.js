@@ -117,7 +117,7 @@ const AddExercise = ({
         />
         <button
           type='submit'
-          className='flex items-center w-44 md:w-1/6  max-w-xs cursor-pointer bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg p-1 font-semibold'
+          className='flex items-center w-44 md:w-1/6  max-w-xs cursor-pointer bg-indigo-700 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg p-1 font-semibold'
         >
           {' '}
           <svg
@@ -169,7 +169,7 @@ const AddExercise = ({
           Cancel Workout
         </button>
         <Link
-          className='flex w-44  items-center mt-2 md:mb-0 bg-indigo-600 md:px-6 md:py-2 px-10  h-12 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-indigo-700'
+          className='flex w-44  items-center mt-2 md:mb-0 bg-indigo-700 md:px-6 md:py-2 px-10  h-12 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-indigo-700'
           to='/dashboard'
         >
           {' '}

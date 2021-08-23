@@ -111,7 +111,7 @@ const ExerciseItem = ({
       </table>
       <div className='flex flex-col gap-y-5'>
         <button
-          className='w-full h-5 bg-gray-400 flex justify-center items-center max-w-xs mx-auto hover:bg-gray-500 focus:bg-gray-400 focus:border-indigo-500 focus:outline-none text-gray-200 rounded-lg p-1 text-sm font-semibold'
+          className='w-full h-5 bg-gray-300 flex justify-center items-center max-w-xs mx-auto hover:bg-gray-200 focus:bg-gray-200 focus:border-indigo-500 focus:outline-none text-gray-600 rounded-lg p-1 text-sm font-semibold'
           type='button'
           onClick={() => addFormFields()}
         >
@@ -130,7 +130,7 @@ const ExerciseItem = ({
           ADD ONE MORE SET
         </button>
         <button
-          className='w-1/2 md:w-1/3  h-5 bg-indigo-500 flex justify-center items-center max-w-xs mx-auto hover:bg-indigo-300 focus:bg-indigo-200 text-white text-sm rounded-lg p-1 font-semibold'
+          className='w-1/2 md:w-1/3  h-5 bg-indigo-900 flex justify-center items-center max-w-xs mx-auto hover:bg-indigo-700 focus:bg-indigo-700 text-white text-sm rounded-lg p-1 font-semibold'
           onClick={(event) => handleSaveAll(event)}
           type='submit'
         >
@@ -141,7 +141,7 @@ const ExerciseItem = ({
         <button
           onClick={() => deleteExercise(workoutId, _id)}
           type='button'
-          className='absolute h-10 w-10 p-0 text-2xl flex justify-center items-center text-white top-0 right-0 bg-indigo-600 rounded-3xl transform translate-x-2 -translate-y-3 shadow-xl'
+          className='absolute h-10 w-10 p-0 text-2xl flex justify-center items-center text-white top-0 right-0 bg-indigo-800 rounded-3xl transform translate-x-2 -translate-y-3 shadow-xl'
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'

@@ -131,7 +131,7 @@ router.post(
                 date: new Date().setDate(new Date().getDate() - i),
                 exercise: [],
               };
-              for (let j = 0; j < randomIntFromInterval(1, 4); j++) {
+              for (let j = 0; j < randomIntFromInterval(2, 6); j++) {
                 let newExercise = {
                   name: exerciseArray[
                     randomIntFromInterval(0, exerciseArray.length - 1)

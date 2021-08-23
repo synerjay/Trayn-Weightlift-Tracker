@@ -9,7 +9,7 @@ const DashboardActions = ({ logout }) => {
     <div class='py-12 px-7 w-1/5 hidden mr-1 md:flex md:flex-col bg-gray-900'>
       <Link
         to='/add-workout'
-        class='flex items-center space-x-2 mt-6 p-1 bg-indigo-500 rounded-md'
+        class='flex items-center space-x-2 mt-6 p-1 bg-indigo-600 rounded-md'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -32,7 +32,7 @@ const DashboardActions = ({ logout }) => {
           <li>
             <Link
               to='/dashboard'
-              class='flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200'
+              class='flex items-center text-sm font-semibold text-gray-300 hover:text-indigo-400 transition duration-200'
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -48,7 +48,7 @@ const DashboardActions = ({ logout }) => {
           {/* <li>
             <Link
               to='/activity'
-              class='flex items-center text-sm font-semibold text-gray-500 transition duration-200 hover:text-indigo-600'
+              class='flex items-center text-sm font-semibold text-gray-300 transition duration-200 hover:text-indigo-600'
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -70,7 +70,7 @@ const DashboardActions = ({ logout }) => {
           {/* <li>
             <a
               href='#'
-              class='flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200'
+              class='flex items-center text-sm font-semibold text-gray-300 hover:text-indigo-600 transition duration-200'
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -90,7 +90,7 @@ const DashboardActions = ({ logout }) => {
           <li>
             <a
               href='#'
-              class='flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200'
+              class='flex items-center text-sm font-semibold text-gray-300 hover:text-indigo-600 transition duration-200'
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -112,7 +112,7 @@ const DashboardActions = ({ logout }) => {
           <li>
             <a
               href='#'
-              class='flex items-centerx text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200'
+              class='flex items-centerx text-sm font-semibold text-gray-300 hover:text-indigo-600 transition duration-200'
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -134,7 +134,7 @@ const DashboardActions = ({ logout }) => {
           <li>
             <Link
               to='/settings'
-              class='flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200'
+              class='flex items-center text-sm font-semibold text-gray-300 hover:text-indigo-400 transition duration-200'
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -165,7 +165,7 @@ const DashboardActions = ({ logout }) => {
         <a
           onClick={logout}
           // href='#'
-          class='flex mt-20 space-x-4 items-center font-semibold text-gray-500 hover:text-indigo-600 transition duration-200 cursor-pointer'
+          class='flex mt-20 space-x-4 items-center font-semibold text-gray-300 hover:text-indigo-400 transition duration-200 cursor-pointer'
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'
