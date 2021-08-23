@@ -77,6 +77,11 @@ router.post(
           useNewUrlParser: true,
         });
 
+        function randomIntFromInterval(min, max) {
+          // min and max included
+          return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
         async function run() {
           try {
             await client.connect();
@@ -109,12 +114,27 @@ router.post(
             let workoutSeries = [];
 
             //  Do Loops Here:
+            const workoutArray = [
+              'Push (Chest & Shoulders)',
+              'Pull (Back, Biceps, Lats)',
+              'Legs',
+              'Morning Workout',
+              'Evening Workout',
+              'High Intensity Workout',
+              'HIIT Workout',
+            ];
 
-            for (let i = 0; i < 25; i++) {
+            for (let i = 0; i < 500; i++) {
+              if (i % randomIntFromInterval(1, 10) == 0) {
+                continue;
+              }
               let dt = new Date();
               let newWorkout = {
                 user: user.id,
-                workoutName: 'BACKKKKKKK',
+                workoutName:
+                  workoutArray[
+                    randomIntFromInterval(0, workoutArray.length - 1)
+                  ],
                 date: new Date().setDate(new Date().getDate() - i),
               };
               // for (let j = 0; j < randomIntFromInterval(1, 6); j++) {
