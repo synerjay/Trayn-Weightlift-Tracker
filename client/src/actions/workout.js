@@ -91,7 +91,7 @@ export const addSet = (workoutId, exerciseId, formData) => async (dispatch) => {
 // get all Workouts by user
 
 export const getWorkouts = () => async (dispatch) => {
-  dispatch({ type: CLEAR_WORKOUT });
+  // dispatch({ type: CLEAR_WORKOUT });
 
   try {
     const res = await axios.get('/api/workout');

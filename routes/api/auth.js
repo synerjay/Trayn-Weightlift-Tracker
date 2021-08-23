@@ -93,42 +93,35 @@ router.post(
             const result = await workouts.deleteMany(query);
             console.log('Deleted ' + result.deletedCount + ' documents');
 
-            // let workoutSeries = [
-            //   new Workout({
-            //     user: user.id,
-            //     workoutName: 'Pull (Back, Biceps, Lats)',
-            //     date: new Date('08 October 2021 14:48 UTC').toISOString(),
-            //   }),
-            //   new Workout({
-            //     user: user.id,
-            //     workoutName: 'Pull (Back, Biceps, Lats)',
-            //     date: new Date('09 October 2021 14:48 UTC').toISOString(),
-            //   }),
-            //   new Workout({
-            //     user: user.id,
-            //     workoutName: 'Pull (Back, Biceps, Lats)',
-            //     date: new Date('10 October 2021 14:48 UTC').toISOString(),
-            //   }),
-            // ];
-
             let workoutSeries = [];
 
             //  Do Loops Here:
             const workoutArray = [
-              'Push (Chest & Shoulders)',
-              'Pull (Back, Biceps, Lats)',
-              'Legs',
+              'Afternoon Workout',
+              'Weekend Workout',
+              'After Work Workout',
               'Morning Workout',
               'Evening Workout',
-              'High Intensity Workout',
-              'HIIT Workout',
+              'Upperbody Workout',
             ];
 
-            for (let i = 0; i < 500; i++) {
+            const exerciseArray = [
+              'Chest Press',
+              'Shoulder Press',
+              'Tricep Extension',
+              'Shoulder Raise',
+              'Lat Pull Down',
+              'Deadlift',
+              'Bicep Curls',
+              'Incline Bicep Curls',
+              'Squat',
+              'Seated Leg Push',
+            ];
+
+            for (let i = 0; i < 150; i++) {
               if (i % randomIntFromInterval(1, 10) == 0) {
                 continue;
               }
-              let dt = new Date();
               let newWorkout = {
                 user: user.id,
                 workoutName:
@@ -136,14 +129,26 @@ router.post(
                     randomIntFromInterval(0, workoutArray.length - 1)
                   ],
                 date: new Date().setDate(new Date().getDate() - i),
+                exercise: [],
               };
-              // for (let j = 0; j < randomIntFromInterval(1, 6); j++) {
-              //     let newEvent = {
-              //         timestamp_event: faker.date.past(),
-              //         weight: randomIntFromInterval(14,16),
-              //     }
-              //     newDay.events.push(newEvent);
-              // }
+              for (let j = 0; j < randomIntFromInterval(1, 4); j++) {
+                let newExercise = {
+                  name: exerciseArray[
+                    randomIntFromInterval(0, exerciseArray.length - 1)
+                  ],
+                  sets: [],
+                };
+                const fakeWeight = randomIntFromInterval(15, 80);
+                const fakeRep = randomIntFromInterval(8, 15);
+                for (let k = 0; k < randomIntFromInterval(1, 5); k++) {
+                  let newSet = {
+                    reps: fakeRep,
+                    weight: fakeWeight,
+                  };
+                  newExercise.sets.push(newSet);
+                }
+                newWorkout.exercise.push(newExercise);
+              }
               workoutSeries.push(new Workout(newWorkout));
             }
 

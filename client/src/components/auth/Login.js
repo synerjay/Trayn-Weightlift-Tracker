@@ -21,6 +21,10 @@ const Login = ({ login, isAuthenticated }) => {
   // [e.target.name] corresponding to "name" attribute (not the value) of each HTML tags
   // e.target.value -- is the change in value in the fields
 
+  const handleGuest = () => {
+    login('guest@gmail.com', '123456');
+  };
+
   //Subit function form
   const onSubmit = (e) => {
     e.preventDefault();
@@ -33,7 +37,7 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   return (
-    <div className='loginbg mt-16 pt-10 md:pt-16'>
+    <div className='loginbg mt-10 pt-10 md:pt-10'>
       <div className=' bg-gray-200 mx-auto text-black rounded-3xl shadow-xl w-11/12 md:w-1/2 overflow-hidden'>
         <div className='w-full md:w-full py-10 px-5 md:px-10'>
           <div className='text-center mb-2'>
@@ -95,6 +99,37 @@ const Login = ({ login, isAuthenticated }) => {
               </div>
               {/*  */}
             </form>
+            <div className='flex justify-center items-center text-sm font-semibold gap-x-3 text-center mb-3'>
+              {' '}
+              <hr className='border-1 border-gray-400 w-40' /> OR
+              <hr className='border-1 border-gray-400 w-40' />
+            </div>
+            <div className='flex -mx-3'>
+              <div className='w-full px-3 mb-5'>
+                <button
+                  onClick={() => {
+                    handleGuest();
+                  }}
+                  className='flex justify-center items-center w-full max-w-xs mx-auto cursor-pointer bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg p-1 font-semibold'
+                >
+                  LOG IN AS GUEST
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    className='ml-1 h-5 w-5'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    stroke='currentColor'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth={2}
+                      d='M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
             <p className='text-sm text-center flex justify-center gap-x-1'>
               Don't have an account yet?{' '}
               <Link to='/register'>

@@ -57,7 +57,7 @@ const Editable = ({
             className={`${
               smallLetters
                 ? 'text-2xl text-gray-800 font-semibold'
-                : 'text-4xl text-indigo-600 font-semibold text-center md:text-left'
+                : 'text-4xl text-indigo-900 font-semibold text-center md:text-left'
             } ${text ? 'text-black' : 'text-gray-500'}`}
           >
             {text || placeholder || 'Choose a name'}

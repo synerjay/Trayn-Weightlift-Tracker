@@ -17,19 +17,21 @@ import Activity from './Activity';
 const Dashboard = ({
   getWorkouts,
   getCurrentProfile,
-  auth: { user, token },
-  profile: { profile, loading },
-  workout: { workouts },
+  auth: { user, isAuthenticated },
+  // profile: { profile, loading },
+  workout: { workouts, loading },
 }) => {
   useEffect(() => {
-    getWorkouts();
-    getCurrentProfile();
-  }, [token]); // <--- getCurrentProfil function is going to fire once
+    setTimeout(function () {
+      getWorkouts();
+    }, 600);
+    // getCurrentProfile();
+  }, [isAuthenticated]); // <--- getCurrentProfil function is going to fire once
 
   const [showWorkoutModal, setShowWorkoutModal] = useState(false);
   const [workoutId, setWorkoutId] = useState('');
 
-  return loading && profile === null ? (
+  return loading && workouts === [] ? (
     <Spinner />
   ) : (
     <div className='min-h-screen flex mt-8'>

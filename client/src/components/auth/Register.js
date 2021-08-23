@@ -2,10 +2,10 @@ import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
-import { register } from '../../actions/auth';
+import { register, login } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
-const Register = ({ setAlert, register, isAuthenticated }) => {
+const Register = ({ setAlert, register, login, isAuthenticated }) => {
   // Component State Hook
   const [formData, setFormData] = useState({
     name: '',
@@ -21,6 +21,10 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   // The ...formData is a spreader and copies the formData
   // [e.target.name] corresponding to "name" attribute (not the value) of each HTML tags
   // e.target.value -- is the change in value in the fields
+
+  const handleGuest = () => {
+    login('guest@gmail.com', '123456');
+  };
 
   //Subit function form - we use the "register" action here that will send to the reducer
   const onSubmit = (e) => {
@@ -175,7 +179,16 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               <Link to='/login'>
                 {' '}
                 <p className='text-indigo-600'>Log In</p>
-              </Link>
+              </Link>{' '}
+              or{' '}
+              <div
+                onClick={() => {
+                  handleGuest();
+                }}
+                className='text-indigo-600 cursor-pointer'
+              >
+                Log in as Guest
+              </div>
             </p>
           </div>
         </div>
@@ -188,6 +201,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
 };
 
@@ -195,7 +209,9 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { setAlert, register })(Register);
+export default connect(mapStateToProps, { setAlert, register, login })(
+  Register
+);
 
 {
   /* <Fragment>
