@@ -1,10 +1,10 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Spinner from '../layout/Spinner';
 import { getWorkout, deleteWorkout } from '../../actions/workout';
 import { Link } from 'react-router-dom';
 import ExerciseProfile from './ExerciseProfile';
+import ReactLoading from 'react-loading';
 
 const WorkoutProfile = ({
   getWorkout,
@@ -30,7 +30,9 @@ const WorkoutProfile = ({
   return (
     <>
       {workout === null || loading ? (
-        <Spinner />
+        <div className='w-full h-screen flex justify-center mt-32 md:mt-36 '>
+          <ReactLoading type='spin' color='#312E81' width={300} />
+        </div>
       ) : (
         <div className='flex flex-col items-center'>
           <div className='w-full flex flex-col md:grid md:grid-cols-2 md:gap-5 p-1 -mt-6'>

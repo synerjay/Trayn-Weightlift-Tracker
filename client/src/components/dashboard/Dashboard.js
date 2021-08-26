@@ -1,15 +1,15 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCurrentProfile, deleteAccount } from '../../actions/profile';
+import { getCurrentProfile } from '../../actions/profile';
 import { getWorkouts } from '../../actions/workout';
-import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
 import DashboardActions from './DashboardActions';
 import Workout from './Workout';
 import CustomModal from '../layout/CustomModal';
 import WorkoutProfile from '../profile/WorkoutProfile';
 import Activity from './Activity';
+import ReactLoading from 'react-loading';
 
 // We are going to use the getCurrentProfile action to redux as soon as the component loads
 // So we are going to use useEffect hooks to fire getCurrentProfile in the initial load
@@ -31,8 +31,10 @@ const Dashboard = ({
   const [showWorkoutModal, setShowWorkoutModal] = useState(false);
   const [workoutId, setWorkoutId] = useState('');
 
-  return loading && workouts === [] ? (
-    <Spinner />
+  return loading && workouts.length === 0 ? (
+    <div className='w-full h-screen flex justify-center mt-32 md:mt-36 '>
+      <ReactLoading type='spin' color='#312E81' width={300} />
+    </div>
   ) : (
     <div className='min-h-screen flex mt-8'>
       <DashboardActions />
