@@ -10,20 +10,10 @@ const Routes = () => {
   return (
     <section className='container'>
       {' '}
-      {/* This section is for the Login and Register components to center in the page*/}
       <Alert />
       <Switch>
-        {/* Underneath temporarily change this route so u can practice on Spotify APi / Remember to change back to Profiles component*/}
-        {/* <Route exact path='/profiles' component={Profiles} />
-        <Route exact path='/profile/:id' component={Profile} /> */}
-        {/* <PrivateRoute exact path='/create-profile' component={ProfileForm} />
-        <PrivateRoute exact path='/edit-profile' component={ProfileForm} />
-        <PrivateRoute exact path='/add-experience' component={AddExperience} />
-        <PrivateRoute exact path='/add-education' component={AddEducation} /> */}
         <PrivateRoute exact path='/add-workout' component={AddWorkout} />
         <PrivateRoute exact path='/add-exercise' component={AddExercise} />
-        {/* <PrivateRoute exact path='/posts' component={Posts} />
-        <PrivateRoute exact path='/posts/:id' component={Post} /> */}
         <Route component={NotFound} />
       </Switch>
     </section>

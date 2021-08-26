@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCurrentProfile } from '../../actions/profile';
 import { getWorkouts } from '../../actions/workout';
 import { Link } from 'react-router-dom';
 import DashboardActions from './DashboardActions';
@@ -16,7 +15,6 @@ import ReactLoading from 'react-loading';
 
 const Dashboard = ({
   getWorkouts,
-  getCurrentProfile,
   auth: { user, isAuthenticated },
   // profile: { profile, loading },
   workout: { workouts, loading },
@@ -92,18 +90,14 @@ const Dashboard = ({
 };
 
 Dashboard.propTypes = {
-  getCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  profile: state.profile,
   workout: state.workout,
 });
 
 export default connect(mapStateToProps, {
   getWorkouts,
-  getCurrentProfile,
 })(Dashboard);
