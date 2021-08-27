@@ -20,7 +20,7 @@ const AddWorkout = ({ addWorkout, history }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className='flex md:items-center flex-col mt-24 px-5'>
+    <div className='flex justify-center md:items-center flex-col mt-24 px-5'>
       <h1 className='text-center text-4xl font-semibold text-indigo-700'>
         Choose Your Workout{' '}
       </h1>
@@ -140,7 +140,7 @@ const AddWorkout = ({ addWorkout, history }) => {
         </button>
       </div>
       <Link
-        className='flex w-52 justify-center items-center mt-10 md:mb-0 bg-indigo-600 md:px-6 md:py-2 px-10  h-12 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-indigo-700'
+        className='flex w-60  md:w-52 justify-center items-center mt-10 md:mb-0 bg-indigo-600 md:px-6 md:py-2 px-10  h-12 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-indigo-700'
         to='/dashboard'
       >
         {' '}
