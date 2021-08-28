@@ -4,7 +4,7 @@ import { deleteAccount } from '../../actions/profile';
 import { setAlert } from '../../actions/alert';
 import { connect } from 'react-redux';
 
-const Settings = ({ deleteAccount }) => {
+const Settings = ({ auth: { user }, deleteAccount }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     setAlert(
@@ -46,6 +46,9 @@ const Settings = ({ deleteAccount }) => {
                 <div className='w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0'></div>
               </div>
               <div className='mt-5'>
+                <p className='mb-10 text-sm'>
+                  Your registered email is: {user && user.email}
+                </p>
                 <form onSubmit={onSubmit}>
                   <div className='md:flex flex-row items-center md:space-x-8 w-full text-xs'>
                     <div className='mb-3 space-y-5 w-full text-sm'>
@@ -74,6 +77,9 @@ const Settings = ({ deleteAccount }) => {
                   </div>
                   <div className='mt-0 text-right md:space-x-3 md:block flex flex-col-reverse'>
                     <button
+                      disabled={
+                        user && user.email == 'guest@gmail.com' ? true : false
+                      }
                       // type='submit'
                       onClick={() =>
                         setAlert(
@@ -83,7 +89,11 @@ const Settings = ({ deleteAccount }) => {
                       }
                       className='mb-2 md:mb-0 bg-indigo-600 md:px-6 md:py-3 px-1 py-1 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-indigo-500'
                     >
-                      Save New Password
+                      {user && user.email === 'guest@gmail.com' ? (
+                        <>Sorry, Guests cannot change the password</>
+                      ) : (
+                        <>Save New Password</>
+                      )}
                     </button>
                   </div>
                 </form>
@@ -91,7 +101,11 @@ const Settings = ({ deleteAccount }) => {
                 <div className='mt-32 flex flex-row-reverse '>
                   <div className='flex flex-col'>
                     <p className='flex items-center justify-center text-center text-xs text-red-600 uppercase mb-2 font-bold'>
-                      Danger Zone{' '}
+                      {user && user.email == 'guest@gmail.com' ? (
+                        <>Guests cannot delete this account</>
+                      ) : (
+                        <>Danger Zone</>
+                      )}
                       <svg
                         xmlns='http://www.w3.org/2000/svg'
                         className='h-5 w-5 text-yellow-400'
@@ -106,6 +120,9 @@ const Settings = ({ deleteAccount }) => {
                       </svg>
                     </p>
                     <button
+                      disabled={
+                        user && user.email == 'guest@gmail.com' ? true : false
+                      }
                       className='mb-2 w-96 md:w-auto md:mb-0 bg-red-700 md:px-6 md:py-3 px-5 py-1 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-800'
                       onClick={() => deleteAccount()}
                     >
@@ -122,6 +139,10 @@ const Settings = ({ deleteAccount }) => {
   );
 };
 
-export default connect(null, {
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, {
   deleteAccount,
 })(Settings);
