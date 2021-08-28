@@ -12,11 +12,13 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.1",
+    "autoprefixer": "^9.8.6",
     "axios": "^0.21.1",
     "date-fns": "^2.19.0",
     "luxon": "^2.0.2",
     "moment": "^2.29.1",
     "nivo": "^0.31.0",
+    "postcss": "^7.0.36",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-loading": "^2.0.3",
@@ -28,6 +30,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "spotify-web-api-node": "^5.0.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.8",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.0"
   },
@@ -57,9 +60,6 @@
   },
   "proxy": "http://localhost:5000",
   "devDependencies": {
-    "@tailwindcss/postcss7-compat": "^2.1.2",
-    "autoprefixer": "^9.8.6",
-    "postcss": "^7.0.35",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.2"
+    "@tailwindcss/postcss7-compat": "^2.2.8"
   }
 }
